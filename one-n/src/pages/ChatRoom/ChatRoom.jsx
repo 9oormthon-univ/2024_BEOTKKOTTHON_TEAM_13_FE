@@ -105,7 +105,7 @@ function ChatRoom() {
 
       // 웹 소켓 연결 설정
       useEffect(() => {
-        const ws = new WebSocket("ws://20.39.188.154:8080/ws");
+        const ws = new WebSocket("wss://n1-api.junyeong.dev/wss");
         setWs(ws);
         
         // 컴포넌트가 unmount 될 때 웹 소켓 연결 해제
