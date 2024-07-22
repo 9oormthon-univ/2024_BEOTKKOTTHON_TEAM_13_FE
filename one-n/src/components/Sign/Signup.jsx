@@ -4,17 +4,37 @@ import ReactModal from 'react-modal';
 
 function Signup () {
       
+  const baseUrl="https://n1.junyeong.dev/api";
   const [signupModalOpen, setSignupModalOpen] = useState(true);
 
-  
   const [signup, setSignup] = useState('');
   const [signin, setSignin] = useState('');
 
   const [userId, setUserId] = useState('');
   const [nickname, setNickname] = useState('');
 
+  useEffect(() => {
+    // 세션 만료 여부를 확인하는 함수
+    const checkSessionExpiration = async () => {
+      try {
+        // 세션 만료 여부를 확인하는 API 요청을 보냅니다.
+        const response = await axios.get(`${baseUrl}/chats/list?session_id=${signin}`);
+        const sessionExpired = response.data.expired;
+        if (sessionExpired) {
+          // 세션이 만료되었을 경우 로그인 창을 엽니다.
+          setSignupModalOpen(true);
+        }
+      } catch (error) {
+        console.error('세션 만료 여부 확인 에러:', error);
+      }
+    };
+
+    // 컴포넌트가 렌더링될 때 세션 만료 여부를 확인합니다.
+    checkSessionExpiration();
+  }, []);
+
   const handleSignup = () => {
-    const apiUrlSignup = 'http://20.39.188.154:8080/user/signup';
+    const apiUrlSignup = `${baseUrl}/user/signup`;
     const userData1 = {
       user_id: userId,
       nickname: nickname,
@@ -26,6 +46,8 @@ function Signup () {
         setUserId('');
         setNickname('');
         handleSignin(userId);
+
+        sessionStorage.setItem('nickname', nickname);
       })
       .catch((error) => {
         console.error('API 요청 에러:', error);
@@ -33,7 +55,7 @@ function Signup () {
   };
 
   const handleSignin = (userId) => {
-    const apiUrlSignin = 'http://20.39.188.154:8080/user/signin';
+    const apiUrlSignin = `${baseUrl}/user/signin`;
     const userData2 = {
       user_id: userId
     };

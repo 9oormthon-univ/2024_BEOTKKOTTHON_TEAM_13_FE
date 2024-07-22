@@ -14,20 +14,24 @@ export const MyContextProvider = ({ children }) => {
     const [postDay, setPostDay] = useState('');
     const [myBcode, setMyBcode] = useState('');
     const [selectLocation, setSelectLocation] = useState(false);
+    const [longitude, setLongitude] = useState('');
+    const [latitude, setLatitude] = useState('');
 
     return (
         <MyContext.Provider value={{
-            postAddress, setPostAddress, 
-            postTitle, setPostTitle, 
-            postURL, setPostURL, 
-            postPrice, setPostPrice, 
+            postAddress, setPostAddress,
+            postTitle, setPostTitle,
+            postURL, setPostURL,
+            postPrice, setPostPrice,
             postPeople, setPostPeople,
             postContent, setPostContent,
             postYear, setPostYear,
             postMonth, setPostMonth,
             postDay, setPostDay,
             myBcode, setMyBcode,
-            selectLocation, setSelectLocation
+            selectLocation, setSelectLocation,
+            longitude, setLongitude,
+            latitude, setLatitude
         }}>
             {children}
         </MyContext.Provider>

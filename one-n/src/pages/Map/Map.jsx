@@ -30,14 +30,15 @@ const Map = () => {
     const getFetchData = () => {
         const storedBcode = sessionStorage.getItem('myBcode');
         console.log("요청을 보냈습니다");
-        const url = `http://20.39.188.154:8080/post/list?type=all&bcode=${storedBcode}&keyword=&page=${page}`;
+        const url = `https://n1.junyeong.dev/api/post/list?type=all&bcode=&keyword=&page=${page}`;
+        // const url = `https://n1.junyeong.dev/api/post/list?type=all&bcode=${storedBcode}&keyword=&page=${page}`;
         console.log(url);
         fetch(url)
             .then((res) => res.json())
             .then((product) => setProducts((prev) => [...prev, ...product]));
     };
 
-    useEffect(() => getFetchData(), [page]);
+   
 
 
     useEffect(() => {
@@ -67,6 +68,7 @@ const Map = () => {
 
 
     useEffect(() => {
+        getFetchData();
         // 카카오 지도 API 불러오기
         const script = document.createElement('script');
         script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_MAP_API_KEY}&autoload=false`;
@@ -89,7 +91,7 @@ const Map = () => {
                 products.forEach(markerData => {
                     console.log(markerData);
                     console.log(markerData.location.latitude, markerData.location.longitude);
-                    const position = new window.kakao.maps.LatLng(markerData.location.latiude, markerData.location.longitude);
+                    const position = new window.kakao.maps.LatLng(markerData.location.latitude, markerData.location.longitude);
 
                     // 원의 옵션 설정
                     const circleOptions = {
@@ -189,7 +191,7 @@ const Map = () => {
             document.head.removeChild(script);
 
         };
-    }, [myLocation]);
+    }, [myLocation, page]);
 
 
 

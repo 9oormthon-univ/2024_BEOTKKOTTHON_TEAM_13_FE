@@ -17,6 +17,12 @@ export default function Scrap() {
     const [selectedWishlistButton, setSelectedWishlistButton] = useState(null);
     const [selectedOption, setSelectedOption] = useState('ingredients');
     const [signinData, setSigninData] = useState(null);
+    const userIDWithQuotes = sessionStorage.getItem('signinData');
+    // 따옴표를 제거하여 올바른 형식의 session_id 값을 얻습니다.
+    const userID = userIDWithQuotes.replace(/"/g, '');
+    // 올바른 형식의 session_id를 사용하여 요청을 보냅니다.
+    
+  
 
     useEffect(() => {
         const storedSigninData = sessionStorage.getItem('signinData');
@@ -49,7 +55,7 @@ export default function Scrap() {
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
-                const response = await axios.get(`http://20.39.188.154:8080/user/info?session_id=${signinData}`);
+                const response = await axios.get(`https://n1-api.junyeong.dev/user/info?session_id=${userID}`);
                 setNickname(response.data.nickname);
                 setSatisfaction(response.data.user_rating * 100); // user_rating은 0.0에서 1.0 범위에 있으므로 100을 곱해서 퍼센트로 변환합니다.
             } catch (error) {
@@ -59,7 +65,7 @@ export default function Scrap() {
 
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://20.39.188.154:8080/user/posts?session_id=${signinData}`);
+                const response = await axios.get(`https://n1-api.junyeong.dev/user/posts?session_id=${signinData}`);
 
                 console.log(response.params);
                 console.log(response.data);
@@ -75,7 +81,7 @@ export default function Scrap() {
 
     const fetchLikedPosts = async () => {
         try {
-            const response = await axios.get(`http://20.39.188.154:8080/user/likes?session_id=${signinData}&type=post`);
+            const response = await axios.get(`https://n1-api.junyeong.dev/user/likes?session_id=${signinData}&type=post`);
             setPickProducts(response.data);
         } catch (error) {
             console.error('Error fetching liked posts:', error);
@@ -92,13 +98,13 @@ export default function Scrap() {
     // };
 
     const fetchLikedRecipe = async () => {
-        const apiUrl = `http://20.39.188.154:8080/user/likes?session_id=${signinData}&type=recipe`
+        const apiUrl = `https://n1-api.junyeong.dev/user/likes?session_id=${signinData}&type=recipe`
 
         axios.get(apiUrl)
             .then((response) => {
                 const updatedData = response.data.map(item => ({
                     ...item,
-                    thumbnail_image: `http://20.39.188.154${item.thumbnail_image}`
+                    thumbnail_image: `https://n1.junyeong.dev/${item.thumbnail_image}`
                 }));
                 console.log("요청감");
                 console.log(updatedData);
@@ -112,13 +118,13 @@ export default function Scrap() {
 
 
     const fetchPostRecipe = async () => {
-        const apiUrl = `http://20.39.188.154:8080/user/recipes?session_id=test_${signinData}`;
+        const apiUrl = `https://n1-api.junyeong.dev/user/recipes?session_id=test_${signinData}`;
 
         axios.get(apiUrl)
             .then((response) => {
                 const updatedData = response.data.map(item => ({
                     ...item,
-                    thumbnail_image: `http://20.39.188.154${item.thumbnail_image}`
+                    thumbnail_image: `https://n1.junyeong.dev/${item.thumbnail_image}`
                 }));
                 setData(updatedData);
             })

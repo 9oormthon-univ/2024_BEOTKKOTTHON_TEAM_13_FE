@@ -33,12 +33,12 @@ function RecipeDetail() {
 
     useEffect(() => {
       const storedBcode = sessionStorage.getItem('myBcode');
-        const apiUrl = `http://20.39.188.154:8080/recipe/${recipeId}?bcode=${storedBcode}`;
+        const apiUrl = `https://n1-api.junyeong.dev/recipe/${recipeId}?bcode=${storedBcode}`;
         axios.get(apiUrl)
         .then(response => {
             const updatedData = {
                 ...response.data,
-                thumbnail_image: `http://20.39.188.154${response.data.thumbnail_image}`
+                thumbnail_image: `https://n1.junyeong.dev${response.data.thumbnail_image}`
             };
             setRecipe(updatedData);
             })

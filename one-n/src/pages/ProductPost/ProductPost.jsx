@@ -10,6 +10,11 @@ import RecipeIngredientsPost from '../../components/ProductPostForm/RecipeIngred
 import './ProductPost.css'
 import Camera from '../../assets/camera.png'
 import PostSucessModal from '../../components/PostSucessModal/PostSucessModal';
+import DatePicker from 'react-datepicker';
+import axios from 'axios';
+import 'react-datepicker/dist/react-datepicker.css'; // Datepicker의 CSS 파일 import
+import ko from 'date-fns/locale/ko'; // 한국어 locale 파일 import
+import ImageUploader from '../../components/ImageUploder/ImageUploder';
 
 
 export default function ProductPost() {
@@ -19,7 +24,24 @@ export default function ProductPost() {
     const navigate = useNavigate();
     const { selectLocation, setSelectLocation } = useContext(MyContext);
     const [showModal, setShowModal] = useState(false);
+    const userIDWithQuotes = sessionStorage.getItem('signinData');
+    const userID = userIDWithQuotes ? userIDWithQuotes.replace(/"/g, '') : '';
+    const [showDatePicker, setShowDatePicker] = useState(false);
     // const [userLocation, setUserLocation] = useState(null); // 사용자 위치 정보 상태 추가
+    const getCurrentDate = () => {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth() + 1; // getMonth()는 0부터 시작하므로 1을 더해줌
+        const day = currentDate.getDate();
+        return { year, month, day };
+    };
+
+    useEffect(() => {
+        const currentDate = getCurrentDate();
+        setPostYear(currentDate.year.toString());
+        setPostMonth(currentDate.month.toString());
+        setPostDay(currentDate.day.toString());
+    }, []); // 컴포넌트가 처음 렌더링될 때 한 번만 실행
 
     const handleButtonClick = (option) => {
         if (selectedOption !== option) {
@@ -61,7 +83,10 @@ export default function ProductPost() {
         postContent, setPostContent,
         postYear, setPostYear,
         postMonth, setPostMonth,
-        postDay, setPostDay } = useContext(MyContext);
+        postDay, setPostDay,
+        longitude, setLongitude,
+        latitude, setLatitude
+    } = useContext(MyContext);
 
     const handleYearInputChange = (e) => {
         setPostYear(e.target.value);
@@ -92,14 +117,53 @@ export default function ProductPost() {
 
 
     const handlePostButtonClick = () => {
+        console.log(userID);
+        console.log("ingd");
         console.log(postTitle);
+        console.log(postContent);
         console.log(postURL);
         console.log(postPrice);
         console.log(postPeople);
-        console.log(postContent);
         console.log(postAddress);
+        console.log(longitude);
+        console.log(latitude);
+        console.log(postAddress);
+        console.log(postYear);
+        console.log(postMonth);
+        console.log(postDay);
 
-        setShowModal(true);
+        if (selectedOption === 'ingredients') {
+            const storedBcode = sessionStorage.getItem('myBcode');
+
+            // ingredients에 관한 POST 요청 보내기
+            const postData = {
+                session_id: userID,
+                image: imageURL,
+                type: "ingd",
+                title: postTitle,
+                contents: postContent,
+                url: postURL,
+                price: postPrice,
+                group_size: postPeople,
+                location_address: postAddress,
+                location_bcode: storedBcode,
+                location_longitude: longitude.toString(),
+                location_latitude: latitude.toString(),
+                closed_at: `${postYear}-${postMonth}-${postDay}`
+            };
+
+            axios.post('https://n1-api.junyeong.dev/post', postData)
+                .then(response => {
+                    console.log('POST 요청 성공:', response.data);
+                    setShowModal(true); // 성공 시 모달 표시
+                })
+                .catch(error => {
+                    console.error('POST 요청 실패:', error);
+                });
+        } else {
+            // 레시피에 관한 POST 요청 보내기
+            // 다른 옵션에 관한 요청이 필요한 경우에는 여기에 추가
+        }
     };
 
 
@@ -113,7 +177,8 @@ export default function ProductPost() {
                     <p className='centered-text'>공동구매 게시글 작성</p>
                 </div>
             </div>
-            <div className='product-post-image'>
+            <ImageUploader/>
+            {/* <div className='product-post-image'>
                 {!imageUploaded ? (
                     <label htmlFor="image-upload" className="image-upload-label">
                         <img src={Camera} alt="Upload Image" onClick={handleImageClick} />
@@ -122,7 +187,7 @@ export default function ProductPost() {
                 ) : (
                     <img src={imageURL} alt="Uploaded" onClick={handleImageClick} />
                 )}
-            </div>
+            </div> */}
 
             <p className='product-post-select-text'>유형 </p>
             <div className='product-post-select'>
@@ -150,13 +215,44 @@ export default function ProductPost() {
                 <input className='product-post-select-place' placeholder='거래 희망 장소를 선택하세요.' defaultValue={postAddress}></input>
             </div>
             <div className='product-sale-due-date'>
-                <div className='product-sale-due-date-text' >거래 마감일</div>
+                <div className='due-date-title'>
+                    <div className='product-sale-due-date-text' >거래 마감일</div>
+                    <button className='next-button' onClick={() => setShowDatePicker(!showDatePicker)}>
+                        <Next />
+                    </button>
+                </div>
                 <div className='year-month-day'>
-                    <input className='due-date-placeholder' placeholder=' 년도'
+                    <DatePicker
+                        selected={new Date(postYear, postMonth - 1, postDay)}
+                        onChange={date => {
+                            setPostYear(date.getFullYear());
+                            setPostMonth(date.getMonth() + 1);
+                            setPostDay(date.getDate());
+                            setShowDatePicker(false);
+
+                        }}
+                        dateFormat="yyyy-MM-dd"
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        placeholderText="날짜를 선택하세요"
+                        className='due-date-placeholder custom-datepicker' /* custom-datepicker 클래스 추가 */
+                        popperPlacement="bottom"
+                        popperModifiers={{
+                            preventOverflow: {
+                                enabled: true,
+                                escapeWithReference: false,
+                                boundariesElement: 'viewport'
+                            }
+                        }}
+                        open={showDatePicker}
+                        locale={ko} // 한국어 locale 설정
+                    />
+                    {/* <input className='due-date-placeholder' placeholder=' 년도'
                         onChange={handleYearInputChange}
                         value={postYear}></input>
                     <input className='due-date-placeholder' placeholder=' 월' onChange={handleMonthInputChange} value={postMonth}></input>
-                    <input className='due-date-placeholder' placeholder=' 일' onChange={handleMonthInputChange} value={postDay}></input>
+                    <input className='due-date-placeholder' placeholder=' 일' onChange={handleDayInputChange} value={postDay}></input> */}
                 </div>
             </div>
 
@@ -169,10 +265,10 @@ export default function ProductPost() {
 
             {
                 showModal && (
-                    <PostSucessModal/>
+                    <PostSucessModal />
                 )
             }
         </div>
 
     );
-} 
+}

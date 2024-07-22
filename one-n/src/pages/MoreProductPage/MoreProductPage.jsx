@@ -29,7 +29,7 @@ function MoreProductPage() {
     const getFetchData_i = () => {
         const storedBcode = sessionStorage.getItem('myBcode');
         console.log("요청을 보냈습니다");
-        const url = `http://20.39.188.154:8080/post/list?type=ingd&bcode=${storedBcode}&keyword=&page=${page}`;
+        const url = `https://n1-api.junyeong.dev/post/list?type=ingd&bcode=${storedBcode}&keyword=&page=${page}`;
         console.log(url);
         fetch(url)
             .then((res) => res.json())
@@ -43,7 +43,7 @@ function MoreProductPage() {
     const getFetchData_r = () => {
         const storedBcode = sessionStorage.getItem('myBcode');
         console.log("요청을 보냈습니다2222");
-        const url = `http://20.39.188.154:8080/post/list?type=r_ingd&bcode=${storedBcode}&keyword=&page=${page}`;
+        const url = `https://n1-api.junyeong.dev/post/list?type=r_ingd&bcode=${storedBcode}&keyword=&page=${page}`;
         console.log(url);
         fetch(url)
             .then((res) => res.json())

@@ -1,5 +1,5 @@
 // 레시피 등록페이지
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import ReactModal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
 import './RecipeReg.css'

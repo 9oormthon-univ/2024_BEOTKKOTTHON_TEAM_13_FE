@@ -45,18 +45,6 @@ div {
 }
 
 
-.product-post-image {
-    margin-left: 16px;
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    border: 1px solid #D9D9D9;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-
-}
 
 .product-post-image img {
     width: 64px;
@@ -242,15 +230,21 @@ div {
     padding: 16px;
 }
 
-.year-month-day {
-    margin-top: 8px;
-    display: flex;
-    justify-content: space-between;
+.react-datepicker {
+    margin-left: 60px;
+    margin-bottom: -10px;
 }
 
+.react-datepicker__triangle{
+    margin-top: 10px;
+}
+
+
+
 .year-month-day input {
-    margin-top: 8px;
-    width: 25%;
+    margin-top: 16px;
+    padding: 3px;
+    padding-left: 10px;
     height: 27px;
     border-radius: 8px;
     background-color: transparent;
@@ -283,3 +277,11 @@ div {
     letter-spacing: -0.14px;
 
 }
+
+.due-date-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+

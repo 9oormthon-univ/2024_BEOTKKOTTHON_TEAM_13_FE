@@ -24,7 +24,7 @@ export default function ReProductDetail() {
     const fetchProductData = async (productId) => {
         // productId를 이용하여 백엔드에서 상품 데이터를 가져오는 비동기 함수
         try {
-            const response = await fetch(`http://20.39.188.154:8080/post/${productId}`);
+            const response = await fetch(`https://n1-api.junyeong.dev/post/${productId}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

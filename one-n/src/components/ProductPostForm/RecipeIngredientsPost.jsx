@@ -40,12 +40,6 @@ export default function RecipeIngredientsPost() {
 
     return (
         <div>
-            <input
-                className='product-post-content'
-                placeholder='상품에 대한 설명을 넣어주세요.'
-                onChange={handleContentInputChange}
-                value={postContent}
-            />
             <p className='product-post-ingredient-text'>재료</p>
             {ingredients.map(ingredient => (
                 <div key={ingredient.id} className='product-post-ingredient-container'>
@@ -70,9 +64,16 @@ export default function RecipeIngredientsPost() {
             <div className='ingredient-add-button-container'>
                 <button className='ingredient-add-button' onClick={handleAddIngredient}>재료 추가하기</button>
             </div>
+            <input
+                className='product-post-content'
+                placeholder='상품에 대한 설명을 넣어주세요.'
+                onChange={handleContentInputChange}
+                value={postContent}
+            />
 
             {/* 가격, 인원수 등의 입력 폼 */}
-            <InputForm title='가격' placeholder='가격을 입력해주세요.(인당 가격)' />
+            <InputForm title='가격' placeholder='가격을 입력해주세요 (모든 재료 가격을 합한 값)'
+             />
             <InputForm title='인원수' placeholder='모임에 참여할 인원 수를 정해주세요.' />
         </div>
     );

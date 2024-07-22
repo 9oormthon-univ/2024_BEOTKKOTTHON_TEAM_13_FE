@@ -36,7 +36,7 @@ export default function SearchPage() {
         // 검색어가 비어있으면 요청을 보내지 않음
         if (!searchKeyword.trim()) return;
 
-        const url = 'http://20.39.188.154:8080/post/list';
+        const url = 'https://n1-api.junyeong.dev/post/list';
         const params = {
             type: 'all',
             bcode: storedBcode,

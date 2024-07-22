@@ -52,13 +52,13 @@ function MainPage() {
 
   useEffect(() => {
     // API 엔드포인트 URL 설정
-    const apiUrl = 'http://20.39.188.154:8080/recipe/brief';
+    const apiUrl = 'https://n1.junyeong.dev/api/recipe/brief';
 
     axios.get(apiUrl)
       .then((response) => {
         const updatedData = response.data.map(item => ({
           ...item,
-          thumbnail_image: `http://20.39.188.154${item.thumbnail_image}`
+          thumbnail_image: `https://n1.junyeong.dev/api/${item.thumbnail_image}`
         }));
         setData(updatedData);
       })
@@ -133,7 +133,7 @@ function MainPage() {
 
   // fetchProducts 함수 정의
   const fetchProducts = (bCode) => {
-    const url = `http://20.39.188.154:8080/post/list?type=all&bcode=${bCode}&keyword=&page=${page}`;
+    const url = `https://n1.junyeong.dev/api/post/list?bcode=&type=all&keyword=&page=${page}`;
     console.log(url);
     fetch(url)
       .then((res) => res.json())
@@ -152,7 +152,7 @@ function MainPage() {
       {isSignupModalOpen && <Signup />}
 
 
-      <div className='header-container'><Header />
+      <div className='header-container'><Header /> </div>
 
 
         <div className='main-body'>
@@ -194,7 +194,7 @@ function MainPage() {
           )}
         </div>
       </div>
-    </div>
+
   );
 }
 
