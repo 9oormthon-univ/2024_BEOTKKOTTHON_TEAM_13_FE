@@ -16,6 +16,7 @@ export const MyContextProvider = ({ children }) => {
     const [selectLocation, setSelectLocation] = useState(false);
     const [longitude, setLongitude] = useState('');
     const [latitude, setLatitude] = useState('');
+    const [images, setImages] = useState([]);
 
     return (
         <MyContext.Provider value={{
@@ -31,7 +32,9 @@ export const MyContextProvider = ({ children }) => {
             myBcode, setMyBcode,
             selectLocation, setSelectLocation,
             longitude, setLongitude,
-            latitude, setLatitude
+            latitude, setLatitude,
+            images, setImages,
+            
         }}>
             {children}
         </MyContext.Provider>

@@ -19,14 +19,25 @@ import ImageUploader from '../../components/ImageUploder/ImageUploder';
 
 export default function ProductPost() {
     const [selectedOption, setSelectedOption] = useState('ingredients');
-    const [imageUploaded, setImageUploaded] = useState(false); // 이미지가 업로드되었는지 여부
-    const [imageURL, setImageURL] = useState(''); // 이미지 URL 상태 추가
     const navigate = useNavigate();
     const { selectLocation, setSelectLocation } = useContext(MyContext);
     const [showModal, setShowModal] = useState(false);
     const userIDWithQuotes = sessionStorage.getItem('signinData');
-    const userID = userIDWithQuotes ? userIDWithQuotes.replace(/"/g, '') : '';
+    const userID = userIDWithQuotes ? userIDWithQuotes.replace(/"/g, '') : 'ea2185e2-a1b9-487d-9e76-25df7dbc2e2f';
     const [showDatePicker, setShowDatePicker] = useState(false);
+    const { postAddress, setPostAddress,
+        postTitle, setPostTitle,
+        postURL, setPostURL,
+        postPrice, setPostPrice,
+        postPeople, setPostPeople,
+        postContent, setPostContent,
+        postYear, setPostYear,
+        postMonth, setPostMonth,
+        postDay, setPostDay,
+        longitude, setLongitude,
+        latitude, setLatitude,
+        images
+    } = useContext(MyContext);
     // const [userLocation, setUserLocation] = useState(null); // 사용자 위치 정보 상태 추가
     const getCurrentDate = () => {
         const currentDate = new Date();
@@ -34,6 +45,15 @@ export default function ProductPost() {
         const month = currentDate.getMonth() + 1; // getMonth()는 0부터 시작하므로 1을 더해줌
         const day = currentDate.getDate();
         return { year, month, day };
+    };
+
+    const handleDateChange = date => {
+        setPostYear(date.getFullYear());
+        setPostMonth(date.getMonth() + 1);
+        setPostDay(date.getDate());
+        setShowDatePicker(false);
+        
+       
     };
 
     useEffect(() => {
@@ -49,56 +69,13 @@ export default function ProductPost() {
         }
     };
 
-    const handleImageClick = () => {
-        setImageUploaded(false);
-        setImageURL('');
-    };
-
+ 
     const handleBackClick = () => {
         console.log("클릭툄");
         navigate('/');
     };
 
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0]; // 선택한 파일 가져오기
-        const reader = new FileReader(); // 파일을 읽기 위한 FileReader 객체 생성
 
-        reader.onloadend = () => {
-            // 파일 읽기가 완료되었을 때
-            setImageURL(reader.result); // 이미지 URL을 상태에 설정하여 이미지 표시
-            setImageUploaded(true); // 이미지 업로드 상태를 true로 변경
-        };
-
-        if (file) {
-            reader.readAsDataURL(file); // 파일을 읽어서 base64 형태로 변환
-        }
-    };
-
-
-    const { postAddress, setPostAddress,
-        postTitle, setPostTitle,
-        postURL, setPostURL,
-        postPrice, setPostPrice,
-        postPeople, setPostPeople,
-        postContent, setPostContent,
-        postYear, setPostYear,
-        postMonth, setPostMonth,
-        postDay, setPostDay,
-        longitude, setLongitude,
-        latitude, setLatitude
-    } = useContext(MyContext);
-
-    const handleYearInputChange = (e) => {
-        setPostYear(e.target.value);
-    }
-
-    const handleMonthInputChange = (e) => {
-        setPostMonth(e.target.value);
-    }
-
-    const handleDayInputChange = (e) => {
-        setPostDay(e.target.value);
-    }
 
     const handleLocationButtonClick = () => {
 
@@ -108,7 +85,7 @@ export default function ProductPost() {
         else {
             setSelectLocation(true);
         }
-        // 원하는 로직 추가
+        
         console.log('거래 희망 장소 버튼을 클릭했습니다.');
 
         // 이동할 경로로 리다이렉션 수행
@@ -127,7 +104,6 @@ export default function ProductPost() {
         console.log(postAddress);
         console.log(longitude);
         console.log(latitude);
-        console.log(postAddress);
         console.log(postYear);
         console.log(postMonth);
         console.log(postDay);
@@ -138,7 +114,7 @@ export default function ProductPost() {
             // ingredients에 관한 POST 요청 보내기
             const postData = {
                 session_id: userID,
-                image: imageURL,
+                image: images,
                 type: "ingd",
                 title: postTitle,
                 contents: postContent,
@@ -149,15 +125,17 @@ export default function ProductPost() {
                 location_bcode: storedBcode,
                 location_longitude: longitude.toString(),
                 location_latitude: latitude.toString(),
-                closed_at: `${postYear}-${postMonth}-${postDay}`
+                closed_at: `${postYear}-${postMonth}-${postDay}`,
+                ingredients: []
             };
 
-            axios.post('https://n1-api.junyeong.dev/post', postData)
+            axios.post('https://n1.junyeong.dev/api/post', postData)
                 .then(response => {
                     console.log('POST 요청 성공:', response.data);
                     setShowModal(true); // 성공 시 모달 표시
                 })
                 .catch(error => {
+                    console.log(postData);
                     console.error('POST 요청 실패:', error);
                 });
         } else {
@@ -178,16 +156,6 @@ export default function ProductPost() {
                 </div>
             </div>
             <ImageUploader/>
-            {/* <div className='product-post-image'>
-                {!imageUploaded ? (
-                    <label htmlFor="image-upload" className="image-upload-label">
-                        <img src={Camera} alt="Upload Image" onClick={handleImageClick} />
-                        <input id="image-upload" type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
-                    </label>
-                ) : (
-                    <img src={imageURL} alt="Uploaded" onClick={handleImageClick} />
-                )}
-            </div> */}
 
             <p className='product-post-select-text'>유형 </p>
             <div className='product-post-select'>
@@ -224,13 +192,7 @@ export default function ProductPost() {
                 <div className='year-month-day'>
                     <DatePicker
                         selected={new Date(postYear, postMonth - 1, postDay)}
-                        onChange={date => {
-                            setPostYear(date.getFullYear());
-                            setPostMonth(date.getMonth() + 1);
-                            setPostDay(date.getDate());
-                            setShowDatePicker(false);
-
-                        }}
+                        onChange={handleDateChange}
                         dateFormat="yyyy-MM-dd"
                         showMonthDropdown
                         showYearDropdown

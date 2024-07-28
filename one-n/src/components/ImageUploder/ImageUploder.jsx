@@ -1,9 +1,10 @@
 import Camera from '../../assets/camera.png'
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { MyContext } from '../MyContextProvider/MyContextProvider';
 import './ImageUploader.css';
 
 export default function ImageUploader() {
-    const [images, setImages] = useState([]); // 업로드된 이미지들을 관리하는 상태
+    const {images, setImages} = useContext(MyContext);
 
     const handleImageClick = () => {
         // 이미지 클릭 시 해당 이미지를 제거하는 함수

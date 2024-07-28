@@ -12,7 +12,7 @@ export default function SelectLocation() {
   const [map, setMap] = useState();
   const [marker, setMarker] = useState();
   const [modalVisible, setModalVisible] = useState(false);
-  const { postAddress, setPostAddress, selectLocation, setSelectLocation } = useContext(MyContext);
+  const { postAddress, setPostAddress, longitude, setLongitude, latitude, setLatitude } = useContext(MyContext);
 
   const navigate = useNavigate();
 
@@ -126,11 +126,11 @@ export default function SelectLocation() {
               console.log('위도:', mouseEvent.latLng.getLat());
               console.log('경도:', mouseEvent.latLng.getLng());
 
-              const query = encodeURIComponent(addr);
-
-              
 
               setPostAddress(addr);
+              setLatitude(mouseEvent.latLng.getLat());
+              setLongitude(mouseEvent.latLng.getLng());
+              
               setModalVisible(true);
 
               // 마커 위치 업데이트
