@@ -197,3 +197,7 @@
   margin-right: 16px;
 }
 
+.sale-product.selected {
+  background-color: #f1f1f1; /* 선택된 상품의 배경색을 변경 */
+}
+

@@ -6,8 +6,9 @@ import FiledPick from '../../assets/filedpick.png'
 import { useNavigate } from "react-router-dom";
 import CurPeople from '../../assets/curpeople.png'
 
-export default function SaleProduct({ product }) {
+export default function SaleProduct({ product, isSelected }) {
     const navigate = useNavigate();
+    const imageUrl="https://n1.junyeong.dev";
 
     const [picked, setPicked] = useState(false);
     const [daysLeft, setDaysLeft] = useState(0);
@@ -15,14 +16,14 @@ export default function SaleProduct({ product }) {
     useEffect(() => {
         // product.closed_at에서 날짜 가져오기
         const closedDate = new Date(product.closed_at);
-        
+
         // 현재 날짜 가져오기
         const currentDate = new Date();
-        
+
         // 마감까지 남은 일 수 계산
         const differenceInTime = closedDate.getTime() - currentDate.getTime();
         const differenceInDays = Math.ceil(differenceInTime / (1000 * 3600 * 24));
-        
+
         console.log(differenceInDays);
         setDaysLeft(differenceInDays);
     }, [product.closed_at]);
@@ -49,9 +50,9 @@ export default function SaleProduct({ product }) {
     };
 
     return (
-        <div className="sale-product" onClick={handleProductClick}>
+        <div className={`sale-product ${isSelected ? 'selected' : ''}`} onClick={handleProductClick}>
             <div className="product-details">
-                <img src={product.image} alt="Product" className="product-image" />
+                <img src={`${imageUrl}${product.image}`} alt="Product" className="product-image" />
                 <div className="sale-product-details">
                     <div className="sale-product-title-container">
                         <div className="date-people">
