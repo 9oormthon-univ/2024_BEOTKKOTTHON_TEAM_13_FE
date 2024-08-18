@@ -28,7 +28,6 @@ pipeline {
             steps {
                 dir('one-n/build') {
                     sh 'cp -r ./* /app/src/web/n1'
-                    sh 'nginx-restart'
                 }
             }
         }
