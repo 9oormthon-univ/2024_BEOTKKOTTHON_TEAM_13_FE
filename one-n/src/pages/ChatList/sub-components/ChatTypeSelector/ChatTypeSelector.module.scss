@@ -1,0 +1,20 @@
+.ChatTypeSelector {
+    display: flex;
+    padding: 0 1rem;
+    gap: 0.5rem;
+
+    .selector {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        line-height: 1.0625rem;
+        border: 1px solid #eaeaea;
+        border-radius: 2.0625rem;
+        color: #323232;
+        font-weight: 400;
+    }
+
+    .selector.selected {
+        background-color: #323232;
+        color: #ffffff;
+    }
+}
