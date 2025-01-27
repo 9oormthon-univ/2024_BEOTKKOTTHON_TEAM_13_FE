@@ -24,9 +24,11 @@ function ListElement({ index }) {
                 </div>
                 <div className={styles.footer}>
                     <p className={styles.lastMessage}>
-                        {chatrooms[index].lastMsg}
+                        {chatrooms[index].lastMessage}
                     </p>
-                    {chatrooms[index].newMsgAlert && <NewMessageAlert />}
+                    {chatrooms[index].unreadMsgsCounter > 0 && (
+                        <NewMessageAlert />
+                    )}
                 </div>
             </div>
         </div>
