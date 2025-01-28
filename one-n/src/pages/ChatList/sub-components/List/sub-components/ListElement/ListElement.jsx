@@ -1,4 +1,6 @@
 import React from "react";
+import moment from "moment";
+import "moment/locale/ko";
 
 import food1Icon from "../../../../../../assets/samples/food1.png";
 
@@ -14,17 +16,24 @@ function ListElement({ index }) {
 
     return (
         <div className={styles.ListElement}>
-            <img className={styles.image} src={food1Icon} />
+            <img
+                className={styles.image}
+                src={chatrooms[index].post.imagePath}
+            />
             <div className={styles.contents}>
                 <div className={styles.header}>
-                    <p className={styles.title}>{chatrooms[index].title}</p>
+                    <p className={styles.title}>
+                        {chatrooms[index].post.title}
+                    </p>
                     <p className={styles.lastTime}>
-                        {chatrooms[index].lastMsgTime}
+                        {moment(chatrooms[index].lastMessage.createdAt).format(
+                            "A hh:mm"
+                        )}
                     </p>
                 </div>
                 <div className={styles.footer}>
                     <p className={styles.lastMessage}>
-                        {chatrooms[index].lastMessage}
+                        {chatrooms[index].lastMessage.message}
                     </p>
                     {chatrooms[index].unreadMsgsCounter > 0 && (
                         <NewMessageAlert />

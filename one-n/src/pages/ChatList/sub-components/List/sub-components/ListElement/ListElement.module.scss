@@ -28,6 +28,10 @@
                 color: #191919;
                 line-height: 1.0625rem;
                 font-weight: 500;
+                max-width: calc(100% - 4rem);
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
 
             .lastTime {
@@ -35,6 +39,7 @@
                 font-size: 0.75rem;
                 line-height: 0.875rem;
                 font-weight: 500;
+                max-width: 4rem;
             }
         }
 
@@ -48,6 +53,10 @@
                 line-height: 1.0625rem;
                 font-weight: 600;
                 color: #191919;
+                width: 70vw;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     }

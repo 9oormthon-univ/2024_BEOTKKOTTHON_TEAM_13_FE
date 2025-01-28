@@ -13,7 +13,7 @@ const useChatroomList = (chatroomType) => {
     // NOTE: 채팅방 구분이 변경될 때 API를 재전송함
     useEffect(() => {
         axios
-            .get("http://localhost:5153/api2/chat/chatroom/list", {
+            .get("/api2/chat/chatroom/list", {
                 withCredentials: true,
             })
             .then((res) => {
