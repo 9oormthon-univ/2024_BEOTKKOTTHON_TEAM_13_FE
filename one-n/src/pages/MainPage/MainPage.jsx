@@ -16,7 +16,7 @@ import Signup from '../../components/Sign/SignupModal';
 
 function MainPage() {
 
-  const baseUrl="https://n1.junyeong.dev/api";
+  const baseUrl="https://n1.junyeong.dev/api2";
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
@@ -52,11 +52,13 @@ function MainPage() {
 
     axios.get(apiUrl)
       .then((response) => {
+        console.log(response);
         const updatedData = response.data.map((item) => ({
           ...item,
-          thumbnail_image: `https://n1.junyeong.dev/${item.thumbnail_image}`
         }));
+        
         setData(updatedData);
+        console.log("ddd", updatedData);
       })
       .catch((error) => {
         console.error('API 요청 에러:', error);
