@@ -1,7 +1,7 @@
 // 간단 레시피 컴포넌트
 import React, { useEffect, useState } from "react"
 import { Link } from 'react-router-dom';
-import '../../pages/MainPage/MainPage.css'
+import './Recipe.css'
 
 export const ThrumnailRecipe = ({data}) => {
     useEffect(()=>{
