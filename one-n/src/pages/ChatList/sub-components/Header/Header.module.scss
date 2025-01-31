@@ -1,0 +1,28 @@
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.0625rem;
+    padding: 0 1rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+
+    .headerTitle {
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 2rem;
+        margin-bottom: 0;
+    }
+
+    .myPageButton {
+        width: 1.5rem;
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

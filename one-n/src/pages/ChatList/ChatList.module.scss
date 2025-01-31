@@ -1,0 +1,9 @@
+.ChatList {
+    .contents {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: calc(1.25rem + 3.0625rem);
+        padding-bottom: 8vh;
+    }
+}
