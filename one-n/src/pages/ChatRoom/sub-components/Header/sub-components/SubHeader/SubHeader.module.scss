@@ -1,0 +1,14 @@
+.SubHeader {
+    padding: 1rem 0;
+
+    .container {
+        padding: 0 1rem;
+        display: flex;
+        justify-content: space-between;
+
+        .leftSection {
+            display: flex;
+            gap: 0.5rem;
+        }
+    }
+}
