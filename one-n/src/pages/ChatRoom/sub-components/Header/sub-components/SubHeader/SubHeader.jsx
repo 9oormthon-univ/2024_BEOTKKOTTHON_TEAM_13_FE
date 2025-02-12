@@ -13,8 +13,8 @@ function SubHeader() {
         <div className={styles.SubHeader}>
             <div className={styles.container}>
                 <div className={styles.leftSection}>
-                    {/* <BorderButton icon={<CalendarIcon />} />
-                    <BorderButton icon={<WonIcon />} /> */}
+                    <BorderButton icon={<CalendarIcon />} label="N분약속" />
+                    <BorderButton icon={<WonIcon />} label="N명송금" />
                 </div>
                 <div className={styles.rightSection}>
                     <PopoverButton />

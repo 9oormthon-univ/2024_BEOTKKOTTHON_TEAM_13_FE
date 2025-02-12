@@ -1,5 +1,14 @@
 .BorderButton {
+    display: flex;
+    gap: 0.25rem;
     padding: 0.5rem 0.75rem;
     border: 1px solid #eaeaea;
     border-radius: 8px;
+    color: #323232;
+
+    p {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 500;
+    }
 }
