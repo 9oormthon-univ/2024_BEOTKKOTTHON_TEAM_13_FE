@@ -27,7 +27,7 @@ function UserChat({
 
     return (
         <div className={styles.UserChat}>
-            <img className={styles.profileImage} src={profileImageUrl} />
+            <img className={styles.profileImage} src={profileImageUrl} alt="" />
             <div className={styles.nameAndMessage}>
                 <p className={styles.name}>{userName}</p>
                 <div className={styles.messageAndTime}>
