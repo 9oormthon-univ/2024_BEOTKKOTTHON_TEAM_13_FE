@@ -1,7 +1,10 @@
 import React from "react";
 
-import styles from "./MessageList.module.scss";
 import UserChat from "./sub-components/UserChat/UserChat";
+import DateDivider from "./sub-components/DateDivider/DateDivider";
+import RequestReviewCard from "./sub-components/RequestReviewCard/RequestReviewCard";
+
+import styles from "./MessageList.module.scss";
 
 function MessageList() {
     return (
@@ -24,6 +27,8 @@ function MessageList() {
             <UserChat userName="자연사랑나라사랑" messageTime="19:24">
                 zzzzxcvzxcvzxcvzxcvzxcvzxcvzxcvzxcvzxc
             </UserChat>
+            <DateDivider date="2024년 10월 11일" />
+            <RequestReviewCard />
         </div>
     );
 }
