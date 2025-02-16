@@ -1,0 +1,14 @@
+.MessageInput {
+    width: calc(
+        100% - 4rem - 1rem - 2rem
+    ); // 4rem(좌, 우 버튼 사이즈), 1rem(gap), 2rem(padding)
+    height: 2.5625rem;
+    padding: 0 1rem;
+    border: none;
+    background-color: #f1f1f1;
+    border-radius: 0.5rem;
+
+    &::placeholder {
+        color: #a6a6a6;
+    }
+}
