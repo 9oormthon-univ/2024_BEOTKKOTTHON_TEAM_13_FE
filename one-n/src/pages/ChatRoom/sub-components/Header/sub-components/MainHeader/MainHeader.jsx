@@ -5,11 +5,19 @@ import { ReactComponent as ExitIcon } from "../../../../../../assets/icons/exit.
 import { ReactComponent as MoreIcon } from "../../../../../../assets/icons/more.svg";
 import { ReactComponent as ParticipantsIcon } from "../../../../../../assets/icons/participants.svg";
 
+import { useChatRoomAction } from "../../../../contexts/ChatRoomContext";
+
 import sampleImage from "../../../../../../assets/samples/food1.png";
 
 import styles from "./MainHeader.module.scss";
 
 function MainHeader() {
+    const { setVisibleQuitModal } = useChatRoomAction();
+
+    const showQuitModal = () => {
+        setVisibleQuitModal(true);
+    };
+
     return (
         <div className={styles.MainHeader}>
             <div className={styles.leftSection}>
@@ -17,7 +25,7 @@ function MainHeader() {
                 <HeaderPostInfo />
             </div>
             <div className={styles.rightSection}>
-                <ExitIcon width={24} height={24} />
+                <ExitIcon width={24} height={24} onClick={showQuitModal} />
                 <MoreIcon width={24} height={24} />
             </div>
         </div>
