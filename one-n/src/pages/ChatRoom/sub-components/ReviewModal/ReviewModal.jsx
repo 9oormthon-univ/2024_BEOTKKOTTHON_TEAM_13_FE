@@ -17,14 +17,22 @@ function ReviewModal() {
 
     const [value, setValue] = useState(0);
 
-    const closeReviewModal = (e) => {
+    const closeReviewModal = () => {
         setVisibleReviewModal(false);
+    };
+
+    // NOTE: 이벤트 버블링 방지
+    const stopEventPropgation = (e) => {
+        e.stopPropagation();
     };
 
     return (
         isVisibleReviewModal && (
-            <div className={styles.ReviewModal}>
-                <div className={styles.modalContainer}>
+            <div className={styles.ReviewModal} onClick={closeReviewModal}>
+                <div
+                    className={styles.modalContainer}
+                    onClick={stopEventPropgation}
+                >
                     <p className={styles.title}>리뷰 작성</p>
                     <Textarea
                         full

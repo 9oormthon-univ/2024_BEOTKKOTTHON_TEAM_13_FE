@@ -18,10 +18,18 @@ function QuitModal() {
         setVisibleQuitModal(false);
     };
 
+    // NOTE: 이벤트 버블링 방지
+    const stopEventPropgation = (e) => {
+        e.stopPropagation();
+    };
+
     return (
         isVisibleQuitModal && (
-            <div className={styles.QuitModal}>
-                <div className={styles.modalContainer}>
+            <div className={styles.QuitModal} onClick={closeQuitModal}>
+                <div
+                    className={styles.modalContainer}
+                    onClick={stopEventPropgation}
+                >
                     <img
                         className={styles.quitIcon}
                         src={openedDoorIcon}
