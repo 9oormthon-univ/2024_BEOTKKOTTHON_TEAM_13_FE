@@ -6,7 +6,7 @@
     padding: 0.75rem;
 
     &--full {
-        width: 100%;
+        width: -webkit-fill-available;
     }
 
     &--md {
