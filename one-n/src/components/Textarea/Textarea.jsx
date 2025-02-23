@@ -8,7 +8,7 @@ function Textarea({ full = false, placeholder = "", height = "auto" }) {
         <textarea
             className={cn(styles.Textarea, full && styles["Textarea--full"])}
             placeholder={placeholder}
-            style={{ height }}
+            style={{ height, resize: "none" }}
         ></textarea>
     );
 }
