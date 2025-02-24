@@ -1,0 +1,35 @@
+.RequestReviewCard {
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border: 1px solid #eaeaea;
+    border-radius: 1rem;
+    text-align: center;
+
+    p {
+        margin: 0;
+    }
+
+    .title {
+        font-weight: 500;
+        font-size: 0.9375rem;
+        line-height: 1.3125rem;
+        color: #323232;
+        margin-bottom: 0.75rem;
+    }
+
+    .description {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        line-height: 1.125rem;
+        color: #8c8c8c;
+        margin-bottom: 1.5rem;
+    }
+
+    .writeReview {
+        width: 100%;
+        height: 2.5625rem;
+        border: none;
+        border-radius: 0.5rem;
+        background-color: #ffdc25;
+    }
+}

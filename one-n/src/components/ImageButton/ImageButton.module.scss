@@ -1,0 +1,29 @@
+.ImageButton {
+    display: flex;
+    border-radius: 0.5rem;
+    justify-content: center;
+    align-items: center;
+
+    &--sm {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    &--md {
+        width: 2rem;
+        height: 2rem;
+
+        svg {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+}
+
+.grey {
+    background-color: #f1f1f1;
+}
+
+.yellow {
+    background-color: #ffdc25;
+}

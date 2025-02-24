@@ -1,0 +1,32 @@
+.MagneticSlider {
+    .track {
+        background-color: #d9d9d9;
+        height: 4px;
+        border-radius: 8px;
+
+        &:first-child {
+            background-color: #ffdc25;
+        }
+    }
+
+    .thumb {
+        width: 8px;
+        height: 8px;
+        top: -2px;
+        border-radius: 8px;
+        background-color: #ffdc25;
+        outline: none !important;
+    }
+
+    .mark {
+        width: 8px;
+        height: 8px;
+        top: -2px;
+        border-radius: 8px;
+        background-color: #d9d9d9;
+
+        &.active {
+            background-color: #ffdc25;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+.ReviewModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modalContainer {
+        display: flex;
+        width: 19.4375rem;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 1.5rem;
+        align-items: center;
+        flex-direction: column;
+
+        .title {
+            font-weight: 500;
+            font-size: 1rem;
+            line-height: 1.1875rem;
+            margin: 0;
+            padding: 0.75rem 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .satisfaction {
+            width: -webkit-fill-available;
+            padding: 1rem 0.5rem 2.5rem;
+
+            .title {
+                font-weight: 500;
+                font-size: 0.875rem;
+                line-height: 1.0625rem;
+                color: #333333;
+                padding: 0;
+            }
+
+            .slider {
+                padding: 1rem 1.2rem 0.5rem 1rem;
+            }
+
+            .sliderDesc {
+                display: flex;
+                justify-content: space-between;
+
+                .descElem {
+                    width: 2.625rem;
+                    text-align: center;
+
+                    span {
+                        font-size: 1.25rem;
+                    }
+
+                    p {
+                        margin: 0;
+                        font-weight: 400;
+                        font-size: 0.75rem;
+                        line-height: 0.875rem;
+                        color: #191919;
+                        padding-top: 0.4375rem;
+                    }
+                }
+            }
+        }
+    }
+}

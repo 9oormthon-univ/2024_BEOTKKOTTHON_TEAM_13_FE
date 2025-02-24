@@ -1,0 +1,30 @@
+.DateDivider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+
+    &::before {
+        content: "";
+        width: calc((100% - 6.875rem - 3rem) / 2);
+        height: 1px;
+        background-color: #eaeaea;
+    }
+
+    &::after {
+        content: "";
+        width: calc((100% - 6.875rem - 3rem) / 2);
+        height: 1px;
+        background-color: #eaeaea;
+    }
+
+    p {
+        width: 6.875rem;
+        color: #bfbfbf;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        line-height: 0.9375rem;
+        text-align: center;
+        margin: 0;
+    }
+}
