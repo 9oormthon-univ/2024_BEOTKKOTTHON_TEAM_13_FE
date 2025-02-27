@@ -1,8 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import "moment/locale/ko";
-
-import food1Icon from "../../../../../../assets/samples/food1.png";
 
 import styles from "./ListElement.module.scss";
 import { useChatRoomsValue } from "../../../../contexts/ChatRoomsContext";
@@ -12,10 +11,15 @@ function NewMessageAlert() {
 }
 
 function ListElement({ index }) {
+    const navigate = useNavigate();
+
     const { chatrooms } = useChatRoomsValue();
 
     return (
-        <div className={styles.ListElement}>
+        <div
+            className={styles.ListElement}
+            onClick={() => navigate(`/chatroom/${chatrooms[index].id}`)}
+        >
             <img
                 className={styles.image}
                 src={chatrooms[index].post.imagePath}
