@@ -14,6 +14,7 @@ export default function SaleProduct({ product }) {
     const [daysLeft, setDaysLeft] = useState(0);
 
     useEffect(() => {
+        console.log("프로덕트", product);
         // product.closed_at에서 날짜 가져오기
         const closedDate = new Date(product.closed_at);
         
@@ -51,36 +52,26 @@ export default function SaleProduct({ product }) {
 
     return (
         <div className="sale-product" onClick={handleProductClick}>
+            <div className="sale-product-container">
             <div className="product-details">
-                <img src={`${imageUrl}${product.image}`} alt="Product" className="product-image" />
+                <img src={`${imageUrl}${product.images[0].imagePath}`} alt="Product" className="product-image" />
                 <div className="sale-product-details">
                     <div className="sale-product-title-container">
-                        <div className="date-people">
-                            <div className="due-date">마감 {daysLeft}일 전</div>
-                            <div className="cur-people">
-                                <img src={CurPeople} alt="CurPeople" />
-                                {product.cur_group_size}/{product.group_size}
-                            </div>
-                        </div>
-                        <div className="sale-product-text-pick">
-                            <div className="sale-product-title">{product.title}</div>
-                            <button className="sale-product-pick-button" onClick={togglePicked}>
-                                <img src={picked ? FiledPick : Mypick} alt="Pick" />
-                            </button>
-                        </div>
-                        <div className="sale-product-price">{product.price} 원</div>
+                        <div className="sale-product-title">{product.title}</div>
+                        <div className="sale-product-price">{product.pricePerUser} 원</div>
                     </div>
-                    <div className='sale-product-satisfaction-container'>
-                        <div className="sale-product-user-name">
-                            {product.nickname}
-                        </div>
+                    <div className="product-date">
+                        <div className="product-create-date">1일전</div>
+                        <div className="product-due-date">마감 D-1</div>
                     </div>
+                   
                 </div>
             </div>
             <div className="products">
                 {product.ingredients && product.ingredients.map((item, index) => (
                     <span key={index} className="product-item">{item.name}</span>
                 ))}
+            </div>
             </div>
         </div>
     );

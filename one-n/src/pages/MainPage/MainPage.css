@@ -23,12 +23,7 @@
   cursor: pointer;
 }
 
-.main-body {
-  
-  width: 100%;
-  max-width: 604px;
- 
-}
+
 
 /* 추천레시피 */
 /* .title {
@@ -47,19 +42,17 @@
 }
 
 .recipe-name {
-  color: #191919;
-  font-size: 20px;
+  color: #1A1A1A;
+  font-size: 18px;
   font-weight: 600;
-  font-family: "Pretendard ExtraBold";
+  font-family: "Pretendard";
 }
 
 .grd-name {
-  color: var(--black-10, #191919);
-  font-family: Pretendard ExtraBold;
-  font-size: 20px;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: -0.32px;
+  color: #1A1A1A;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Pretendard";
 }
 
 .recipe-text {
@@ -77,10 +70,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  
-  
-  
+  margin-bottom: 16px;
+  margin-left: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 
 }
 
@@ -88,7 +81,7 @@
   display: flex;
   font-size: 14px;
   font-weight: 500;
-  color: #666;
+  color: #333333;
   cursor: pointer;
   border: none;
 
@@ -103,37 +96,6 @@
   margin-right: 8px;
 }
 
-.recipePhoto {
-  margin: 0 auto;
-  margin-top: 12px;
-  display: flex;
-  height: 144px;
-  max-width: 95%;
-  overflow-x: auto;
-  gap: 8px;
-}
-
-.rec-photo {
-  width: 112px;
-  height: 140px;
-  border-radius: 8px;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-
-.photoStyle {
-  position: relative;
-  bottom: 36px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 8px;
-  align-items: center;
-
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-}
 
 .photoStyle span {
   background-color: white;
@@ -157,10 +119,6 @@
 
 .gredient {
   margin-top: 50px;
-  padding-left: 12px;
-  padding-right: 5px;
-  
-
 }
 
 .saleGrd {
