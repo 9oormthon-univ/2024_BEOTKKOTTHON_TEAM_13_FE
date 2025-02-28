@@ -1,0 +1,53 @@
+.QuitModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modalContainer {
+        display: flex;
+        width: 19.4375rem;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 1rem;
+        align-items: center;
+        flex-direction: column;
+
+        .quitIcon {
+            width: 5.5rem;
+            height: 5.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .title {
+            font-weight: 700;
+            font-size: 1rem;
+            line-height: 1.1875rem;
+            color: #191919;
+            margin-bottom: 1.125rem;
+        }
+
+        .description {
+            font-weight: 400;
+            font-size: 0.875rem;
+            line-height: 1.0625rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rowButtons {
+            display: flex;
+            gap: 0.5rem;
+            width: 100%;
+        }
+    }
+}

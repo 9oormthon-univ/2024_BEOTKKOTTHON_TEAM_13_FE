@@ -1,0 +1,52 @@
+.MainHeader {
+    display: flex;
+    justify-content: space-between;
+    height: 2.5rem;
+    padding: 0 1rem;
+    align-items: center;
+
+    .leftSection {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .rightSection {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+}
+
+.HeaderPostInfo {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    .postImage {
+        border-radius: 7px;
+    }
+
+    .titleAndParticipants {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .title {
+            color: #191919;
+            font-weight: 500;
+        }
+
+        .participants {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+
+            p {
+                color: #191919;
+                font-size: 14px;
+                font-weight: 400;
+            }
+        }
+    }
+}
