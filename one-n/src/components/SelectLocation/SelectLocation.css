@@ -52,7 +52,7 @@
   position: absolute;
   top: 28px;
   left: 18px;
-  z-index: 999;
+  z-index: 10001;
   border: none;
   background-color: transparent;
 }
