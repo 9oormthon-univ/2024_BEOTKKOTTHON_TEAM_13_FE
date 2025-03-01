@@ -122,9 +122,7 @@
   width: 100%;
   gap: 0;
   text-align: center;
-
   background: var(--grey-95, #f2f2f2);
-
   transition: background-color 0.3s, color 0.3s; /* 전환 부드럽게 */
   cursor: pointer; /* 마우스 커서 변경 */
 }

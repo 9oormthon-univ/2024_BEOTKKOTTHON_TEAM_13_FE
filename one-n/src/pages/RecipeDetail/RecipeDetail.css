@@ -1,8 +1,19 @@
+.recipe-detail-container {
+  background-color: #fff;
+  /* 회색 바탕화면 색상 */
+  height: 100vh;
+  padding: 20px;
+  padding-top: 30px;
+  max-height: calc(100vh - 60px);
+  /* 페이지 전체 높이에서 '구매하기' 버튼의 높이를 뺀 값으로 최대 높이 설정 */
+  overflow-y: auto;
+  /* 스크롤이 필요한 경우 스크롤 활성화 */
+  margin-bottom: 80px;
+}
+
 .recipe-header {
   width: 100%;
-  height: 24px;
-  margin-top: 25px;
-
+  padding-bottom: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,18 +21,6 @@
 
 .recipe-header img {
   cursor: pointer;
-  margin: 0 16px;
-}
-
-.body {
-  margin: auto; /* 추가 중앙 정렬을 위해 */
-
-  width: 359px;
-  height: 75vh;
-  padding: 16px 0 0 16px;
-  overflow-y: auto;
-  scrollbar-width: none; /* Firefox용 */
-  -ms-overflow-style: none; /* IE/Edge용 */
 }
 
 .body::-webkit-scrollbar {
@@ -29,35 +28,42 @@
 }
 
 .recipe-img {
-  width: 343px;
+  width: 100%;
   height: 232px;
   flex-shrink: 0;
   border-radius: 8px;
   margin-bottom: 16px;
   background-color: #d9d9d9;
+  margin-top: 16px;
 }
 
 .user {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin: -50px 0 30px -20px;
-  font-weight: 600;
+  gap: 10px;
 }
 
 .user img {
-  width: 64px;
-  height: 64px;
-  border-radius: 64px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+}
+
+.user div {
+  font-family: Pretendard;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.09px;
+  letter-spacing: -1%;
 }
 
 .recipe-title {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 16px;
-  color: #191919;
-  font-size: 24px;
-  font-weight: 800;
+  font-family: Pretendard;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23.87px;
+  letter-spacing: -1.6%;
+  margin-top: 16px;
 }
 
 .indicate {
@@ -71,24 +77,40 @@
   padding: 4px;
 }
 
-.grd-tag {
+.grd-tags {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 16px;
-  gap: 12px;
+  margin-top: 24px;
+  align-items: center;
 }
 
-.grd-tag div {
+.grd-tag{
+  width: 50%;
   display: flex;
   align-items: center;
-  padding: 4px 8px;
   gap: 8px;
-  font-size: 14px;
+  margin-bottom: 16px;
+  
+}
+
+
+.grd-name {
+  font-family: Pretendard;
   font-weight: 400;
-  color: #191919;
-  background-color: #f2f2f2;
-  border-radius: 8px;
-  cursor: pointer;
+  font-size: 14px;
+  line-height: 16.71px;
+  letter-spacing: -1%;
+  text-align: center;
+}
+
+.grd-amount {
+  font-family: Pretendard;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  letter-spacing: -1%;
+  text-align: center;
+  margin-left: 8px;
 }
 
 .nutrition {
@@ -99,8 +121,9 @@
 }
 
 .step-img {
-  width: 343px;
+  width: 100%;
   height: 229px;
+  object-fit: cover;
   flex-shrink: 0;
   border-radius: 8px;
   background-color: hsl(0, 0%, 85%);
@@ -139,4 +162,35 @@
   font-size: 14px;
   font-weight: 500;
   color: #333;
+}
+
+.divide-line {
+  width: 100%;
+  height: 1px;
+  background-color: #eaeaea;
+  margin-top: 24px;
+}
+
+.recipe-subtitle {
+  font-family: Pretendard;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23.04px;
+  letter-spacing: 0%;
+  color: #191919;
+  margin-top: 32px;
+}
+
+.recipe-contents {
+  margin-top: 24px;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.6px;
+  letter-spacing: -1%;
+  color: #191919;
+}
+
+.recipe-container{
+  margin-top: 16px;
 }
