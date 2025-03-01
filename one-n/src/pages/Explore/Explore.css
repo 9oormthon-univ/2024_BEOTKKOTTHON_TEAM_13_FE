@@ -27,13 +27,12 @@
 }
 
 .grid-container {
-  height: 700px;
+  gap: 8px;
   margin: 16px 16px 0 16px;
   display: flex;
   justify-content: center;
-  /* gap: 5px; */
-  max-height: 700px;
   overflow-y: auto;
+  margin-bottom: 60px;
 }
 
 .grid-container::-webkit-scrollbar {
@@ -132,4 +131,33 @@
 
 .tab:hover {
   background-color: rgba(0, 0, 0, 0.1); /* 호버 시 배경 색상 변경 */
+}
+
+.recipe-card {
+  margin-bottom: 16px;
+}
+
+.recipe-card-container {
+  display: flex;
+  padding: 8px;
+  justify-content: space-between;
+}
+
+.recipe-card-title {
+  font-family: Pretendard;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.71px;
+  letter-spacing: -1%;
+}
+
+.recipe-bookmark {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: Pretendard;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15.51px;
+  letter-spacing: 0%;
 }

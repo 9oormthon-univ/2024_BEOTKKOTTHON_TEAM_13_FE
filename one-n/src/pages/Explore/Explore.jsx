@@ -4,44 +4,12 @@ import axios from "axios";
 import "./Explore.css";
 import search from "../../assets/icons/search.svg";
 import Masonry from "https://cdn.skypack.dev/react-masonry-css@1.0.16";
-import { Card } from "antd";
-import Meta from "antd/es/card/Meta";
-import styled from "styled-components";
-import { HeartOutlined, HeartFilled } from "@ant-design/icons";
-
-//Card 컴포넌트 확장하여 커스터마이징
-const CustomCard = styled(Card)`
-  /* margin: 10px 4px; */
-  margin: 3px;
-  margin-top: 10px;
-  position: relative;
-  .ant-card-body {
-    padding: 15px;
-  }
-
-  .ant-card-meta-title {
-    font-size: 0.7rem;
-  }
-`;
-
-// 하트 아이콘 스타일링
-const LikeIcon = styled.div`
-  position: absolute;
-  top: 0px;
-  right: 5px;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 1;
-  .anticon svg {
-    color: #ffdc25;
-  }
-`;
+import nonBookmark from "../../assets/bookmark/nonBookmark.svg";
 
 const Explore = () => {
-  const baseUrl = "https://n1.junyeong.dev/api";
+  const baseUrl = "https://n1.junyeong.dev/api2";
   const imgBaseUrl = "https://n1.junyeong.dev/";
   const navigate = useNavigate();
-
   const [data, setData] = useState([]); // 검색 결과 데이터 저장
   const [searchKeyword, setSearchKeyword] = useState(""); // 입력한 검색어 저장
   const [signinData, setSigninData] = useState(null); // 로그인 데이터 저장
@@ -172,10 +140,11 @@ const Explore = () => {
         console.log(response);
         const updatedData = response.data.map((item) => ({
           ...item,
-          thumbnail_image: `${imgBaseUrl}${item.thumbnail_image}`,
+          thumbnail_image: `${imgBaseUrl}${item.thumbnailImagePath}`,
         }));
         setData(updatedData); // 받아온 데이터 저장
       })
+
       .catch((error) => {
         console.error("API 요청 에러:", error);
       });
@@ -275,30 +244,36 @@ const Explore = () => {
         className="grid-container"
         columnClassName="column"
       >
-        {data.map((item) => (
-          <CustomCard
-            key={item.id}
-            hoverable={true} // 마우스 오버 시 카드가 약간 확대되는 효과
-            cover={
+        {data.map((item, index) => {
+          // ✅ 랜덤한 높이 생성 (250px ~ 400px 범위)
+          const randomHeight =
+            Math.floor(Math.random() * (250 - 150 + 1)) + 150;
+
+          return (
+            <div className="recipe-card" key={item.id}>
               <div>
                 <img
                   src={item.thumbnail_image}
-                  onClick={() => handlePhotoClick(item.id)} // 특정 레시피 페이지로 이동
-                  alt={`${item.title}`}
-                  style={{ width: "100%", height: "auto" }}
+                  onClick={() => handlePhotoClick(item.id)}
+                  alt={item.title}
+                  style={{
+                    width: "100%",
+                    height: `${randomHeight}px`, // ✅ 랜덤한 높이 적용
+                    objectFit: "cover",
+                    borderRadius: "16px",
+                  }}
                 />
-                <LikeIcon
-                  liked={likes[item.id]} // 현재 좋아요 상태 반영
-                  onClick={() => handleLikeClick(item.id)}
-                >
-                  {likes[item.id] ? <HeartFilled /> : <HeartOutlined />}
-                </LikeIcon>
               </div>
-            }
-          >
-            <Meta title={item.title} />
-          </CustomCard>
-        ))}
+              <div className="recipe-card-container">
+                <div className="recipe-card-title">{item.title}</div>
+                <div className="recipe-bookmark">
+                  <img src={nonBookmark} />
+                  <div>{item.likesCount}</div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </Masonry>
     </>
   );

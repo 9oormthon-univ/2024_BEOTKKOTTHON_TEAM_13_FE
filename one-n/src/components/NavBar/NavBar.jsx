@@ -18,7 +18,7 @@ export const NavBar = () => {
     <div className="navbar">
       <NavLink
         exact
-        to="/"
+        to="/home"
         className="nav-home"
         isActive={() => location.pathname === "/"}
       >
