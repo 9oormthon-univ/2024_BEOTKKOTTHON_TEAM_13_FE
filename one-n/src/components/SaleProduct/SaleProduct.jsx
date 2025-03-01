@@ -35,19 +35,7 @@ export default function SaleProduct({ product }) {
     };
 
     const handleProductClick = () => {
-        console.log("handleProductClick 함수가 실행되었습니다."); // 확인을 위한 로그 추가
-        const typeToPathMap = {
-            0 : 'product-detail',
-            1 : 'reproduct-detail'
-        };
-
-        const path = typeToPathMap[product.type];
-        if (path) {
-            navigate(`/${path}/${product.id}`);
-        } else {
-            console.error("Unknown product type:", product.type);
-            // Handle error, e.g., show an alert to the user
-        }
+        navigate(`/reproduct-detail/${product.id}`);
     };
 
     return (
