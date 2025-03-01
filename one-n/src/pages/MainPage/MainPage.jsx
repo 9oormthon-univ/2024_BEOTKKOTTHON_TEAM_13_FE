@@ -132,7 +132,7 @@ const onScroll = () => {
     try {
         const response = await axios.get(url);
         setProducts((prev) => [...prev, ...response.data]);
-        console.log(response.data);
+        console.log("상품", response.data);
     } catch (error) {
         console.error('Error fetching products:', error);
     }

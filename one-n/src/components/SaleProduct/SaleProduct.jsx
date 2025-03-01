@@ -37,8 +37,8 @@ export default function SaleProduct({ product }) {
     const handleProductClick = () => {
         console.log("handleProductClick 함수가 실행되었습니다."); // 확인을 위한 로그 추가
         const typeToPathMap = {
-            'ingd': 'product-detail',
-            'r_ingd': 'reproduct-detail'
+            0 : 'product-detail',
+            1 : 'reproduct-detail'
         };
 
         const path = typeToPathMap[product.type];
