@@ -1,27 +1,9 @@
-.map-modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Close button CSS */
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-}
-
-
 #kakao-map {
   opacity: 0.8;
   width: 100%;
   /* 지도가 화면에 꽉 차도록 설정 */
   height: 100vh;
 }
-
-
 
 h1 {
   font-size: 24px;
@@ -37,7 +19,7 @@ h1 {
   background-color: #ffffff;
   overflow-y: auto;
   /* 세로 스크롤이 필요할 때만 스크롤이 나타나도록 설정 */
-  height: 40%;
+  height: 45%;
   overflow-x: hidden;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -46,18 +28,16 @@ h1 {
   border-radius: 24px 24px 24px 24px;
   align-items: center;
   justify-content: center;
-
 }
 
 .set-location-image {
-  width: 34px;
-  height: 36px;
-
+  width: 32px;
+  height: 32px;
 }
 
 .set-location-button {
   position: absolute;
-  bottom: 46%;
+  bottom: 52%;
   /* 원하는 위치로 조정 */
   left: 89%;
   /* 가운데 정렬 */
@@ -68,10 +48,77 @@ h1 {
   /* 가운데 정렬을 위한 transform */
   z-index: 1000;
   /* 다른 요소 위에 표시하기 위한 z-index 설정 */
-  background: var(--grey-95, #F2F2F2);
-  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.16);
+  background: var(--grey-95, #f2f2f2);
+  box-shadow: 0px 4px 8px 0px #00000029;
 }
 
 .map-products {
   margin-bottom: 50px;
+}
+
+.search-bar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 16px;
+  padding: 12px 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.select-options {
+  display: flex;
+  gap: 8px;
+  padding: 16px;
+}
+
+.select-options button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  border-radius: 100px;
+  border-width: 1px;
+  background-color: #ffffff;
+  border: 1px solid var(--grey_100, #eaeaea);
+  font-family: Pretendard;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  letter-spacing: 0%;
+  color: #323232;
+}
+
+.select-options button.active {
+  background: #1a1a1a;
+  font-weight: bold;
+  color: #ffffff;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.71px;
+  letter-spacing: -1%;
+  text-align: center;
 }
