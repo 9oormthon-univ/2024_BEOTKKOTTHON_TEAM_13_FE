@@ -67,7 +67,7 @@ function App() {
                         />
                         <Route path="/edit-profile" element={<EditProfile />} />
                         <Route
-                            path="/chatroom/:chatId"
+                            path="/chatroom/:chatroomId"
                             element={<ChatRoom />}
                         />
                         <Route

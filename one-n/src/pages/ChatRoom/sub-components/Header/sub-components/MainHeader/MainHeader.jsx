@@ -5,7 +5,10 @@ import { ReactComponent as ExitIcon } from "../../../../../../assets/icons/exit.
 import { ReactComponent as MoreIcon } from "../../../../../../assets/icons/more.svg";
 import { ReactComponent as ParticipantsIcon } from "../../../../../../assets/icons/participants.svg";
 
-import { useChatRoomAction } from "../../../../contexts/ChatRoomContext";
+import {
+    useChatRoomAction,
+    useChatRoomValue,
+} from "../../../../contexts/ChatRoomContext";
 
 import sampleImage from "../../../../../../assets/samples/food1.png";
 
@@ -13,6 +16,7 @@ import styles from "./MainHeader.module.scss";
 
 function MainHeader() {
     const { setVisibleQuitModal } = useChatRoomAction();
+    const { numberOfJoined } = useChatRoomValue();
 
     const showQuitModal = () => {
         setVisibleQuitModal(true);
@@ -22,7 +26,7 @@ function MainHeader() {
         <div className={styles.MainHeader}>
             <div className={styles.leftSection}>
                 <BackIcon width={24} height={24} />
-                <HeaderPostInfo />
+                <HeaderPostInfo numberOfJoined={numberOfJoined} />
             </div>
             <div className={styles.rightSection}>
                 <ExitIcon width={24} height={24} onClick={showQuitModal} />
@@ -32,7 +36,7 @@ function MainHeader() {
     );
 }
 
-function HeaderPostInfo() {
+function HeaderPostInfo({ numberOfJoined = 0 }) {
     return (
         <div className={styles.HeaderPostInfo}>
             <img
@@ -45,7 +49,7 @@ function HeaderPostInfo() {
                 <p className={styles.title}>닭갈비 공동구매</p>
                 <div className={styles.participants}>
                     <ParticipantsIcon size={16} />
-                    <p>4</p>
+                    <p>{numberOfJoined}</p>
                 </div>
             </div>
         </div>

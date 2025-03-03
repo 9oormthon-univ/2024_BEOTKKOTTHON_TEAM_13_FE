@@ -11,6 +11,7 @@ const useChatroomList = (chatroomType) => {
     const [chatrooms, setChatrooms] = useState([]);
 
     // NOTE: 채팅방 구분이 변경될 때 API를 재전송함
+    // TODO: 채팅방 타입에 따른 별도의 로직 구성
     useEffect(() => {
         axios
             .get("/api2/chat/chatroom/list", {
