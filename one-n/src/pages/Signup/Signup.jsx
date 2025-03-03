@@ -7,22 +7,15 @@ import { ReactComponent as RightCheck } from '../../assets/rightCheck.svg';
 import { ReactComponent as WrongCheck } from '../../assets/wrongCheck.svg';
 
 function Signup() {
-
-    const baseUrl = "https://n1.junyeong.dev/api";
     const navigate = useNavigate();
 
     const [nickname, setNickname] = useState('');
-
+    
     const [email, setEmail] = useState('');
     const [isEmailValid, setIsEmailValid] = useState(true);
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const handleEmailChange = (e) => {
-        const newEmail = e.target.value;
-        setEmail(newEmail);
-        setIsEmailValid(emailRegex.test(newEmail));
-    };
 
     // 전화번호
     const [phoneNum, setPhoneNum] = useState('');
@@ -75,17 +68,38 @@ function Signup() {
         setShowConfirmPhoneNum(true);
     };
 
-    const handleSignup = () => {
-        // const apiUrlSignup = `${baseUrl}/user/signup`;
+    const handleSignup = async () => {
+        const apiUrlSignup = `https://n1.junyeong.dev/sign/join`;
 
-        // axios.post(apiUrlSignup)
-        //   .then((response) => {
-        navigate("/")
-        //   })
-        //   .catch((error) => {
-        //     console.error('API 요청 에러:', error);
-        //   });
+        const requestData = {
+            email: email,
+            password: password,
+            passwordCheck: confirmPassword,
+            nickname: nickname,
+        };
+
+        try {
+            const response = await axios.post(apiUrlSignup, requestData);
+
+            if (response.status === 201) {
+                alert("회원가입이 완료되었습니다!");
+                navigate("/");
+            } else {
+                alert("회원가입에 실패했습니다. 다시 시도하세요.");
+            }
+        } catch (error) {
+            console.log(requestData);
+            console.log(error);
+        }
     };
+
+    const handleEmailChange = (e) => {
+        const newEmail = e.target.value;
+        setEmail(newEmail);
+        setIsEmailValid(emailRegex.test(newEmail));
+    };
+
+   
 
     return (
         <div className='signuppage-container'>
