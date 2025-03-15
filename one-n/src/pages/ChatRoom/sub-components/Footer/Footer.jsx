@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import ImageButton from "../../../../components/ImageButton/ImageButton";
 import MessageInput from "./sub-components/MessageInput/MessageInput";
@@ -6,15 +6,24 @@ import MessageInput from "./sub-components/MessageInput/MessageInput";
 import { ReactComponent as PhotoIcon } from "../../../../assets/icons/photo.svg";
 import { ReactComponent as SendIcon } from "../../../../assets/icons/send.svg";
 
+import { useChatMessageAction } from "../../contexts/ChatMessageContext";
+
 import styles from "./Footer.module.scss";
 
 function Footer() {
+    const { sendSocketMessage } = useChatMessageAction();
+
+    const [inputText, setInputText] = useState("");
+
+    // NOTE: 사진 업로드
     const onUploadPhoto = () => {
         console.log("Upload photo");
     };
 
+    // NOTE: 메시지 전송
     const onSendMessage = () => {
-        console.log("Send message");
+        sendSocketMessage({ type: "MESSAGE_TEXT", message: inputText });
+        setInputText("");
     };
 
     return (
@@ -25,7 +34,11 @@ function Footer() {
                 icon={<PhotoIcon />}
                 onClick={onUploadPhoto}
             />
-            <MessageInput />
+            <MessageInput
+                text={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                onKeyDown={(e) => e.keyCode === 13 && onSendMessage()}
+            />
             <ImageButton
                 size="md"
                 color="yellow"
