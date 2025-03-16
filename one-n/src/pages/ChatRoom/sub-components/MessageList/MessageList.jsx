@@ -21,6 +21,7 @@ function MessageList() {
                         userName={message.senderUserName}
                         messageTime={message.createdAt}
                         message={message.message}
+                        self={message.self}
                     />
                 );
             })}
@@ -28,7 +29,7 @@ function MessageList() {
     );
 }
 
-function MessageDivider({ type, userName, messageTime, message }) {
+function MessageDivider({ type, userName, messageTime, message, self }) {
     switch (type) {
         case "NOTICE":
             return <Notice>{message}</Notice>;
@@ -36,7 +37,11 @@ function MessageDivider({ type, userName, messageTime, message }) {
             return <RequestReviewCard />;
         default:
             return (
-                <UserChat userName={userName} messageTime={messageTime}>
+                <UserChat
+                    self={self}
+                    userName={userName}
+                    messageTime={messageTime}
+                >
                     {message}
                 </UserChat>
             );
