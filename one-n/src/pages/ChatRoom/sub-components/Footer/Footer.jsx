@@ -22,6 +22,8 @@ function Footer() {
 
     // NOTE: 메시지 전송
     const onSendMessage = () => {
+        if (inputText === "") return;
+
         sendSocketMessage({ type: "MESSAGE_TEXT", message: inputText });
         setInputText("");
     };

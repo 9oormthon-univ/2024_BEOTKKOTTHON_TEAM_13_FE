@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useChatMessageValue } from "../../contexts/ChatMessageContext";
+import { useChatRoomValue } from "../../contexts/ChatRoomContext";
 
 import Notice from "./sub-components/Notice/Notice";
 import UserChat from "./sub-components/UserChat/UserChat";
@@ -18,10 +19,10 @@ function MessageList() {
                     <MessageDivider
                         key={message.createdAt}
                         type={message.type}
+                        userId={message.senderUserId}
                         userName={message.senderUserName}
                         messageTime={message.createdAt}
                         message={message.message}
-                        self={message.self}
                     />
                 );
             })}
@@ -29,7 +30,10 @@ function MessageList() {
     );
 }
 
-function MessageDivider({ type, userName, messageTime, message, self }) {
+function MessageDivider({ type, userId, userName, messageTime, message }) {
+    // NOTE: 현재 사용자의 유저 ID
+    const { userId: currentUserId } = useChatRoomValue();
+
     switch (type) {
         case "NOTICE":
             return <Notice>{message}</Notice>;
@@ -38,7 +42,7 @@ function MessageDivider({ type, userName, messageTime, message, self }) {
         default:
             return (
                 <UserChat
-                    self={self}
+                    self={userId === currentUserId}
                     userName={userName}
                     messageTime={messageTime}
                 >

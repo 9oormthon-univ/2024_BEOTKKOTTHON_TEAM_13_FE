@@ -29,7 +29,7 @@ function ChatRoomProvider({ children }) {
     const { chatroomId } = useParams();
     const {
         isLoading,
-        chatroomData: { token, postId, numberOfJoined, initMessages },
+        chatroomData: { token, postId, userId, numberOfJoined, initMessages },
     } = useInitChatroom(chatroomId);
 
     /**
@@ -42,6 +42,7 @@ function ChatRoomProvider({ children }) {
             isVisibleReviewModal,
             token,
             postId,
+            userId,
             numberOfJoined,
             initMessages,
         }),

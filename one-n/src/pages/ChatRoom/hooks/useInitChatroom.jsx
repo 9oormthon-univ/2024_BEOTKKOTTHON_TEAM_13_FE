@@ -26,6 +26,7 @@ const useInitChatroom = (chatroomId) => {
                             ...prev,
                             token: res.data.chat_token,
                             postId: res.data.postId,
+                            userId: res.data.userId,
                             numberOfJoined:
                                 Array.isArray(res.data.userIds) &&
                                 res.data.userIds.length,
