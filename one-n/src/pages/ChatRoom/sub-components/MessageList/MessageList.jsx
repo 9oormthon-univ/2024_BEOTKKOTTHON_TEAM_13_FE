@@ -10,23 +10,26 @@ import RequestReviewCard from "./sub-components/RequestReviewCard/RequestReviewC
 import styles from "./MessageList.module.scss";
 
 function MessageList() {
-    const { messages } = useChatMessageValue();
+    const { messages, lastMsgRef } = useChatMessageValue();
 
     return (
-        <div className={styles.MessageList}>
-            {messages.map((message) => {
-                return (
-                    <MessageDivider
-                        key={message.createdAt}
-                        type={message.type}
-                        userId={message.senderUserId}
-                        userName={message.senderUserName}
-                        messageTime={message.createdAt}
-                        message={message.message}
-                    />
-                );
-            })}
-        </div>
+        <>
+            <div className={styles.MessageList}>
+                {messages.map((message) => {
+                    return (
+                        <MessageDivider
+                            key={message.createdAt}
+                            type={message.type}
+                            userId={message.senderUserId}
+                            userName={message.senderUserName}
+                            messageTime={message.createdAt}
+                            message={message.message}
+                        />
+                    );
+                })}
+            </div>
+            <div ref={lastMsgRef} />
+        </>
     );
 }
 

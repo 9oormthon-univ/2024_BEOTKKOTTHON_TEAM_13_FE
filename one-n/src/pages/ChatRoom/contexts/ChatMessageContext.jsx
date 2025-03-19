@@ -4,6 +4,7 @@ import React, {
     useState,
     useMemo,
     useEffect,
+    useRef,
 } from "react";
 import { useParams } from "react-router-dom";
 
@@ -38,6 +39,8 @@ function ChatMessageProvider({ children }) {
     const [wsClient, setWsClient] = useState(null);
     // NOTE: 메시지 리스트
     const [messages, setMessages] = useState(initMessages);
+    // NOTE: 메시지 전송 시 스크롤 다운 효과를 위한 ref
+    const lastMsgRef = useRef(null);
 
     // NOTE: 소켓 초기화
     const initSocket = () => {
@@ -86,11 +89,19 @@ function ChatMessageProvider({ children }) {
         }
     }, [token, initMessages]);
 
+    // NOTE: 메시지 요소가 변경될 때마다 최하단으로 스크롤함
+    useEffect(() => {
+        lastMsgRef?.current?.scrollIntoView();
+    }, [messages]);
+
     /**
      * NOTE: ChatMessageContext는 여러 상태 및 객체들을 관리하기 때문에 값이 변경될 때마다
      * 새로 생성되는 것을 방지하기 위해 메모이제이션을 적용함
      */
-    const memoizedValues = useMemo(() => ({ messages }), [messages]);
+    const memoizedValues = useMemo(
+        () => ({ messages, lastMsgRef }),
+        [messages]
+    );
     const memoizedActions = useMemo(
         () => ({ setMessages, sendSocketMessage }),
         [wsClient]
