@@ -37,7 +37,7 @@ const Map = () => {
                     page: 1
                 }
             });
-
+            console.log(searchQuery);
             console.log("✅ 데이터 가져오기 성공:", response.data);
             setProducts(response.data); // 전체 데이터 저장
         } catch (error) {

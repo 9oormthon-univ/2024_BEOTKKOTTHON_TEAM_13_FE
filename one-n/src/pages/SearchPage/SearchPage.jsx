@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as Back } from "../../assets/back.svg";
 
 export default function SearchPage() {
-  const baseUrl = "https://n1.junyeong.dev/api";
+  const baseUrl = "https://n1.junyeong.dev/api2";
   const [searchKeyword, setSearchKeyword] = useState("");
   const [searchedData, setSearchedData] = useState(null); // 검색 결과를 저장할 상태
   const [recentlySearch, setRecentlySearch] = useState([]);
@@ -28,7 +28,7 @@ export default function SearchPage() {
   };
 
   const handleSearch = () => {
-    const storedBcode = sessionStorage.getItem("myBcode");
+    const storedBcode = sessionStorage.getItem("myBcode") || "";
 
     // 검색어가 비어있으면 요청을 보내지 않음
     if (!searchKeyword.trim()) return;
@@ -41,15 +41,13 @@ export default function SearchPage() {
       page: 1,
     };
 
-    console.log(params.bcode);
-    console.log(url);
-
+  
     axios
       .get(url, { params })
       .then((response) => {
         // 요청 성공 시 검색 결과를 상태에 저장
         setSearchedData(response.data);
-
+        console.log("검색", response.data);
         // 세션 스토리지에 검색어 저장
         const updatedSearch = [
           searchKeyword.trim(),
@@ -72,24 +70,25 @@ export default function SearchPage() {
 
   return (
     <div className="search-container">
-      <div className="search-back-button-container">
+      <div className="search-header">
         <button className="search-back-button" onClick={handleBackClick}>
           <Back />
         </button>
+        <div className="input-container">
+          <input
+            className="product-search"
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
+          />
+          <img
+            className="search-icon"
+            src={searchIcon}
+            alt="search"
+            onClick={handleSearch}
+          />
+        </div>
       </div>
-      <div className="input-container">
-        <input
-          className="product-search"
-          value={searchKeyword}
-          onChange={(e) => setSearchKeyword(e.target.value)}
-        />
-        <img
-          className="search-icon"
-          src={searchIcon}
-          alt="search"
-          onClick={handleSearch}
-        />
-      </div>
+
       {searchContent}
       <NavBar />
     </div>

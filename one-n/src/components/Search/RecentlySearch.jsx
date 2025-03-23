@@ -22,9 +22,8 @@ export default function RecentlySearch() {
     };
 
     return (
-        <>
+        <div className="recently-search-container">
             <div className='recently-search'>최근검색어</div>
-
             <div className='recently-search-items'>
                 {recentlySearch.map((item, index) => (
                     <div key={index} className='recently-search-item'>
@@ -35,6 +34,6 @@ export default function RecentlySearch() {
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }

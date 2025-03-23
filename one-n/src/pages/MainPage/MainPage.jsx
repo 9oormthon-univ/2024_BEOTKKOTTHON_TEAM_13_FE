@@ -162,7 +162,7 @@ useEffect(() => {
 
           <div className='gredient'>
             <div className='selling-product-text'>
-              <div className='grd-name'>공구 중인 식품 </div>
+              <div className='recipe-name'> 공구 중인 식품 </div>
               <Link to='/more-product' className='more-product-link-style' >
                 <div className='more'> 더보기 <img src={next} alt='next' /> </div>
               </Link>

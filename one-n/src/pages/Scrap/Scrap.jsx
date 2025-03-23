@@ -40,7 +40,7 @@ const LikeIcon = styled.div`
 `;
 
 export default function Scrap() {
-  const baseUrl = "https://n1.junyeong.dev/api";
+  const baseUrl = "https://n1.junyeong.dev/api2";
   const imgUrl = "https://n1.junyeong.dev";
 
   const [signinData, setSigninData] = useState(null); // 유저 데이터
@@ -312,10 +312,10 @@ export default function Scrap() {
               flexDirection: "column",
             }}
           >
-            {selectedOption === "ingredients" &&
+            {/* {selectedOption === "ingredients" &&
               products.map((item) => (
                 <SaleProduct key={item.id} product={item} />
-              ))}
+              ))} */}
           </div>
           {/* 작성한 레시피 목록 */}
           {selectedOption === "recipe" && (

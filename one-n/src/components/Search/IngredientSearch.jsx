@@ -12,12 +12,11 @@ export default function IngredientSearch({ product }) {
 
     // 각각의 옵션에 따라 렌더링할 product 배열 필터링
     const filteredProducts = selectedOption === 'ingredients' 
-        ? product.filter(item => item.type === 'ingd')
-        : product.filter(item => item.type === 'r_ingd');
+        ? product.filter(item => item.type === 0)
+        : product.filter(item => item.type === 1);
 
     return (
         <div className="search-select-container">
-            <div className='search-select'>
                 <div className='search-option-buttons'>
                     <button 
                         className={selectedOption === 'ingredients' ? 'active' : ''} 
@@ -32,7 +31,6 @@ export default function IngredientSearch({ product }) {
                         레시피 재료
                     </button>
                 </div>
-            </div>
             {/* 조건에 따라 다르게 렌더링 */}
             {filteredProducts.length > 0 ? (
                 filteredProducts.map((item, index) => (
