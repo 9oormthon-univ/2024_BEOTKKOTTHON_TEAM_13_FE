@@ -7,15 +7,18 @@ import QuitModal from "./sub-components/QuitModal/QuitModal";
 import ReviewModal from "./sub-components/ReviewModal/ReviewModal";
 
 import { ChatRoomProvider } from "./contexts/ChatRoomContext";
+import { ChatMessageProvider } from "./contexts/ChatMessageContext";
 
 function ChatRoom() {
     return (
         <ChatRoomProvider>
-            <Header />
-            <MessageList />
-            <Footer />
-            <QuitModal />
-            <ReviewModal />
+            <ChatMessageProvider>
+                <Header />
+                <MessageList />
+                <Footer />
+                <QuitModal />
+                <ReviewModal />
+            </ChatMessageProvider>
         </ChatRoomProvider>
     );
 }

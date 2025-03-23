@@ -54,7 +54,6 @@ function App() {
                         <Route path="/scrap" element={<Scrap />} />
                         <Route path="/" element={<Signin />} />
                         <Route path="/home" element={<MainPage />} />
-                        <Route path="/chat" element={<ChatList />} />
                         <Route path="/explore" element={<Explore />} />
                         <Route path="/search" element={<SearchPage />} />
                         <Route
@@ -66,8 +65,9 @@ function App() {
                             element={<CheckLocationPage />}
                         />
                         <Route path="/edit-profile" element={<EditProfile />} />
+                        <Route path="/chatroom/list" element={<ChatList />} />
                         <Route
-                            path="/chatroom/:chatId"
+                            path="/chatroom/:chatroomId"
                             element={<ChatRoom />}
                         />
                         <Route

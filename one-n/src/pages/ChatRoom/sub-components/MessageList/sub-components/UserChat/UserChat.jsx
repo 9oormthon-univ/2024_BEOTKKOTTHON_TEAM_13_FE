@@ -1,5 +1,6 @@
 import React from "react";
 import cn from "classnames";
+import moment from "moment";
 
 import MessageCard from "./sub-components/MessageCard/MessageCard";
 
@@ -12,12 +13,14 @@ function UserChat({
     messageTime = "",
     children,
 }) {
+    const formattedTime = moment(messageTime).format("HH:MM");
+
     if (self) {
         return (
             <div className={cn(styles.UserChat, styles.self)}>
                 <div className={styles.nameAndMessage}>
                     <div className={styles.messageAndTime}>
-                        <p className={styles.messageTime}>{messageTime}</p>
+                        <p className={styles.messageTime}>{formattedTime}</p>
                         <MessageCard self={self} message={children} />
                     </div>
                 </div>
@@ -32,7 +35,7 @@ function UserChat({
                 <p className={styles.name}>{userName}</p>
                 <div className={styles.messageAndTime}>
                     <MessageCard self={self} message={children} />
-                    <p className={styles.messageTime}>{messageTime}</p>
+                    <p className={styles.messageTime}>{formattedTime}</p>
                 </div>
             </div>
         </div>
