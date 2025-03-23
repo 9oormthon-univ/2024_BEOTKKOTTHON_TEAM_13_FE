@@ -3,56 +3,46 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  /* 화면 전체 높이를 차지하도록 설정 */
-  padding: 16px;
+}
+
+.search-header {
+  display: flex;
+  align-items: center;
+  width: 93%;
+  margin-bottom: 40px;
+  margin-top: 20px;
+
 }
 
 .input-container {
   position: relative;
-  display: flex;
-  display: inline-block;
-  margin: 16px;
   width: 100%;
-  margin-bottom: 37px;
+  margin-left: 16px;
   /* 입력란과 아이콘이 한 줄에 나타나도록 함 */
 }
 
 .product-search {
   display: flex;
   width: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  justify-content: space-between;
-  align-items: center;
+  padding: 16px;
   border: none;
-  border-radius: 10px;
-  background: var(--grey-90, #e6e6e6);
+  border-radius: 100px;
+  background: #F1F1F1;
+  box-sizing: border-box;
   /* 아이콘 너비 + 여백 만큼의 오른쪽 여백 추가 */
 }
 
 .search-icon {
   position: absolute;
   top: 50%;
-  right: 5px;
-  /* 아이콘을 오른쪽에 위치시키고자 하는 만큼의 여백 설정 */
+  right: 16px;
   transform: translateY(-50%);
   /* 세로 중앙 정렬 */
-}
-
-.search-back-button-container {
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  margin-left: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 .search-back-button {
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
-.search-back-button:hover {
-  cursor: pointer; /* 마우스 커서 변경 */
-}

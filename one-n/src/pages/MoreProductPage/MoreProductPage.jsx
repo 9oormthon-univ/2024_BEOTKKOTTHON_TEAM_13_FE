@@ -6,7 +6,7 @@ import './MoreProductPage.css'
 import { ReactComponent as Back } from '../../assets/back.svg'
 
 function MoreProductPage() {
-    const baseUrl = "https://n1.junyeong.dev/api";
+    const baseUrl = "https://n1.junyeong.dev/api2";
     const [data, setData] = useState([]);
     const [page, setPage] = useState(1);
     const [products, setProducts] = useState([]);

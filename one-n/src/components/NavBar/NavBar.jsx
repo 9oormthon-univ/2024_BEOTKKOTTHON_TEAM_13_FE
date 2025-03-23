@@ -5,7 +5,6 @@ import home from "../../assets/icons/nav-home.png";
 import explore from "../../assets/icons/nav-explore.png";
 import chat from "../../assets/icons/nav-chat.png";
 import map from "../../assets/icons/nav-map.png";
-
 import inhome from "../../assets/icons/nav-in-home.png";
 import inexplore from "../../assets/icons/nav-in-explore.png";
 import inchat from "../../assets/icons/nav-in-chat.png";
@@ -22,7 +21,7 @@ export const NavBar = () => {
         className="nav-home"
         isActive={() => location.pathname === "/"}
       >
-        {location.pathname === "/" ? (
+        {location.pathname === "/home" ? (
           <img src={inhome} alt="home" />
         ) : (
           <img src={home} alt="home" />
