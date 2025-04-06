@@ -33,6 +33,8 @@ function App() {
             <MyContextProvider>
                 <div className="App">
                     <Routes>
+                        <Route path="/" element={<MainPage />} />
+                        <Route path="/login" element={<Signin />} />
                         <Route
                             path="/product-detail/:productId"
                             element={<ProductDetail />}
@@ -52,8 +54,6 @@ function App() {
                         />
                         <Route path="/product-post" element={<ProductPost />} />
                         <Route path="/scrap" element={<Scrap />} />
-                        <Route path="/" element={<Signin />} />
-                        <Route path="/home" element={<MainPage />} />
                         <Route path="/explore" element={<Explore />} />
                         <Route path="/search" element={<SearchPage />} />
                         <Route
@@ -86,7 +86,7 @@ function App() {
 
 function ConditionalNavBar() {
     const location = useLocation();
-    const hideNavBarRoutes = [/^\/$/, /^\/signup/, /^\/chatroom/]; // Navbar를 표시하지 않을 경로
+    const hideNavBarRoutes = [/^\/login/, /^\/chatroom/]; // Navbar를 표시하지 않을 경로
 
     const isNavBarHide = hideNavBarRoutes.some(
         (route) => !!location.pathname.match(route)
