@@ -8,9 +8,10 @@ import { ReactComponent as PersonIcon } from "../../assets/icons/person.svg";
 
 import styles from "./MainHeader.module.scss";
 
-function MainHeader() {
+function MainHeader({ paddingTop = "0" }) {
     return (
         <div className={styles.MainHeader}>
+            <div style={{ paddingTop }} />
             <div className={styles.container}>
                 <div className={styles.leftContainer}>
                     <TargetLocationIcon className={styles.targetLocationIcon} />
