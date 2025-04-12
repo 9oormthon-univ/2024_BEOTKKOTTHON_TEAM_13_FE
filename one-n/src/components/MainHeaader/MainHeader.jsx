@@ -11,18 +11,20 @@ import styles from "./MainHeader.module.scss";
 function MainHeader() {
     return (
         <div className={styles.MainHeader}>
-            <div className={styles.leftContainer}>
-                <TargetLocationIcon className={styles.targetLocationIcon} />
-                <p className={styles.setLocationLabel}>동네 설정</p>
-                <CaretDownIcon />
-            </div>
-            <div className={styles.rightContainer}>
-                <Link to="/search">
-                    <HeaderSearchIcon />
-                </Link>
-                <Link to="/scrap">
-                    <PersonIcon />
-                </Link>
+            <div className={styles.container}>
+                <div className={styles.leftContainer}>
+                    <TargetLocationIcon className={styles.targetLocationIcon} />
+                    <p className={styles.setLocationLabel}>동네 설정</p>
+                    <CaretDownIcon />
+                </div>
+                <div className={styles.rightContainer}>
+                    <Link to="/search">
+                        <HeaderSearchIcon />
+                    </Link>
+                    <Link to="/scrap">
+                        <PersonIcon />
+                    </Link>
+                </div>
             </div>
         </div>
     );
