@@ -1,0 +1,32 @@
+.MainHeader {
+    display: flex;
+    justify-content: space-between;
+    height: 3.0625rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid #eaeaea;
+    position: sticky;
+
+    .leftContainer {
+        display: flex;
+        gap: 0.25rem;
+        align-items: center;
+
+        .targetLocationIcon {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .setLocationLabel {
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #1a1a1a;
+            margin: 0;
+        }
+    }
+
+    .rightContainer {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+}
