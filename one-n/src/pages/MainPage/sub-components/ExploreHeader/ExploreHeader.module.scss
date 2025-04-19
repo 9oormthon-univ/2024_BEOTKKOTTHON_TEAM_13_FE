@@ -1,0 +1,29 @@
+.ExploreHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+
+    .title {
+        font-weight: 500;
+        font-size: 1.125rem;
+        color: #1a1a1a;
+        margin: 0;
+    }
+
+    .link {
+        text-decoration: none;
+
+        .more {
+            display: flex;
+            align-items: center;
+
+            .label {
+                font-weight: 400;
+                font-size: 0.875rem;
+                color: #333333;
+                margin: 0;
+            }
+        }
+    }
+}
