@@ -1,0 +1,10 @@
+.MainPage {
+    overflow-y: auto;
+    padding-top: 4.5625rem;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+}

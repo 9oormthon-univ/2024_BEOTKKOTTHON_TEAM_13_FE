@@ -1,0 +1,8 @@
+.ProductList {
+    display: flex;
+    flex-direction: column;
+
+    & > div:not(:first-child) {
+        border-top: 1px solid #eaeaea;
+    }
+}
