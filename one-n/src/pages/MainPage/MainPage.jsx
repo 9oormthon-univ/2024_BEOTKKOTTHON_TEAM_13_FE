@@ -29,7 +29,7 @@ function MainPage() {
 
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+    }, [increasePage]);
 
     return (
         <div className={styles.MainPage}>

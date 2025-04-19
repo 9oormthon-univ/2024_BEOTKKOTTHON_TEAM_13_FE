@@ -42,7 +42,6 @@ function ProductProvider({ children }) {
                 `/api2/post/list?type=all&bcode=${bCode}&keyword=&page=${page}`
             )
             .then((response) => {
-                console.log(response);
                 if (response.status === 200 && response.data) {
                     setProducts((prev) => [...prev, ...response.data]);
                 }
