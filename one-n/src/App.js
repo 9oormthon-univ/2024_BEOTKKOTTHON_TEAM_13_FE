@@ -26,60 +26,75 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 import EditProfile from "./pages/EditProfile/EditProfile"; // 추가된 import
+import { LoginProvider } from "./contexts/LoginProvider";
 
 function App() {
     return (
         <Router>
-            <MyContextProvider>
-                <div className="App">
-                    <Routes>
-                        <Route path="/" element={<MainPage />} />
-                        <Route path="/login" element={<Signin />} />
-                        <Route
-                            path="/product-detail/:productId"
-                            element={<ProductDetail />}
-                        />
-                        <Route
-                            path="/reproduct-detail/:productId"
-                            element={<ReProductDetail />}
-                        />
-                        <Route path="/map" element={<Map />} />
-                        <Route
-                            path="/search-address"
-                            element={<SearchAddress />}
-                        />
-                        <Route
-                            path="/select-location"
-                            element={<SelectLocation />}
-                        />
-                        <Route path="/product-post" element={<ProductPost />} />
-                        <Route path="/scrap" element={<Scrap />} />
-                        <Route path="/explore" element={<Explore />} />
-                        <Route path="/search" element={<SearchPage />} />
-                        <Route
-                            path="/more-product"
-                            element={<MoreProductPage />}
-                        />
-                        <Route
-                            path="/check-location"
-                            element={<CheckLocationPage />}
-                        />
-                        <Route path="/edit-profile" element={<EditProfile />} />
-                        <Route path="/chatroom/list" element={<ChatList />} />
-                        <Route
-                            path="/chatroom/:chatroomId"
-                            element={<ChatRoom />}
-                        />
-                        <Route
-                            path="/recipe/:recipeId"
-                            element={<RecipeDetail />}
-                        />
-                        <Route path="/recipeRegister" element={<RecipeReg />} />
-                        <Route path="/signup" element={<Signup />} />
-                    </Routes>
-                    <ConditionalNavBar />
-                </div>
-            </MyContextProvider>
+            <LoginProvider>
+                <MyContextProvider>
+                    <div className="App">
+                        <Routes>
+                            <Route path="/" element={<MainPage />} />
+                            <Route path="/login" element={<Signin />} />
+                            <Route
+                                path="/product-detail/:productId"
+                                element={<ProductDetail />}
+                            />
+                            <Route
+                                path="/reproduct-detail/:productId"
+                                element={<ReProductDetail />}
+                            />
+                            <Route path="/map" element={<Map />} />
+                            <Route
+                                path="/search-address"
+                                element={<SearchAddress />}
+                            />
+                            <Route
+                                path="/select-location"
+                                element={<SelectLocation />}
+                            />
+                            <Route
+                                path="/product-post"
+                                element={<ProductPost />}
+                            />
+                            <Route path="/scrap" element={<Scrap />} />
+                            <Route path="/explore" element={<Explore />} />
+                            <Route path="/search" element={<SearchPage />} />
+                            <Route
+                                path="/more-product"
+                                element={<MoreProductPage />}
+                            />
+                            <Route
+                                path="/check-location"
+                                element={<CheckLocationPage />}
+                            />
+                            <Route
+                                path="/edit-profile"
+                                element={<EditProfile />}
+                            />
+                            <Route
+                                path="/chatroom/list"
+                                element={<ChatList />}
+                            />
+                            <Route
+                                path="/chatroom/:chatroomId"
+                                element={<ChatRoom />}
+                            />
+                            <Route
+                                path="/recipe/:recipeId"
+                                element={<RecipeDetail />}
+                            />
+                            <Route
+                                path="/recipeRegister"
+                                element={<RecipeReg />}
+                            />
+                            <Route path="/signup" element={<Signup />} />
+                        </Routes>
+                        <ConditionalNavBar />
+                    </div>
+                </MyContextProvider>
+            </LoginProvider>
         </Router>
     );
 }

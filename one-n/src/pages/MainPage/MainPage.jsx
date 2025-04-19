@@ -8,11 +8,13 @@ import RecipeExplore from "./sub-components/RecipeExplore/RecipeExplore";
 import ProductList from "./sub-components/ProductList/ProductList";
 
 import { ProductProvider, useProductAction } from "./contexts/ProductContext";
+import { useLoginValue } from "../../contexts/LoginProvider";
 
 import styles from "./MainPage.module.scss";
 
 function MainPage() {
     const { increasePage } = useProductAction();
+    const { isLogin } = useLoginValue();
 
     // NOTE: 최하단 스크롤 시 데이터를 더 가져옴
     useEffect(() => {
@@ -42,7 +44,7 @@ function MainPage() {
                     <ProductList />
                 </div>
             </div>
-            <FloatingActionButton />
+            {isLogin && <FloatingActionButton />}
         </div>
     );
 }

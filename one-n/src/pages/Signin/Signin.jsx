@@ -1,12 +1,14 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Signin.css";
+
 import { ReactComponent as Back } from "../../assets/back.svg";
 import logo from "../../assets/logo/logo.png";
 import { ReactComponent as GoogleIcon } from "../../assets/social/GoogleIcon.svg";
 import { ReactComponent as KakaoIcon } from "../../assets/social/KakaoIcon.svg";
 import { ReactComponent as NaverIcon } from "../../assets/social/NaverIcon.svg";
-import axios from "axios";
+
+import "./Signin.css";
 
 function Signin() {
     const navigate = useNavigate();
@@ -31,7 +33,7 @@ function Signin() {
                 );
 
                 if (response?.status === 200 && response?.data?.isSuccess) {
-                    navigate("/home"); // 홈으로 이동
+                    navigate("/", { replace: true }); // 홈으로 이동
                 }
             } catch (error) {
                 console.error(
