@@ -29,11 +29,11 @@ function MainPage() {
 
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
-    }, [increasePage]);
+    }, []);
 
     return (
         <div className={styles.MainPage}>
-            <MainHeader paddingTop="1rem" />
+            <MainHeader toSearch="/search" paddingTop="1rem" />
             <div className={styles.container}>
                 <div>
                     <ExploreHeader title="레시피 골라보기" to="/explore" />

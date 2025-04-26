@@ -8,7 +8,12 @@ import { ReactComponent as PersonIcon } from "../../assets/icons/person.svg";
 
 import styles from "./MainHeader.module.scss";
 
-function MainHeader({ title = "", searchKeyword = "", paddingTop = "0" }) {
+function MainHeader({
+    title = "",
+    searchKeyword = "",
+    toSearch = "/search",
+    paddingTop = "0",
+}) {
     return (
         <div className={styles.MainHeader}>
             <div style={{ paddingTop }} />
@@ -38,7 +43,7 @@ function MainHeader({ title = "", searchKeyword = "", paddingTop = "0" }) {
                         </div>
                     )}
                     {!searchKeyword && (
-                        <Link to="/search">
+                        <Link to={toSearch}>
                             <HeaderSearchIcon />
                         </Link>
                     )}
