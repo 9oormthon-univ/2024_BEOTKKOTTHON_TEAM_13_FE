@@ -34,7 +34,11 @@ function ProductListPage() {
 
     return (
         <div className={styles.ProductListPage}>
-            <MainHeader toSearch="/search" paddingTop="1rem" />
+            <MainHeader
+                toSearch="/search"
+                searchKeyword={keyword}
+                paddingTop="1rem"
+            />
             <div className={styles.container}>
                 <div className={styles.header}>
                     <p className={styles.title}>공구 중인 식품</p>
