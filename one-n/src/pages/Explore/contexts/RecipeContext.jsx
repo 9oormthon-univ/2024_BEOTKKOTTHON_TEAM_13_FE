@@ -5,6 +5,7 @@ import React, {
     useMemo,
     useEffect,
 } from "react";
+import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 const RecipeValueContext = createContext();
@@ -19,14 +20,26 @@ const useRecipeAction = () => {
 };
 
 /**
- * NOTE: 메인 페이지의 식품 리스트를 관리하는 컨텍스트
+ * NOTE: 레시피 페이지의 레시피 리스트를 관리하는 컨텍스트
  * @param {*} children Children 요소
- * @returns ProductProvider
+ * @returns RecipeProvider
  */
 function RecipeProvider({ children }) {
+    const [searchParams] = useSearchParams();
     const [keyword, setKeyword] = useState("");
     const [page, setPage] = useState(1);
     const [recipes, setRecipes] = useState([]);
+
+    // NOTE: URL에서 keyword 쿼리 파라미터 가져오기
+    useEffect(() => {
+        const keywordFromURL = searchParams.get("keyword");
+
+        if (keywordFromURL) {
+            setKeyword(decodeURIComponent(keywordFromURL));
+        } else {
+            setKeyword("");
+        }
+    }, [searchParams]);
 
     // NOTE: 레시피 리스트 요청
     const fetchRecipes = async () => {
@@ -44,6 +57,7 @@ function RecipeProvider({ children }) {
         setPage((prev) => prev + 1);
     };
 
+    // NOTE: 키워드와 페이지가 변경될 대마다 레시피 리스트를 가져옴
     useEffect(() => {
         fetchRecipes();
     }, [keyword, page]);

@@ -40,7 +40,7 @@ function MainPage() {
                     <RecipeExplore />
                 </div>
                 <div>
-                    <ExploreHeader title="공구 중인 식품" to="/more-product" />
+                    <ExploreHeader title="공구 중인 식품" to="/products" />
                     <ProductList />
                 </div>
             </div>
