@@ -1,0 +1,29 @@
+.ProductListPage {
+    .container {
+        margin-top: 5.0625rem;
+
+        .header {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            gap: 1.5rem;
+
+            p {
+                margin: 0;
+            }
+
+            .title,
+            .searchResult {
+                font-weight: 500;
+                font-size: 0.9375rem;
+                color: #191919;
+            }
+
+            .searchResult {
+                bold {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
