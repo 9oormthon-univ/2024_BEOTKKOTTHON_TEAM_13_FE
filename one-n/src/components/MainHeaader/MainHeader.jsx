@@ -32,18 +32,23 @@ function MainHeader({
                 </div>
                 <div className={styles.rightContainer}>
                     {searchKeyword && (
-                        <div className={styles.searchContainer}>
-                            <input
-                                type="text"
-                                className={styles.searchInput}
-                                placeholder="검색어를 입력하세요"
-                                value={searchKeyword}
-                            />
-                            <HeaderSearchIcon />
-                        </div>
+                        <Link to={`${toSearch}?keyword=${searchKeyword}`}>
+                            <div className={styles.searchContainer}>
+                                <input
+                                    type="text"
+                                    className={styles.searchInput}
+                                    placeholder="검색어를 입력하세요"
+                                    value={searchKeyword}
+                                />
+                                <HeaderSearchIcon />
+                            </div>
+                        </Link>
                     )}
                     {!searchKeyword && (
-                        <Link to={toSearch}>
+                        <Link
+                            to={`${toSearch}?keyword=${searchKeyword}`}
+                            className={styles.searchIcon}
+                        >
                             <HeaderSearchIcon />
                         </Link>
                     )}

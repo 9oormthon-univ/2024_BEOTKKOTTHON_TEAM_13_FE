@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavBar } from "../../components/NavBar/NavBar";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { ReactComponent as BackIcon } from "../../assets/icons/back.svg";
 import { ReactComponent as HeaderSearchIcon } from "../../assets/icons/header-search.svg";
@@ -9,6 +9,7 @@ import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
 import "./RecipeSearchPage.css";
 
 function RecipeSearchPage() {
+    const [searchParams] = useSearchParams();
     const [searchKeyword, setSearchKeyword] = useState("");
     const [searchHistories, setSearchHistories] = useState([]);
     const navigate = useNavigate();
@@ -61,6 +62,14 @@ function RecipeSearchPage() {
             handleSearch();
         }
     };
+
+    // NOTE: URL 쿼리 파라미터에서 검색어 가져오기
+    useEffect(() => {
+        const keywordFromURL = searchParams.get("keyword");
+        if (keywordFromURL) {
+            setSearchKeyword(decodeURIComponent(keywordFromURL));
+        }
+    }, [searchParams]);
 
     return (
         <div className="search-container">
