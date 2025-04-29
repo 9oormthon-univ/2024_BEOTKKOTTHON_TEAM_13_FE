@@ -2,19 +2,20 @@ import React, { useEffect } from "react";
 import { debounce } from "lodash";
 
 import MainHeader from "../../components/MainHeaader/MainHeader";
-import ExploreHeader from "./sub-components/ExploreHeader/ExploreHeader";
-import FloatingActionButton from "./sub-components/FloatingActionButton/FloatingActionButton";
-import RecipeExplore from "./sub-components/RecipeExplore/RecipeExplore";
+import FilterSection from "./sub-components/FilterSection/FilterSection";
 import ProductList from "./sub-components/ProductList/ProductList";
 
-import { ProductProvider, useProductAction } from "./contexts/ProductContext";
-import { useLoginValue } from "../../contexts/LoginProvider";
+import {
+    ProductProvider,
+    useProductValue,
+    useProductAction,
+} from "./contexts/ProductContext";
 
-import styles from "./MainPage.module.scss";
+import styles from "./ProductListPage.module.scss";
 
-function MainPage() {
+function ProductListPage() {
+    const { keyword } = useProductValue();
     const { increasePage } = useProductAction();
-    const { isLogin } = useLoginValue();
 
     // NOTE: 최하단 스크롤 시 데이터를 더 가져옴
     useEffect(() => {
@@ -32,19 +33,24 @@ function MainPage() {
     }, []);
 
     return (
-        <div className={styles.MainPage}>
-            <MainHeader toSearch="/search" paddingTop="1rem" />
+        <div className={styles.ProductListPage}>
+            <MainHeader
+                toSearch="/search"
+                searchKeyword={keyword}
+                paddingTop="1rem"
+            />
             <div className={styles.container}>
-                <div>
-                    <ExploreHeader title="레시피 골라보기" to="/explore" />
-                    <RecipeExplore />
+                <div className={styles.header}>
+                    <p className={styles.title}>공구 중인 식품</p>
+                    {keyword && (
+                        <p className={styles.searchResult}>
+                            '<bold>{keyword}</bold>' 검색결과
+                        </p>
+                    )}
+                    <FilterSection />
                 </div>
-                <div>
-                    <ExploreHeader title="공구 중인 식품" to="/products" />
-                    <ProductList />
-                </div>
+                <ProductList />
             </div>
-            {isLogin && <FloatingActionButton />}
         </div>
     );
 }
@@ -57,4 +63,4 @@ const withProductProvier = (WrappedComponent) => (props) => {
     );
 };
 
-export default withProductProvier(MainPage);
+export default withProductProvier(ProductListPage);

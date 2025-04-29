@@ -8,14 +8,23 @@
     z-index: 10;
 
     .container {
-        padding: 0.75rem 1rem;
+        padding: 0 1rem;
         display: flex;
         justify-content: space-between;
+        height: 3rem;
 
         .leftContainer {
             display: flex;
             gap: 0.25rem;
             align-items: center;
+
+            .title {
+                font-weight: 600;
+                font-size: 1.125rem;
+                color: #000000;
+                padding: 0;
+                margin: 0;
+            }
 
             .targetLocationIcon {
                 width: 1rem;
@@ -36,7 +45,27 @@
             align-items: center;
 
             a {
+                text-decoration: none;
+            }
+
+            .searchIcon {
                 height: 1.5rem;
+            }
+
+            .searchContainer {
+                display: flex;
+                gap: 0.625rem;
+                background-color: #f1f1f1;
+                height: 2.5rem;
+                padding: 0 1rem;
+                align-items: center;
+                border-radius: 100px;
+
+                input {
+                    height: 1.125rem;
+                    background: none;
+                    border: none;
+                }
             }
         }
     }

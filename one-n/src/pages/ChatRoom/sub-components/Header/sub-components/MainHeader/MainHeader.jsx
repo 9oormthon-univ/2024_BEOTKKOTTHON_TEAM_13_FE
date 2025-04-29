@@ -25,7 +25,7 @@ function MainHeader() {
     return (
         <div className={styles.MainHeader}>
             <div className={styles.leftSection}>
-                <BackIcon width={24} height={24} />
+                <BackIcon width={24} height={22} />
                 <HeaderPostInfo numberOfJoined={numberOfJoined} />
             </div>
             <div className={styles.rightSection}>

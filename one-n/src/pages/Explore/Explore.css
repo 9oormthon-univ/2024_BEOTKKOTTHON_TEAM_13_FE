@@ -1,161 +1,174 @@
 .explore-header {
-  display: flex;
-  margin-top: 20px;
+    display: flex;
+    margin-top: 20px;
 }
 
 .search {
-  width: 100%;
-  height: 18px;
-  margin: 0 16px;
-  padding: 12px 16px;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 10px;
-  border: none;
-  background: #f0f0f0;
+    width: 100%;
+    height: 18px;
+    margin: 0 16px;
+    padding: 12px 16px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: none;
+    background: #f0f0f0;
 }
 
 .search:focus {
-  outline: none;
-  border: 2px solid #ffdc25; /* 포커스 시 테두리 색상 변경 */
+    outline: none;
+    border: 2px solid #ffdc25; /* 포커스 시 테두리 색상 변경 */
 }
 
 .explore-header img {
-  position: absolute;
-  top: 30px;
-  right: 32px;
+    position: absolute;
+    top: 30px;
+    right: 32px;
 }
 
 .grid-container {
-  gap: 8px;
-  margin: 16px 16px 0 16px;
-  display: flex;
-  justify-content: center;
-  overflow-y: auto;
-  margin-bottom: 60px;
+    gap: 8px;
+    padding: 5.5625rem 1rem 2.5rem;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    margin-bottom: 60px;
 }
 
 .grid-container::-webkit-scrollbar {
-  width: 0;
+    width: 0;
 }
 
 .grid-item img {
-  cursor: pointer;
-  max-width: 100%;
-  border-radius: 10px;
-  margin-bottom: 8px;
+    cursor: pointer;
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 8px;
 }
 
 .search-history {
-  /* background-color: rgb(224, 224, 224); */
-  border-radius: 10px;
-  margin: 0 15px;
-  /* padding: 15px; */
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+    /* background-color: rgb(224, 224, 224); */
+    border-radius: 10px;
+    margin: 0 15px;
+    /* padding: 15px; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .search-history-item {
-  border-bottom: 1px solid gray;
-  display: flex;
-  padding: 7px;
-  justify-content: space-between;
-  cursor: pointer;
-  transition: fill 0.2s ease-in-out;
+    border-bottom: 1px solid gray;
+    display: flex;
+    padding: 7px;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: fill 0.2s ease-in-out;
 }
 
 .delete-btn {
-  cursor: pointer;
-  transition: fill 0.2s ease-in-out;
+    cursor: pointer;
+    transition: fill 0.2s ease-in-out;
 }
 
 .search-btn {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .scrap-option-container {
-  margin-top: 49px;
-  margin-left: 16px;
-  margin-right: 16px;
-  display: flex;
-  height: 45px;
-  padding: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 16px;
-  background: var(--grey-95, #f2f2f2);
+    margin-top: 49px;
+    margin-left: 16px;
+    margin-right: 16px;
+    display: flex;
+    height: 45px;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 16px;
+    background: var(--grey-95, #f2f2f2);
 }
 
 .option-buttons button {
-  transition: background-color 0.3s, color 0.3s; /* 전환 부드럽게 */
-  cursor: pointer; /* 마우스 커서 변경 */
+    transition: background-color 0.3s, color 0.3s; /* 전환 부드럽게 */
+    cursor: pointer; /* 마우스 커서 변경 */
 }
 
 .option-buttons button:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* 호버 시 배경 색상 변경 */
+    background-color: rgba(0, 0, 0, 0.1); /* 호버 시 배경 색상 변경 */
 }
 
 .tabs-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
 }
 
 .tabs {
-  display: flex;
-  gap: 0px;
-  width: 100%;
-  margin: 0 16px;
-  padding: 5px;
-  border-radius: 8px;
-  justify-content: center;
-  background: var(--grey-95, #f2f2f2);
+    display: flex;
+    gap: 0px;
+    width: 100%;
+    margin: 0 16px;
+    padding: 5px;
+    border-radius: 8px;
+    justify-content: center;
+    background: var(--grey-95, #f2f2f2);
 }
 
 .tab {
-  /* border: 1px solid gray; */
-  padding: 10px;
-  border-radius: 5px;
-  width: 100%;
-  gap: 0;
-  text-align: center;
-  background: var(--grey-95, #f2f2f2);
-  transition: background-color 0.3s, color 0.3s; /* 전환 부드럽게 */
-  cursor: pointer; /* 마우스 커서 변경 */
+    /* border: 1px solid gray; */
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    gap: 0;
+    text-align: center;
+    background: var(--grey-95, #f2f2f2);
+    transition: background-color 0.3s, color 0.3s; /* 전환 부드럽게 */
+    cursor: pointer; /* 마우스 커서 변경 */
 }
 
 .tab:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* 호버 시 배경 색상 변경 */
+    background-color: rgba(0, 0, 0, 0.1); /* 호버 시 배경 색상 변경 */
 }
 
 .recipe-card {
-  margin-bottom: 16px;
+    text-decoration-line: none;
+}
+
+.recipe-card-image {
+    width: 100%;
+    border-radius: 1rem;
+    background-color: #f0f0f0;
+    object-fit: cover;
 }
 
 .recipe-card-container {
-  display: flex;
-  padding: 8px;
-  justify-content: space-between;
+    display: flex;
+    padding: 0.5rem;
+    justify-content: space-between;
 }
 
 .recipe-card-title {
-  font-family: Pretendard;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16.71px;
-  letter-spacing: -1%;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #191919;
 }
 
 .recipe-bookmark {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: Pretendard;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 15.51px;
-  letter-spacing: 0%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: Pretendard;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 15.51px;
+    letter-spacing: 0%;
+    margin-bottom: 1rem;
+}
+
+.recipe-bookmark-likes {
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: #323232;
+    margin: 0;
 }

@@ -33,6 +33,7 @@ export const NavBar = () => {
                                 /^\/$/,
                                 /^\/search/,
                                 /^\/scrap/,
+                                /^\/products/,
                             ])}
                             activeIcon={<HomeIcon />}
                             inactiveIcon={<HomeOutlineIcon />}
@@ -43,7 +44,11 @@ export const NavBar = () => {
                 <div className="icon-cont">
                     <NavLink to="/explore" className="nav-explore">
                         <ConditionalIcon
-                            condition={hasPathInPathname([/^\/explore/])}
+                            condition={hasPathInPathname([
+                                /^\/explore/,
+                                /^\/recipe\/search/,
+                                /^\/recipes/,
+                            ])}
                             activeIcon={<ExploreIcon />}
                             inactiveIcon={<ExploreOutlineIcon />}
                         />

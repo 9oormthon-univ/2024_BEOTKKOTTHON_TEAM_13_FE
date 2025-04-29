@@ -26,7 +26,9 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 import EditProfile from "./pages/EditProfile/EditProfile"; // 추가된 import
+import RecipeSearchPage from "./pages/ReceipSearchPage/RecipeSearchPage";
 import { LoginProvider } from "./contexts/LoginProvider";
+import ProductListPage from "./pages/ProductListPage/ProductListPage";
 
 function App() {
     return (
@@ -60,10 +62,19 @@ function App() {
                             />
                             <Route path="/scrap" element={<Scrap />} />
                             <Route path="/explore" element={<Explore />} />
+                            <Route path="/recipes" element={<Explore />} />
                             <Route path="/search" element={<SearchPage />} />
+                            <Route
+                                path="/recipe/search"
+                                element={<RecipeSearchPage />}
+                            />
                             <Route
                                 path="/more-product"
                                 element={<MoreProductPage />}
+                            />
+                            <Route
+                                path="/products"
+                                element={<ProductListPage />}
                             />
                             <Route
                                 path="/check-location"

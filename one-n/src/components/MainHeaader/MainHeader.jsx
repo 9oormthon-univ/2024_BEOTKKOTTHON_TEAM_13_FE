@@ -8,20 +8,50 @@ import { ReactComponent as PersonIcon } from "../../assets/icons/person.svg";
 
 import styles from "./MainHeader.module.scss";
 
-function MainHeader({ paddingTop = "0" }) {
+function MainHeader({
+    title = "",
+    searchKeyword = "",
+    toSearch = "/search",
+    paddingTop = "0",
+}) {
     return (
         <div className={styles.MainHeader}>
             <div style={{ paddingTop }} />
             <div className={styles.container}>
                 <div className={styles.leftContainer}>
-                    <TargetLocationIcon className={styles.targetLocationIcon} />
-                    <p className={styles.setLocationLabel}>동네 설정</p>
-                    <CaretDownIcon />
+                    {title && <p className={styles.title}>{title}</p>}
+                    {!title && (
+                        <>
+                            <TargetLocationIcon
+                                className={styles.targetLocationIcon}
+                            />
+                            <p className={styles.setLocationLabel}>동네 설정</p>
+                            <CaretDownIcon />
+                        </>
+                    )}
                 </div>
                 <div className={styles.rightContainer}>
-                    <Link to="/search">
-                        <HeaderSearchIcon />
-                    </Link>
+                    {searchKeyword && (
+                        <Link to={`${toSearch}?keyword=${searchKeyword}`}>
+                            <div className={styles.searchContainer}>
+                                <input
+                                    type="text"
+                                    className={styles.searchInput}
+                                    placeholder="검색어를 입력하세요"
+                                    value={searchKeyword}
+                                />
+                                <HeaderSearchIcon />
+                            </div>
+                        </Link>
+                    )}
+                    {!searchKeyword && (
+                        <Link
+                            to={`${toSearch}?keyword=${searchKeyword}`}
+                            className={styles.searchIcon}
+                        >
+                            <HeaderSearchIcon />
+                        </Link>
+                    )}
                     <Link to="/scrap">
                         <PersonIcon />
                     </Link>

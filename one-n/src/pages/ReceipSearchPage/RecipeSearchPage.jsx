@@ -6,9 +6,9 @@ import { ReactComponent as BackIcon } from "../../assets/icons/back.svg";
 import { ReactComponent as HeaderSearchIcon } from "../../assets/icons/header-search.svg";
 import { ReactComponent as CloseIcon } from "../../assets/icons/close.svg";
 
-import "./SearchPage.css";
+import "./RecipeSearchPage.css";
 
-function SearchPage() {
+function RecipeSearchPage() {
     const [searchParams] = useSearchParams();
     const [searchKeyword, setSearchKeyword] = useState("");
     const [searchHistories, setSearchHistories] = useState([]);
@@ -16,7 +16,7 @@ function SearchPage() {
 
     useEffect(() => {
         // 세션 스토리지에서 최근 검색어를 가져옴
-        const storedSearch = sessionStorage.getItem("searchHistories:product");
+        const storedSearch = sessionStorage.getItem("searchHistories:recipe");
         if (storedSearch) {
             setSearchHistories(JSON.parse(storedSearch));
         }
@@ -36,11 +36,11 @@ function SearchPage() {
                 ...searchHistories.slice(0, 4),
             ];
             sessionStorage.setItem(
-                "searchHistories:product",
+                "searchHistories:recipe",
                 JSON.stringify(updatedHistories)
             );
 
-            navigate(`/products?keyword=${searchKeyword}`, { replace: true });
+            navigate(`/explore?keyword=${searchKeyword}`, { replace: true });
         }
     };
 
@@ -51,7 +51,7 @@ function SearchPage() {
         );
         setSearchHistories(updatedHistories);
         sessionStorage.setItem(
-            "searchHistories:product",
+            "searchHistories:recipe",
             JSON.stringify(updatedHistories)
         );
     };
@@ -98,7 +98,7 @@ function SearchPage() {
                             <p
                                 className="recently-search-item-text"
                                 onClick={() => {
-                                    navigate(`/products?keyword=${item}`, {
+                                    navigate(`/recipes?keyword=${item}`, {
                                         replace: true,
                                     });
                                 }}
@@ -120,4 +120,4 @@ function SearchPage() {
     );
 }
 
-export default SearchPage;
+export default RecipeSearchPage;

@@ -1,0 +1,53 @@
+.DropdownMenu {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    .label {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #191919;
+
+        .caretIcon {
+            transition: transform 0.1s ease-in-out;
+        }
+    }
+
+    .itemContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.875rem;
+        position: absolute;
+        background-color: white;
+        border: 1px solid #eaeaea;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        transform: translate(-12px, 14px);
+
+        &.right {
+            transform: translate(-46px, 14px);
+            width: max-content;
+        }
+    }
+
+    &.opened {
+        &.outline {
+            border: 1px solid #ffdc25;
+        }
+
+        .label {
+            .caretIcon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &.outline {
+        border: 1px solid #eaeaea;
+        border-radius: 100px;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+}
