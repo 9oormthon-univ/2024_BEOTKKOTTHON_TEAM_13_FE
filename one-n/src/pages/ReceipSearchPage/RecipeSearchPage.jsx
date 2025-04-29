@@ -79,6 +79,7 @@ function RecipeSearchPage() {
                 </div>
                 <div className="input-container">
                     <input
+                        autoFocus
                         type="text"
                         className="product-search"
                         placeholder="검색어를 입력하세요"
