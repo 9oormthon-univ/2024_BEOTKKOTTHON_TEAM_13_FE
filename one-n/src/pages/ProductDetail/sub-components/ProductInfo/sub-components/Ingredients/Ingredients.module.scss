@@ -1,0 +1,40 @@
+.Ingredients {
+    padding: 2rem 1rem;
+
+    p {
+        margin: 0;
+    }
+
+    .title {
+        font-weight: 500;
+        font-size: 1rem;
+        color: #191919;
+        margin-bottom: 1rem;
+    }
+
+    .ingdContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+.IngredientCard {
+    padding: 1rem;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+
+    .name {
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #707070;
+        margin-bottom: 0.75rem;
+    }
+
+    .link {
+        font-weight: 400;
+        font-size: 0.75rem;
+        color: #a6a6a6;
+        text-decoration: underline;
+    }
+}

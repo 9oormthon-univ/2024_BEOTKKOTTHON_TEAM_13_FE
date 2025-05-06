@@ -1,0 +1,51 @@
+.Details {
+    padding: 1rem 1rem 2rem;
+
+    p {
+        margin: 0;
+    }
+
+    .titleContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+
+        .title {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #191919;
+        }
+
+        .price {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: #191919;
+        }
+
+        .etc {
+            display: flex;
+            gap: 0.5rem;
+
+            p {
+                font-weight: 400;
+                font-size: 0.8125rem;
+                color: #a6a6a6;
+            }
+        }
+    }
+
+    .contents {
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #323232;
+        line-height: 144%;
+        margin-bottom: 1rem;
+    }
+
+    .likesCount {
+        font-weight: 400;
+        font-size: 0.8115rem;
+        color: #656565;
+    }
+}

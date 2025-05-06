@@ -1,0 +1,85 @@
+.Writer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem;
+
+    .profile {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        .userImage {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 2rem;
+            background-color: #f1f1f1;
+        }
+
+        .userName {
+            padding: 0;
+            margin: 0;
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: #333;
+        }
+    }
+
+    .userRating {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .ratingHelp {
+        display: flex;
+        gap: 0.125rem;
+        align-items: center;
+        font-weight: 500;
+        font-size: 0.75rem;
+        color: #a6a6a6;
+        border-bottom: 1px solid #a6a6a6;
+        margin: 0;
+
+        &::after {
+            display: block;
+            width: 0.8rem;
+            height: 0.8rem;
+            content: url("../../../../../../assets/icons/info.svg");
+        }
+    }
+}
+
+.UserRatingBar {
+    width: 5.375rem;
+    height: 1.25rem;
+    background-color: #eaeaea;
+    border-radius: 1010px;
+
+    .innerBar {
+        width: 50%;
+        height: 100%;
+        background-color: #ffdc25;
+        border-radius: 1010px;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .ratingLabel {
+        display: flex;
+        padding: 0.125rem 0.5rem;
+        gap: 0.25rem;
+        position: absolute;
+        margin: 0;
+        transform: translate(0, -1.25rem);
+        font-weight: 500;
+        font-size: 0.75rem;
+        color: #403606;
+        align-items: center;
+
+        &::before {
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            content: url("../../../../../../assets/icons/thumbs-up.svg");
+        }
+    }
+}

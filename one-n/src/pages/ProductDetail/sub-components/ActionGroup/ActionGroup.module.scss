@@ -1,0 +1,44 @@
+.ActionGroup {
+    padding: 0.75rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ActionButton {
+    height: 3rem;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: #323232;
+    background-color: #f1f1f1;
+
+    p {
+        margin: 0;
+    }
+
+    &--contents {
+        &__flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+    }
+
+    &--label {
+        &__bold {
+            font-weight: 700;
+        }
+    }
+
+    &.full {
+        flex-grow: 2;
+    }
+
+    &.primary {
+        background-color: #ffdc25;
+        color: #191919;
+    }
+}
