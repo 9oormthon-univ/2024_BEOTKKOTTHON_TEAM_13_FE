@@ -3,9 +3,13 @@ import cn from "classnames";
 
 import { ReactComponent as StarOutlineIcon } from "../../../../assets/icons/star-outline.svg";
 
+import { useProductDetailValue } from "../../contexts/ProductDetailContext";
+
 import styles from "./ActionGroup.module.scss";
 
 function ActionGroup() {
+    const { productData } = useProductDetailValue();
+
     return (
         <div className={styles.ActionGroup}>
             <ActionButton color="grey">
@@ -17,7 +21,7 @@ function ActionGroup() {
             <ActionButton color="primary" full>
                 <div className={styles["ActionButton--contents__flex"]}>
                     <p className={styles["ActionButton--label__bold"]}>
-                        4,250원~
+                        {productData.pricePerUser?.toLocaleString("ko-KR")}원~
                     </p>
                     <p>구매하기</p>
                 </div>

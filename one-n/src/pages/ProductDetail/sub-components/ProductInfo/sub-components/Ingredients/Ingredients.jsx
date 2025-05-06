@@ -19,7 +19,12 @@ function IngredientCard({ name = "", link = "" }) {
     return (
         <div className={styles.IngredientCard}>
             <p className={styles.name}>{name}</p>
-            <a href={link} className={styles.link}>
+            <a
+                href={link}
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 {link}
             </a>
         </div>

@@ -4,6 +4,8 @@ import DetailHeader from "../../components/DetailHeader/DetailHeader";
 import ProductInfo from "./sub-components/ProductInfo/ProductInfo";
 import ActionGroup from "./sub-components/ActionGroup/ActionGroup";
 
+import { ProductDetailProvider } from "./contexts/ProductDetailContext";
+
 import styles from "./ProductDetail.module.scss";
 
 function ProductDetail() {
@@ -19,4 +21,12 @@ function ProductDetail() {
     );
 }
 
-export default ProductDetail;
+const withProductDetailProvider = (WrappedComponent) => (props) => {
+    return (
+        <ProductDetailProvider>
+            <WrappedComponent {...props} />
+        </ProductDetailProvider>
+    );
+};
+
+export default withProductDetailProvider(ProductDetail);

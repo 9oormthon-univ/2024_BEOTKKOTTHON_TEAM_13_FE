@@ -40,10 +40,7 @@ function ProductListElement({
     };
 
     return (
-        <Link
-            to={`/reproduct-detail/${id}`}
-            className={styles.ProductListElement}
-        >
+        <Link to={`/product/${id}`} className={styles.ProductListElement}>
             <div className={styles.info}>
                 <img
                     className={styles.image}

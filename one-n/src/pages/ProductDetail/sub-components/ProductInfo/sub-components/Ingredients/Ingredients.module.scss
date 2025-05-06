@@ -36,5 +36,9 @@
         font-size: 0.75rem;
         color: #a6a6a6;
         text-decoration: underline;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
     }
 }
