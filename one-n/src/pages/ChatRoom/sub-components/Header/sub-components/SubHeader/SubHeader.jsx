@@ -3,7 +3,7 @@ import React from "react";
 import BorderButton from "./sub-components/BorderButton/BorderButton";
 import PopoverButton from "./sub-components/PopoverButton/PopoverButton";
 
-import { ReactComponent as CalendarIcon } from "../../../../../../assets/icons/calendar.svg";
+import { ReactComponent as CalendarIcon } from "../../../../../../assets/icons/calendar-outline.svg";
 import { ReactComponent as WonIcon } from "../../../../../../assets/icons/won.svg";
 
 import styles from "./SubHeader.module.scss";

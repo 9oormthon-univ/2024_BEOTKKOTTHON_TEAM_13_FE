@@ -34,6 +34,7 @@ export const NavBar = () => {
                                 /^\/search/,
                                 /^\/scrap/,
                                 /^\/products/,
+                                /^\/product/,
                             ])}
                             activeIcon={<HomeIcon />}
                             inactiveIcon={<HomeOutlineIcon />}

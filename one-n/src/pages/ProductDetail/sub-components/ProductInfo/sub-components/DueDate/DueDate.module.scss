@@ -1,0 +1,44 @@
+.DueDate {
+    padding: 1.5rem 1rem;
+
+    p {
+        margin: 0;
+    }
+
+    .title {
+        font-weight: 500;
+        font-size: 1rem;
+        color: #191919;
+        margin-bottom: 1rem;
+    }
+
+    .dueDateContainer {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            content: url("../../../../../../assets/icons/calendar.svg");
+            margin-right: 0.5rem;
+        }
+
+        .dueDate {
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: #323232;
+            margin-right: 0.75rem;
+        }
+
+        .dateLeft {
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: #323232;
+
+            &.red {
+                color: #f5651d;
+            }
+        }
+    }
+}

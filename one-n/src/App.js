@@ -47,6 +47,10 @@ function App() {
                                 path="/reproduct-detail/:productId"
                                 element={<ReProductDetail />}
                             />
+                            <Route
+                                path="/product/:productId"
+                                element={<ProductDetail />}
+                            />
                             <Route path="/map" element={<Map />} />
                             <Route
                                 path="/search-address"
