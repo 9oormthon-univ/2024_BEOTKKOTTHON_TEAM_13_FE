@@ -40,7 +40,7 @@ function RecipeSearchPage() {
                 JSON.stringify(updatedHistories)
             );
 
-            navigate(`/explore?keyword=${searchKeyword}`, { replace: true });
+            navigate(`/recipes?keyword=${searchKeyword}`, { replace: true });
         }
     };
 

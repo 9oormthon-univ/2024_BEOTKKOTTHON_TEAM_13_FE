@@ -36,7 +36,7 @@ function MainPage() {
             <MainHeader toSearch="/search" paddingTop="1rem" />
             <div className={styles.container}>
                 <div>
-                    <ExploreHeader title="레시피 골라보기" to="/explore" />
+                    <ExploreHeader title="레시피 골라보기" to="/recipes" />
                     <RecipeExplore />
                 </div>
                 <div>
