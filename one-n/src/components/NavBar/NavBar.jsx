@@ -43,12 +43,13 @@ export const NavBar = () => {
                     <span className="icon-title">홈</span>
                 </div>
                 <div className="icon-cont">
-                    <NavLink to="/explore" className="nav-explore">
+                    <NavLink to="/recipes" className="nav-explore">
                         <ConditionalIcon
                             condition={hasPathInPathname([
                                 /^\/explore/,
                                 /^\/recipe\/search/,
                                 /^\/recipes/,
+                                /^\/recipe\/\d/,
                             ])}
                             activeIcon={<ExploreIcon />}
                             inactiveIcon={<ExploreOutlineIcon />}
