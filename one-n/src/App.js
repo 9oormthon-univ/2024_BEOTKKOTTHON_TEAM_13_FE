@@ -10,7 +10,6 @@ import CheckLocationPage from "./pages/CheckLocationPage/CheckLocationPage";
 import { NavBar } from "./components/NavBar/NavBar";
 import Map from "./pages/Map/Map";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
-import ReProductDetail from "./pages/ReProductDetail/ReProductDetail";
 import SelectLocation from "./components/SelectLocation/SelectLocation";
 import ProductPost from "./pages/ProductPost/ProductPost";
 import SearchAddress from "./components/SearchAddress/SearchAddress";
@@ -42,10 +41,6 @@ function App() {
                             <Route
                                 path="/product-detail/:productId"
                                 element={<ProductDetail />}
-                            />
-                            <Route
-                                path="/reproduct-detail/:productId"
-                                element={<ReProductDetail />}
                             />
                             <Route
                                 path="/product/:productId"

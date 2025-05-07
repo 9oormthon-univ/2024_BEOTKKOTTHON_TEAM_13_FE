@@ -1,196 +1,176 @@
 .recipe-detail-container {
-  background-color: #fff;
-  /* 회색 바탕화면 색상 */
-  height: 100vh;
-  padding: 20px;
-  padding-top: 30px;
-  max-height: calc(100vh - 60px);
-  /* 페이지 전체 높이에서 '구매하기' 버튼의 높이를 뺀 값으로 최대 높이 설정 */
-  overflow-y: auto;
-  /* 스크롤이 필요한 경우 스크롤 활성화 */
-  margin-bottom: 80px;
+    background-color: #fff;
+    padding: 4.5rem 1rem 6.25rem;
 }
 
 .recipe-header {
-  width: 100%;
-  padding-bottom: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 100%;
+    padding-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .recipe-header img {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .body::-webkit-scrollbar {
-  display: none; /* Chrome/Safari용 */
+    display: none; /* Chrome/Safari용 */
 }
 
 .recipe-img {
-  width: 100%;
-  height: 232px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  background-color: #d9d9d9;
-  margin-top: 16px;
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background-color: #d9d9d9;
 }
 
 .user {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 .user img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
 }
 
 .user div {
-  font-family: Pretendard;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19.09px;
-  letter-spacing: -1%;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #191919;
 }
 
 .recipe-title {
-  font-family: Pretendard;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 23.87px;
-  letter-spacing: -1.6%;
-  margin-top: 16px;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: #191919;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .indicate {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  margin-right: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-right: 10px;
 }
 .indicate img {
-  cursor: pointer;
-  padding: 4px;
+    cursor: pointer;
+    padding: 4px;
 }
 
 .grd-tags {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 24px;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
 }
 
-.grd-tag{
-  width: 50%;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-  
+.grd-tag {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 16px;
 }
-
 
 .grd-name {
-  font-family: Pretendard;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16.71px;
-  letter-spacing: -1%;
-  text-align: center;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #191919;
+}
+
+.grd-chevron-icon {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    border-inline: 1px solid white;
 }
 
 .grd-amount {
-  font-family: Pretendard;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16.71px;
-  letter-spacing: -1%;
-  text-align: center;
-  margin-left: 8px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-left: 0.5rem;
+    color: #191919;
 }
 
 .nutrition {
-  margin-top: 36px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
+    margin-top: 36px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
 }
 
 .step-img {
-  width: 100%;
-  height: 229px;
-  object-fit: cover;
-  flex-shrink: 0;
-  border-radius: 8px;
-  background-color: hsl(0, 0%, 85%);
-  margin: 16px 12px 0 0;
+    width: 100%;
+    height: 14.3125rem;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 85%);
 }
 
 .cook {
-  margin-top: 42px;
-  margin-bottom: 16px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
+    margin-top: 42px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
 }
 
 .cook-step {
-  display: flex;
-  align-items: center;
-  margin: 16px 12px 8px 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #d9d9d9;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #d9d9d9;
 }
 
 .step1 {
-  padding: 5px;
-  margin-right: 12px;
-  flex-shrink: 0;
-  border-radius: 4px;
-  background: #f0d135;
+    padding: 5px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    background: #f0d135;
 
-  font-size: 14px;
-  font-weight: 400;
-  color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
 }
 
 .step1-detail {
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
 }
 
 .divide-line {
-  width: 100%;
-  height: 1px;
-  background-color: #eaeaea;
-  margin-top: 24px;
+    width: 100%;
+    height: 1px;
+    background-color: #eaeaea;
 }
 
 .recipe-subtitle {
-  font-family: Pretendard;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 23.04px;
-  letter-spacing: 0%;
-  color: #191919;
-  margin-top: 32px;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #191919;
+    margin-top: 2rem;
 }
 
 .recipe-contents {
-  margin-top: 24px;
-  font-family: Pretendard;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 19.6px;
-  letter-spacing: -1%;
-  color: #191919;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 140%;
+    color: #191919;
 }
 
-.recipe-container{
-  margin-top: 16px;
+.recipe-container {
+    margin-top: 1.5rem;
 }
