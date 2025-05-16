@@ -58,7 +58,7 @@ export const NavBar = () => {
                     <span className="icon-title">레시피</span>
                 </div>
                 <div className="icon-cont">
-                    <NavLink to="/map" className="nav-map">
+                    <NavLink to="/maps" className="nav-map">
                         <ConditionalIcon
                             condition={hasPathInPathname([/^\/map/])}
                             activeIcon={<LocationIcon />}
