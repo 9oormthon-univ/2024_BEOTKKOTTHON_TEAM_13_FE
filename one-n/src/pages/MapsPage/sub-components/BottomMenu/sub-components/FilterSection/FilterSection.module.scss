@@ -1,0 +1,11 @@
+.FilterSection {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+
+    .leftContainer {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}

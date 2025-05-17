@@ -2,6 +2,7 @@ import React from "react";
 import { Map, useKakaoLoader } from "react-kakao-maps-sdk";
 
 import SearchBar from "./sub-components/SearchBar/SearchBar";
+import BottomMenu from "./sub-components/BottomMenu/BottomMenu";
 
 import useUserLocation from "./hooks/useUserLocation";
 
@@ -26,6 +27,7 @@ function MapsPage() {
                 isPanto={true}
                 level={5}
             />
+            <BottomMenu />
         </div>
     );
 }
