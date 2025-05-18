@@ -6,8 +6,10 @@ import {
 } from "react-kakao-maps-sdk";
 
 import { useMapsValue, useMapsAction } from "../../contexts/MapsContext";
+import { useProductValue } from "../../contexts/ProductContext";
 
-import TargetLocationIcon from "../../../../assets/icons/target-location-4.svg";
+import UserLocationIcon from "../../../../assets/icons/target-location-4.svg";
+import ProductLocationIcon from "../../../../assets/icons/target-location-5.svg";
 
 import styles from "./Map.module.scss";
 
@@ -18,6 +20,7 @@ function Map() {
     });
     const { mapRef, userLocation, centerPosition } = useMapsValue();
     const { setCenterPosition } = useMapsAction();
+    const { products } = useProductValue();
 
     return (
         <KakaoMap
@@ -35,6 +38,7 @@ function Map() {
                 });
             }}
         >
+            {/* NOTE: 사용자 위치 */}
             {!userLocation.isLoading && (
                 <KakaoMapMarker
                     position={{
@@ -42,7 +46,7 @@ function Map() {
                         lng: userLocation.longitude,
                     }}
                     image={{
-                        src: TargetLocationIcon,
+                        src: UserLocationIcon,
                         size: {
                             width: 23,
                             height: 23,
@@ -50,6 +54,23 @@ function Map() {
                     }}
                 />
             )}
+            {/* NOTE: 상품 마커 */}
+            {products.map((product) => (
+                <KakaoMapMarker
+                    key={product.id}
+                    position={{
+                        lat: product.locationLatitude,
+                        lng: product.locationLongitude,
+                    }}
+                    image={{
+                        src: ProductLocationIcon,
+                        size: {
+                            width: 32,
+                            height: 42,
+                        },
+                    }}
+                />
+            ))}
         </KakaoMap>
     );
 }
