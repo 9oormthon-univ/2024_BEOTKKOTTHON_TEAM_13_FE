@@ -48,8 +48,8 @@ function Map() {
                     image={{
                         src: UserLocationIcon,
                         size: {
-                            width: 23,
-                            height: 23,
+                            width: 27.6,
+                            height: 27.6,
                         },
                     }}
                 />
@@ -65,8 +65,8 @@ function Map() {
                     image={{
                         src: ProductLocationIcon,
                         size: {
-                            width: 32,
-                            height: 42,
+                            width: 41.6,
+                            height: 54.6,
                         },
                     }}
                 />
