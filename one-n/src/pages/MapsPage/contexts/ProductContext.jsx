@@ -19,6 +19,9 @@ const useProductAction = () => {
     return useContext(ProductActionContext);
 };
 
+// NOTE: BottomMenu의 무한 스크롤을 위한 스크롤 엘리먼트 ID
+const SCROLL_ELEMENT_ID = "product-list-scroll-element";
+
 /**
  * NOTE: 지도 페이지의 식품 리스트를 관리하는 컨텍스트
  * @param {*} children Children 요소
@@ -54,7 +57,7 @@ function ProductProvider({ children }) {
      * 새로 생성되는 것을 방지하기 위해 메모이제이션을 적용함
      */
     const memoizedValues = useMemo(
-        () => ({ products, page }),
+        () => ({ SCROLL_ELEMENT_ID, products, page }),
         [products, page]
     );
 

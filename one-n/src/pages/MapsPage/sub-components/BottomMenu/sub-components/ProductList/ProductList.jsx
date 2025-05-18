@@ -1,16 +1,27 @@
 import React from "react";
 
+import InfiniteScroll from "react-infinite-scroll-component";
 import ProductListElement from "../../../../../../components/ProductListElement/ProductListElement";
 
-import { useProductValue } from "../../../../contexts/ProductContext";
+import {
+    useProductValue,
+    useProductAction,
+} from "../../../../contexts/ProductContext";
 
 import styles from "./ProductList.module.scss";
 
 function ProductList() {
-    const { products } = useProductValue();
+    const { SCROLL_ELEMENT_ID, products } = useProductValue();
+    const { increasePage } = useProductAction();
 
     return (
-        <div className={styles.ProductList}>
+        <InfiniteScroll
+            className={styles.ProductList}
+            dataLength={products.length}
+            next={increasePage}
+            hasMore={true}
+            scrollableTarget={SCROLL_ELEMENT_ID}
+        >
             {products.map(
                 ({
                     id,
@@ -21,25 +32,11 @@ function ProductList() {
                     closedAt,
                     ingredients,
                 }) => {
-                    if (Array.isArray(images) && images.length > 0) {
-                        return (
-                            <ProductListElement
-                                key={id}
-                                id={id}
-                                imagePath={images[0]?.imagePath}
-                                title={title}
-                                price={pricePerUser}
-                                createdAt={createdAt}
-                                closedAt={closedAt}
-                                ingredients={ingredients}
-                            />
-                        );
-                    }
-
                     return (
                         <ProductListElement
                             key={id}
                             id={id}
+                            imagePath={images[0]?.imagePath ?? ""}
                             title={title}
                             price={pricePerUser}
                             createdAt={createdAt}
@@ -49,7 +46,7 @@ function ProductList() {
                     );
                 }
             )}
-        </div>
+        </InfiniteScroll>
     );
 }
 

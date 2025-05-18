@@ -95,7 +95,7 @@
     -webkit-user-select: auto;
     -ms-user-select: auto;
     user-select: auto;
-    overflow: auto;
+    overflow: hidden;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
 }
