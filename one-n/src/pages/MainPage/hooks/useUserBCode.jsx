@@ -9,7 +9,9 @@ const getBCode = async ({ latitude, longitude }) => {
     const url = `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${longitude}&y=${latitude}`;
 
     const response = await axios.get(url, {
-        headers: { Authorization: `KakaoAK b4a1d1fba1e4c2024ad2263ea4093534` },
+        headers: {
+            Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_REST_KEY}`,
+        },
     });
 
     if (response.status === 200 && response.data) {
