@@ -20,14 +20,20 @@ const useMapsAction = () => {
     return useContext(MapsActionContext);
 };
 
+// NOTE: 지도 중심 좌표 이동을 위한 보정값
+const POS_COORDINATOR = {
+    lat: -0.0013,
+    lng: 0,
+};
+
 /**
  * NOTE: 지도 페이지의 전반적인 지도 관련 상태 및 관리하기 위한 컨텍스트
  * @param {*} children Children 요소
  * @returns MapsProvider
  */
 function MapsProvider({ children }) {
-    const userLocation = useUserLocation();
     const mapRef = useRef(null);
+    const userLocation = useUserLocation();
     const [centerPosition, setCenterPosition] = useState({
         lat: userLocation.latitude,
         lng: userLocation.longitude,
@@ -36,16 +42,16 @@ function MapsProvider({ children }) {
     // NOTE: 초기 지도 위치로 재설정
     const resetPosition = () => {
         setCenterPosition({
-            lat: userLocation.latitude,
-            lng: userLocation.longitude,
+            lat: userLocation.latitude + POS_COORDINATOR.lat,
+            lng: userLocation.longitude + POS_COORDINATOR.lng,
         });
     };
 
     // NOTE: 사용자의 위치가 결정되면 지도 중심 위치를 업데이트
     useEffect(() => {
         setCenterPosition({
-            lat: userLocation.latitude,
-            lng: userLocation.longitude,
+            lat: userLocation.latitude + POS_COORDINATOR.lat,
+            lng: userLocation.longitude + POS_COORDINATOR.lng,
         });
     }, [userLocation]);
 
@@ -54,8 +60,8 @@ function MapsProvider({ children }) {
      * 새로 생성되는 것을 방지하기 위해 메모이제이션을 적용함
      */
     const memoizedValues = useMemo(
-        () => ({ mapRef, centerPosition }),
-        [mapRef, centerPosition]
+        () => ({ mapRef, userLocation, centerPosition }),
+        [mapRef, userLocation, centerPosition]
     );
 
     const memoizedActions = useMemo(

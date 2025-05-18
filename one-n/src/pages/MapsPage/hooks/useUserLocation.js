@@ -7,6 +7,7 @@ import axios from "axios";
  */
 const useUserLocation = () => {
     const [userLocation, setUserLocation] = useState({
+        isLoading: true,
         latitude: 37.39486,
         longitude: 127.11119,
     });
@@ -17,6 +18,7 @@ const useUserLocation = () => {
                 // NOTE: 브라우저로부터 위치를 가져올 수 있는 경우
                 async ({ coords: { latitude, longitude } }) => {
                     setUserLocation({
+                        isLoading: false,
                         latitude,
                         longitude,
                     });
@@ -33,6 +35,7 @@ const useUserLocation = () => {
                         const { lat, lon } = response.data;
 
                         setUserLocation({
+                            isLoading: false,
                             latitude: lat,
                             longitude: lon,
                         });

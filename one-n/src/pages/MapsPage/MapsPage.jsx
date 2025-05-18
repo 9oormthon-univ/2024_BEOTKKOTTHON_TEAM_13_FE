@@ -1,5 +1,5 @@
 import React from "react";
-import { Map, useKakaoLoader } from "react-kakao-maps-sdk";
+import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk";
 
 import SearchBar from "./sub-components/SearchBar/SearchBar";
 import BottomMenu from "./sub-components/BottomMenu/BottomMenu";
@@ -11,6 +11,8 @@ import {
     useMapsAction,
 } from "./contexts/MapsContext";
 
+import TargetLocationIcon from "../../assets/icons/target-location-4.svg";
+
 import styles from "./MapsPage.module.scss";
 
 function MapsPage() {
@@ -18,7 +20,7 @@ function MapsPage() {
         appkey: process.env.REACT_APP_KAKAO_JS_KEY,
         libraries: ["services", "clusterer"],
     });
-    const { mapRef, centerPosition } = useMapsValue();
+    const { mapRef, userLocation, centerPosition } = useMapsValue();
     const { setCenterPosition } = useMapsAction();
 
     return (
@@ -38,7 +40,23 @@ function MapsPage() {
                         lng: center.getLng(),
                     });
                 }}
-            />
+            >
+                {!userLocation.isLoading && (
+                    <MapMarker
+                        position={{
+                            lat: userLocation.latitude,
+                            lng: userLocation.longitude,
+                        }}
+                        image={{
+                            src: TargetLocationIcon,
+                            size: {
+                                width: 23,
+                                height: 23,
+                            },
+                        }}
+                    />
+                )}
+            </Map>
             <BottomMenu />
             <PositionResetButton />
         </div>
