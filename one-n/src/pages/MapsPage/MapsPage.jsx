@@ -6,6 +6,7 @@ import PositionResetButton from "./sub-components/PositionResetButton/PositionRe
 import Map from "./sub-components/Map/Map";
 
 import { MapsProvider } from "./contexts/MapsContext";
+import { ProductProvider } from "./contexts/ProductContext";
 
 function MapsPage() {
     return (
@@ -21,7 +22,9 @@ function MapsPage() {
 const withProviders = (WrappedComponent) => (props) => {
     return (
         <MapsProvider>
-            <WrappedComponent {...props} />
+            <ProductProvider>
+                <WrappedComponent {...props} />
+            </ProductProvider>
         </MapsProvider>
     );
 };
