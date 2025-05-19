@@ -16,6 +16,14 @@ pipeline {
             }
         }
 
+        stage('Copy config') {
+            steps {
+                dir('one-n') {
+                    sh 'find /app/config/n1/front -type f -exec cp {} . \\;'
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 dir('one-n') {

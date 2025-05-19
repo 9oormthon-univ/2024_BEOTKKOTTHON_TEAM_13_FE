@@ -1,6 +1,6 @@
 import React from "react";
 
-import DropdownMenu from "../../../../components/DropdownMenu/DropdownMenu";
+import DropdownMenu from "../../../../../../components/DropdownMenu/DropdownMenu";
 
 import styles from "./FilterSection.module.scss";
 

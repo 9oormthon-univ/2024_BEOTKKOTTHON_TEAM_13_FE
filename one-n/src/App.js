@@ -8,7 +8,7 @@ import {
 import MoreProductPage from "./pages/MoreProductPage/MoreProductPage";
 import CheckLocationPage from "./pages/CheckLocationPage/CheckLocationPage";
 import { NavBar } from "./components/NavBar/NavBar";
-import Map from "./pages/Map/Map";
+import MapsPage from "./pages/MapsPage/MapsPage";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import SelectLocation from "./components/SelectLocation/SelectLocation";
 import ProductPost from "./pages/ProductPost/ProductPost";
@@ -46,7 +46,7 @@ function App() {
                                 path="/product/:productId"
                                 element={<ProductDetail />}
                             />
-                            <Route path="/map" element={<Map />} />
+                            <Route path="/maps" element={<MapsPage />} />
                             <Route
                                 path="/search-address"
                                 element={<SearchAddress />}

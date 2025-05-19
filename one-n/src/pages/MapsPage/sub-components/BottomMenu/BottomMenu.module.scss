@@ -1,0 +1,17 @@
+:root {
+    --rsbs-backdrop-bg: rgba(0, 0, 0, 0.6);
+    --rsbs-bg: #fff;
+    --rsbs-handle-bg: #d9d9d9;
+    --rsbs-max-w: auto;
+    --rsbs-ml: env(safe-area-inset-left);
+    --rsbs-mr: env(safe-area-inset-right);
+    --rsbs-overlay-rounded: 24px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 6.25rem;
+    overflow: scroll;
+}

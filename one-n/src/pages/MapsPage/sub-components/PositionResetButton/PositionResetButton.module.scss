@@ -1,0 +1,14 @@
+.PositionResetButton {
+    position: absolute;
+    right: 1rem;
+    bottom: 19.75rem;
+    z-index: 1;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2.5rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.16);
+}

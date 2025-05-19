@@ -35,27 +35,32 @@ const getBCode = async ({ latitude, longitude }) => {
 };
 
 /**
- * 유저의 현재 위치를 기반한 법접동코드(bcode)를 반환하는 훅
+ * NOTE: 사용자의 위치를 가져오는 커스텀 훅
+ * @returns { latitude, longitude }
  */
-const useUserBCode = () => {
-    const [bCodeInfo, setBCodeInfo] = useState({
-        status: false,
+const useUserLocation = () => {
+    const [userLocation, setUserLocation] = useState({
+        isLoading: true,
+        latitude: 37.39486,
+        longitude: 127.11119,
         bCode: null,
     });
 
     useEffect(() => {
-        if (!bCodeInfo.status && navigator.geolocation) {
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
+                // NOTE: 브라우저로부터 위치를 가져올 수 있는 경우
                 async ({ coords: { latitude, longitude } }) => {
                     const bCode = await getBCode({ latitude, longitude });
 
-                    if (bCode) {
-                        setBCodeInfo({
-                            status: true,
-                            bCode,
-                        });
-                    }
+                    setUserLocation({
+                        isLoading: false,
+                        latitude,
+                        longitude,
+                        bCode,
+                    });
                 },
+                // NOTE: 브라우저로부터 위치를 가져올 수 없는 경우 IP 주소를 통해 위치를 가져옴 (OP 환경에서는 동작 안됨)
                 async () => {
                     const response = await axios.get("http://ip-api.com/json/");
 
@@ -71,21 +76,19 @@ const useUserBCode = () => {
                             longitude: lon,
                         });
 
-                        if (bCode) {
-                            setBCodeInfo({
-                                status: true,
-                                bCode,
-                            });
-                        }
+                        setUserLocation({
+                            isLoading: false,
+                            latitude: lat,
+                            longitude: lon,
+                            bCode,
+                        });
                     }
                 }
             );
-        } else {
-            console.log("Geolocation is not supported by this browser.");
         }
     }, []);
 
-    return bCodeInfo;
+    return userLocation;
 };
 
-export default useUserBCode;
+export default useUserLocation;
