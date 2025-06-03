@@ -28,6 +28,7 @@ import EditProfile from "./pages/EditProfile/EditProfile"; // 추가된 import
 import RecipeSearchPage from "./pages/ReceipSearchPage/RecipeSearchPage";
 import { LoginProvider } from "./contexts/LoginProvider";
 import ProductListPage from "./pages/ProductListPage/ProductListPage";
+import PostProduct from "./pages/PostProduct/PostProduct";
 
 function App() {
     return (
@@ -100,6 +101,10 @@ function App() {
                                 element={<RecipeReg />}
                             />
                             <Route path="/signup" element={<Signup />} />
+                            <Route
+                                path="/post/product*"
+                                element={<PostProduct />}
+                            />
                         </Routes>
                         <ConditionalNavBar />
                     </div>
@@ -111,7 +116,11 @@ function App() {
 
 function ConditionalNavBar() {
     const location = useLocation();
-    const hideNavBarRoutes = [/^\/login/, /^\/chatroom\/(?!list)/]; // Navbar를 표시하지 않을 경로
+    const hideNavBarRoutes = [
+        /^\/login/,
+        /^\/chatroom\/(?!list)/,
+        /^\/post\/product/,
+    ]; // Navbar를 표시하지 않을 경로
 
     const isNavBarHide = hideNavBarRoutes.some(
         (route) => !!location.pathname.match(route)

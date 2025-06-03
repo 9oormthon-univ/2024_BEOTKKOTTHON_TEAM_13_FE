@@ -44,7 +44,7 @@ function DetailHeader({
         <div className={styles.DetailHeader}>
             <BackIcon onClick={handleBack} />
             {label && <div className={styles.label}>{label}</div>}
-            {enableOption && <MoreIcon onClick={handleOption} />}
+            <div>{enableOption && <MoreIcon onClick={handleOption} />}</div>
             {/* {isOptionOpened && (
                 <div className={styles.options}>
                     {optionItems.map((item) => (
