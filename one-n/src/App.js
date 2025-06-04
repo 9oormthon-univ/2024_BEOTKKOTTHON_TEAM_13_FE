@@ -10,7 +10,6 @@ import CheckLocationPage from "./pages/CheckLocationPage/CheckLocationPage";
 import { NavBar } from "./components/NavBar/NavBar";
 import MapsPage from "./pages/MapsPage/MapsPage";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
-import SelectLocation from "./components/SelectLocation/SelectLocation";
 import SearchAddress from "./components/SearchAddress/SearchAddress";
 import Scrap from "./pages/Scrap/Scrap";
 import { MyContextProvider } from "./components/MyContextProvider/MyContextProvider";
@@ -50,10 +49,6 @@ function App() {
                             <Route
                                 path="/search-address"
                                 element={<SearchAddress />}
-                            />
-                            <Route
-                                path="/select-location"
-                                element={<SelectLocation />}
                             />
                             <Route path="/scrap" element={<Scrap />} />
                             <Route path="/explore" element={<Explore />} />
