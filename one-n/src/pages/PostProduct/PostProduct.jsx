@@ -6,20 +6,33 @@ import MeetingLocation from "./MeetingLocation";
 import DetailHeader from "../../components/DetailHeader/DetailHeader";
 import ProductInfo from "./sub-components/ProductInfo/ProductInfo";
 import ActionGroup from "./sub-components/ActionGroup/ActionGroup";
+import EndDate from "./sub-components/EndDate/EndDate";
+import Modals from "./sub-components/Modals/Modals";
 
-import { PageProvider } from "./contexts/PageContext";
+import { PageProvider, usePageAction } from "./contexts/PageContext";
 import { PostInfoProvider } from "./contexts/PostInfoContext";
 
 import styles from "./PostProduct.module.scss";
-import EndDate from "./sub-components/EndDate/EndDate";
 
 function PostProduct() {
+    const { setIsAbortModalOpened } = usePageAction();
+
+    // NOTE: 뒤로가기 버튼 클릭 시 취소 모달 열기
+    const handleBack = () => {
+        setIsAbortModalOpened(true);
+    };
+
     return (
         <div className={styles.PostProduct}>
-            <DetailHeader label="공동구매 게시글 작성" enableOption={false} />
+            <DetailHeader
+                label="공동구매 게시글 작성"
+                enableOption={false}
+                onBackClicked={handleBack}
+            />
             <ProductInfo />
             <ActionGroup />
             <EndDate />
+            <Modals />
         </div>
     );
 }

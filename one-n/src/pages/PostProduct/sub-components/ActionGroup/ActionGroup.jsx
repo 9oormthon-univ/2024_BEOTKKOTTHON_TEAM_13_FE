@@ -13,7 +13,7 @@ import styles from "./ActionGroup.module.scss";
 function ActionGroup() {
     const navigate = useNavigate();
 
-    const { setIsEndDateOpened } = usePageAction();
+    const { setIsEndDateOpened, setIsSuccessModalOpened } = usePageAction();
     const { validatePostInfo, uploadPostInfo } = usePostInfoAction();
 
     // NOTE: 거래 희망 장소 선택 버튼 이벤트 핸들러
@@ -29,7 +29,14 @@ function ActionGroup() {
     // NOTE: 게시글 업로드 버튼 이벤트 핸들러
     const uploadPost = debounce(() => {
         if (validatePostInfo()) {
-            uploadPostInfo();
+            const uploadResult = uploadPostInfo();
+
+            if (!uploadResult) {
+                alert("게시글 업로드에 실패했습니다. 다시 시도해주세요.");
+                return;
+            }
+
+            setIsSuccessModalOpened(true);
         }
     }, 500);
 

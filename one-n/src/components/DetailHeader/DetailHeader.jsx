@@ -9,6 +9,7 @@ import styles from "./DetailHeader.module.scss";
 function DetailHeader({
     label = "",
     enableOption = true,
+    onBackClicked = null,
     // optionItems = [],
     // onOptionItemClicked = () => {},
 }) {
@@ -19,6 +20,12 @@ function DetailHeader({
 
     // NOTE: 뒤로가기 버튼 이벤트 핸들러
     const handleBack = () => {
+        // NOTE: onBackClicked가 정의되어 있다면 해당 함수를 호출
+        if (onBackClicked) {
+            onBackClicked();
+            return;
+        }
+
         navigate(-1);
     };
 

@@ -131,6 +131,7 @@ function PostInfoProvider({ children }) {
                 type: postType === INGREDIENT_POST_TYPE ? 0 : 1,
                 contents: postDesc,
                 ingredients: postIngredients,
+                // TODO: 게시글 업로드 시 사진을 함께 업로드하는 로직 추가
                 images: [
                     {
                         imagePath:

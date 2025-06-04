@@ -34,7 +34,7 @@ function FloatingActionButton() {
                         <BreadIcon className={styles.icon} size="24" />
                         <p className={styles.label}>레시피</p>
                     </Link>
-                    <Link to="/product-post" className={styles.dropdownElement}>
+                    <Link to="/post/product" className={styles.dropdownElement}>
                         <CartIcon className={styles.icon} size="24" />
                         <p className={styles.label}>공동구매</p>
                     </Link>
