@@ -10,8 +10,6 @@ import CheckLocationPage from "./pages/CheckLocationPage/CheckLocationPage";
 import { NavBar } from "./components/NavBar/NavBar";
 import MapsPage from "./pages/MapsPage/MapsPage";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
-import SelectLocation from "./components/SelectLocation/SelectLocation";
-import ProductPost from "./pages/ProductPost/ProductPost";
 import SearchAddress from "./components/SearchAddress/SearchAddress";
 import Scrap from "./pages/Scrap/Scrap";
 import { MyContextProvider } from "./components/MyContextProvider/MyContextProvider";
@@ -28,6 +26,7 @@ import EditProfile from "./pages/EditProfile/EditProfile"; // 추가된 import
 import RecipeSearchPage from "./pages/ReceipSearchPage/RecipeSearchPage";
 import { LoginProvider } from "./contexts/LoginProvider";
 import ProductListPage from "./pages/ProductListPage/ProductListPage";
+import PostProduct from "./pages/PostProduct/PostProduct";
 
 function App() {
     return (
@@ -50,14 +49,6 @@ function App() {
                             <Route
                                 path="/search-address"
                                 element={<SearchAddress />}
-                            />
-                            <Route
-                                path="/select-location"
-                                element={<SelectLocation />}
-                            />
-                            <Route
-                                path="/product-post"
-                                element={<ProductPost />}
                             />
                             <Route path="/scrap" element={<Scrap />} />
                             <Route path="/explore" element={<Explore />} />
@@ -100,6 +91,10 @@ function App() {
                                 element={<RecipeReg />}
                             />
                             <Route path="/signup" element={<Signup />} />
+                            <Route
+                                path="/post/product*"
+                                element={<PostProduct />}
+                            />
                         </Routes>
                         <ConditionalNavBar />
                     </div>
@@ -111,7 +106,11 @@ function App() {
 
 function ConditionalNavBar() {
     const location = useLocation();
-    const hideNavBarRoutes = [/^\/login/, /^\/chatroom\/(?!list)/]; // Navbar를 표시하지 않을 경로
+    const hideNavBarRoutes = [
+        /^\/login/,
+        /^\/chatroom\/(?!list)/,
+        /^\/post\/product/,
+    ]; // Navbar를 표시하지 않을 경로
 
     const isNavBarHide = hideNavBarRoutes.some(
         (route) => !!location.pathname.match(route)

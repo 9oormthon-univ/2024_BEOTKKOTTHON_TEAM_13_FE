@@ -1,0 +1,25 @@
+.BottomBorderInput {
+    height: 2.5625rem;
+    border-bottom: 1px solid #e6e6e6;
+    display: flex;
+    align-items: center;
+    transition: border-bottom 0.2s ease-in-out;
+
+    &:focus-within {
+        border-bottom: 1px solid #333;
+    }
+
+    .input {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-weight: 400;
+        font-size: 0.875rem;
+        color: #333;
+        line-height: 0.875rem;
+
+        &::placeholder {
+            color: #bcbcbc;
+        }
+    }
+}
