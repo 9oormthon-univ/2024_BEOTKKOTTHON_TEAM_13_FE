@@ -16,12 +16,12 @@ function AbortModal() {
 
     // NOTE: 취소하기 버튼 핸들러
     const handleCancel = () => {
-        setIsAbortModalOpened(false);
+        navigate("/");
     };
 
     // NOTE: 계속하기 버튼 핸들러
     const handleContinue = () => {
-        navigate("/");
+        setIsAbortModalOpened(false);
     };
 
     return (
