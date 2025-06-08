@@ -20,11 +20,12 @@
         flex-direction: column;
         gap: 0.875rem;
         position: absolute;
-        background-color: #fff;
+        background-color: white;
         border: 1px solid #eaeaea;
         border-radius: 0.5rem;
         padding: 1rem;
         transform: translate(-12px, 14px);
+        z-index: 10;
 
         &.right {
             transform: translate(-46px, 14px);
