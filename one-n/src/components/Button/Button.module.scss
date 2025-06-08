@@ -4,14 +4,24 @@
     text-align: center;
     border-radius: 0.5rem;
     padding: 0.75rem;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 
     &--full {
         width: -webkit-fill-available;
+        justify-content: center;
     }
 
     &--md {
         font-size: 0.9375rem;
         line-height: 1.125rem;
+    }
+
+    .icon {
+        width: 1rem;
+        height: 1rem;
     }
 }
 

@@ -27,10 +27,7 @@ function FloatingActionButton() {
             />
             {isDropdownOpened && (
                 <div className={styles.dropdown}>
-                    <Link
-                        to="/recipeRegister"
-                        className={styles.dropdownElement}
-                    >
+                    <Link to="/post/recipe" className={styles.dropdownElement}>
                         <BreadIcon className={styles.icon} size="24" />
                         <p className={styles.label}>레시피</p>
                     </Link>

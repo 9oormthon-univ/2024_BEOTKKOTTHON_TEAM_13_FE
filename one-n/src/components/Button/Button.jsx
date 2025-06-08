@@ -8,6 +8,7 @@ function Button({
     size = "md",
     fullWidth = false,
     onClick = () => {},
+    icon: Icon = null,
     children,
 }) {
     return (
@@ -20,6 +21,7 @@ function Button({
             )}
             onClick={onClick}
         >
+            {Icon && <Icon className={styles.icon} />}
             {children}
         </div>
     );

@@ -5,28 +5,31 @@ import {
     Route,
     useLocation,
 } from "react-router-dom";
+
+import { NavBar } from "./components/NavBar/NavBar";
+
 import MoreProductPage from "./pages/MoreProductPage/MoreProductPage";
 import CheckLocationPage from "./pages/CheckLocationPage/CheckLocationPage";
-import { NavBar } from "./components/NavBar/NavBar";
 import MapsPage from "./pages/MapsPage/MapsPage";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import SearchAddress from "./components/SearchAddress/SearchAddress";
 import Scrap from "./pages/Scrap/Scrap";
-import { MyContextProvider } from "./components/MyContextProvider/MyContextProvider";
 import ChatList from "./pages/ChatList/ChatList";
 import ChatRoom from "./pages/ChatRoom/ChatRoom";
 import MainPage from "./pages/MainPage/MainPage";
 import Explore from "./pages/Explore/Explore";
 import RecipeDetail from "./pages/RecipeDetail/RecipeDetail";
-import RecipeReg from "./pages/RecipeReg/RecipeReg";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import Signin from "./pages/Signin/Signin";
 import Signup from "./pages/Signup/Signup";
 import EditProfile from "./pages/EditProfile/EditProfile"; // 추가된 import
 import RecipeSearchPage from "./pages/ReceipSearchPage/RecipeSearchPage";
-import { LoginProvider } from "./contexts/LoginProvider";
 import ProductListPage from "./pages/ProductListPage/ProductListPage";
 import PostProduct from "./pages/PostProduct/PostProduct";
+import PostRecipe from "./pages/PostRecipe/PostRecipe";
+
+import { MyContextProvider } from "./components/MyContextProvider/MyContextProvider";
+import { LoginProvider } from "./contexts/LoginProvider";
 
 function App() {
     return (
@@ -86,14 +89,14 @@ function App() {
                                 path="/recipe/:recipeId"
                                 element={<RecipeDetail />}
                             />
-                            <Route
-                                path="/recipeRegister"
-                                element={<RecipeReg />}
-                            />
                             <Route path="/signup" element={<Signup />} />
                             <Route
                                 path="/post/product*"
                                 element={<PostProduct />}
+                            />
+                            <Route
+                                path="/post/recipe"
+                                element={<PostRecipe />}
                             />
                         </Routes>
                         <ConditionalNavBar />
@@ -106,11 +109,7 @@ function App() {
 
 function ConditionalNavBar() {
     const location = useLocation();
-    const hideNavBarRoutes = [
-        /^\/login/,
-        /^\/chatroom\/(?!list)/,
-        /^\/post\/product/,
-    ]; // Navbar를 표시하지 않을 경로
+    const hideNavBarRoutes = [/^\/login/, /^\/chatroom\/(?!list)/]; // Navbar를 표시하지 않을 경로
 
     const isNavBarHide = hideNavBarRoutes.some(
         (route) => !!location.pathname.match(route)
