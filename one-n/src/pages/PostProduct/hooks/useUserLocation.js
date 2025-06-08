@@ -55,6 +55,25 @@ const useUserLocation = () => {
     });
 
     useEffect(() => {
+        // NOTE: 세션 스토리지에 저장된 유저의 마지막 위치가 있다면 해당 위치를 사용
+        if (sessionStorage.getItem("USER_LAST_LOCATION")) {
+            const { latitude, longitude, bCode } = JSON.parse(
+                sessionStorage.getItem("USER_LAST_LOCATION")
+            );
+
+            // NOTE: bCode가 다른 경우에만 상태를 업데이트
+            if (bCode !== userLocation.bCode) {
+                setUserLocation({
+                    isLoading: false,
+                    latitude,
+                    longitude,
+                    bCode,
+                });
+            }
+
+            return;
+        }
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 // NOTE: 브라우저로부터 위치를 가져올 수 있는 경우
@@ -71,6 +90,16 @@ const useUserLocation = () => {
                         bCode,
                         address,
                     });
+
+                    // NOTE: 유저의 마지막 위치를 세션 스토리지에 저장
+                    sessionStorage.setItem(
+                        "USER_LAST_LOCATION",
+                        JSON.stringify({
+                            latitude,
+                            longitude,
+                            bCode,
+                        })
+                    );
                 },
                 // NOTE: 브라우저로부터 위치를 가져올 수 없는 경우 IP 주소를 통해 위치를 가져옴 (OP 환경에서는 동작 안됨)
                 async () => {
@@ -95,6 +124,16 @@ const useUserLocation = () => {
                             bCode,
                             address,
                         });
+
+                        // NOTE: 유저의 마지막 위치를 세션 스토리지에 저장
+                        sessionStorage.setItem(
+                            "USER_LAST_LOCATION",
+                            JSON.stringify({
+                                latitude: lat,
+                                longitude: lon,
+                                bCode,
+                            })
+                        );
                     }
                 }
             );

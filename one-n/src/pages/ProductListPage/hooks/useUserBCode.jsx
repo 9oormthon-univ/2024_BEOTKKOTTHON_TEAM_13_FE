@@ -44,6 +44,23 @@ const useUserBCode = () => {
     });
 
     useEffect(() => {
+        // NOTE: 세션 스토리지에 저장된 유저의 마지막 위치가 있다면 해당 위치를 사용
+        if (sessionStorage.getItem("USER_LAST_LOCATION")) {
+            const { bCode } = JSON.parse(
+                sessionStorage.getItem("USER_LAST_LOCATION")
+            );
+
+            // NOTE: bCode가 다른 경우에만 업데이트 수행
+            if (bCodeInfo.bCode !== bCode) {
+                setBCodeInfo({
+                    status: true,
+                    bCode,
+                });
+            }
+
+            return bCodeInfo;
+        }
+
         if (!bCodeInfo.status && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 async ({ coords: { latitude, longitude } }) => {
@@ -54,6 +71,16 @@ const useUserBCode = () => {
                             status: true,
                             bCode,
                         });
+
+                        // NOTE: 유저의 마지막 위치를 세션 스토리지에 저장
+                        sessionStorage.setItem(
+                            "USER_LAST_LOCATION",
+                            JSON.stringify({
+                                latitude,
+                                longitude,
+                                bCode,
+                            })
+                        );
                     }
                 },
                 async () => {
@@ -76,6 +103,16 @@ const useUserBCode = () => {
                                 status: true,
                                 bCode,
                             });
+
+                            // NOTE: 유저의 마지막 위치를 세션 스토리지에 저장
+                            sessionStorage.setItem(
+                                "USER_LAST_LOCATION",
+                                JSON.stringify({
+                                    latitude: lat,
+                                    longitude: lon,
+                                    bCode,
+                                })
+                            );
                         }
                     }
                 }
