@@ -109,7 +109,12 @@ function App() {
 
 function ConditionalNavBar() {
     const location = useLocation();
-    const hideNavBarRoutes = [/^\/login/, /^\/chatroom\/(?!list)/]; // Navbar를 표시하지 않을 경로
+    const hideNavBarRoutes = [
+        /^\/login/,
+        /^\/chatroom\/(?!list)/,
+        /^\/post\/product/,
+        /^\/post\/recipe/,
+    ]; // Navbar를 표시하지 않을 경로
 
     const isNavBarHide = hideNavBarRoutes.some(
         (route) => !!location.pathname.match(route)
