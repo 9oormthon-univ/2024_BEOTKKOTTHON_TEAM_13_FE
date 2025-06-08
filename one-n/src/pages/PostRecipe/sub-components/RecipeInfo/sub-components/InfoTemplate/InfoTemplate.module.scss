@@ -1,0 +1,17 @@
+.InfoTemplate {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .title {
+        font-weight: 500;
+        font-size: 0.9375rem;
+        color: #272727;
+        padding: 0 1rem;
+        margin: 0;
+    }
+
+    .padding {
+        padding: 0 1rem;
+    }
+}

@@ -1,0 +1,31 @@
+.SuccessModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+
+    .container {
+        display: flex;
+        width: 19.4375rem;
+        padding: 2rem 1rem 1rem;
+        background-color: white;
+        border-radius: 1rem;
+        align-items: center;
+        flex-direction: column;
+        gap: 1.875rem;
+
+        .description {
+            margin: 0;
+            padding: 0;
+            font-weight: 500;
+            font-size: 1rem;
+            color: #191919;
+        }
+    }
+}
