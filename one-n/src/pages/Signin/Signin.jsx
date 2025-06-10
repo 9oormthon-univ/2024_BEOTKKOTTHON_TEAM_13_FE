@@ -1,6 +1,8 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+import DetailHeader from "../../components/DetailHeader/DetailHeader";
 
 import { ReactComponent as Back } from "../../assets/back.svg";
 import logo from "../../assets/logo/logo.png";
@@ -13,15 +15,49 @@ import "./Signin.css";
 function Signin() {
     const navigate = useNavigate();
 
-    const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    const handleBackClick = () => {
-        navigate(-1);
+    // NOTE: 이메일, 비밀번호 피드백
+    const [emailFeedback, setEmailFeedback] = useState("");
+    const [passwordFeedback, setPasswordFeedback] = useState("");
+
+    // NOTE: 이메일 및 비밀번호 검증
+    const validateInputs = () => {
+        // NOTE: 이메일 검증
+        const emailFeedbackMsg = (() => {
+            if (email) {
+                const emailRegex =
+                    /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                if (!emailRegex.test(email)) {
+                    return "올바르지 않은 이메일 형식입니다.";
+                }
+            }
+
+            if (!email) {
+                return "이메일을 입력해주세요.";
+            }
+
+            return "";
+        })();
+
+        // NOTE: 비밀번호 검증
+        const passwordFeedbackMsg = (() => {
+            if (!password) {
+                return "비밀번호를 입력해주세요.";
+            }
+            return "";
+        })();
+
+        setEmailFeedback(emailFeedbackMsg);
+        setPasswordFeedback(passwordFeedbackMsg);
+
+        return emailFeedbackMsg === "" && passwordFeedbackMsg === "";
     };
 
     const handleSignin = async () => {
-        if (email && password) {
+        if (validateInputs()) {
             try {
                 const response = await axios.post(
                     "/api2/user/sign/login",
@@ -41,8 +77,6 @@ function Signin() {
                     error.response ? error.response.data : error.message
                 );
             }
-        } else {
-            console.log("이메일과 비밀번호를 입력해주세요.");
         }
     };
 
@@ -52,36 +86,43 @@ function Signin() {
 
     return (
         <div className="signinpage-container">
-            <button className="back-button" onClick={handleBackClick}>
-                <Back />
-            </button>
+            <DetailHeader enableOption={false} />
 
             <div className="signin-info">
                 <img src={logo} alt="logo" className="signin-logo-img" />
                 <div>
-                    <div className="signin-title"> 식재료 1/N 할 수 있는 </div>
-                    <div className="signin-title2">
-                        {" "}
-                        식재료 공동구매 서비스{" "}
-                    </div>
+                    <div className="signin-title">식재료 1/N 할 수 있는</div>
+                    <div className="signin-title2">식재료 공동구매 서비스</div>
                 </div>
             </div>
 
             <div className="signin-input">
-                <input
-                    type="text"
-                    className="input-field"
-                    placeholder="이메일을 입력해주세요."
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    className="input-field"
-                    placeholder="비밀번호를 입력해주세요."
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                <div>
+                    <input
+                        type="text"
+                        className="input-field"
+                        placeholder="이메일을 입력해주세요."
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    {emailFeedback && (
+                        <p className="signin-input-feedback">{emailFeedback}</p>
+                    )}
+                </div>
+                <div>
+                    <input
+                        type="password"
+                        className="input-field"
+                        placeholder="비밀번호를 입력해주세요."
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    {passwordFeedback && (
+                        <p className="signin-input-feedback">
+                            {passwordFeedback}
+                        </p>
+                    )}
+                </div>
             </div>
 
             <button className="signin-btn" onClick={handleSignin}>
@@ -95,7 +136,7 @@ function Signin() {
                 <div className="search-name">아이디/비밀번호 찾기</div>
             </div>
 
-            <div className="or-line">
+            {/* <div className="or-line">
                 <div className="border-line" />
                 또는
                 <div className="border-line" />
@@ -105,7 +146,7 @@ function Signin() {
                 <GoogleIcon />
                 <KakaoIcon />
                 <NaverIcon />
-            </div>
+            </div> */}
         </div>
     );
 }
