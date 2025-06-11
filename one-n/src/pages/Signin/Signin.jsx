@@ -3,6 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import DetailHeader from "../../components/DetailHeader/DetailHeader";
+import LoginFailedModal from "./sub-components/LoginFailedModal/LoginFailedModal";
+
+import {
+    PageProvider,
+    usePageValue,
+    usePageAction,
+} from "./contexts/PageContext";
 
 import { ReactComponent as Back } from "../../assets/back.svg";
 import logo from "../../assets/logo/logo.png";
@@ -21,6 +28,9 @@ function Signin() {
     // NOTE: 이메일, 비밀번호 피드백
     const [emailFeedback, setEmailFeedback] = useState("");
     const [passwordFeedback, setPasswordFeedback] = useState("");
+
+    const { isFailedLoginModalOpened } = usePageValue();
+    const { setIsFailedLoginModalOpened } = usePageAction();
 
     // NOTE: 이메일 및 비밀번호 검증
     const validateInputs = () => {
@@ -70,12 +80,12 @@ function Signin() {
 
                 if (response?.status === 200 && response?.data?.isSuccess) {
                     navigate("/", { replace: true }); // 홈으로 이동
+                    return;
                 }
+
+                setIsFailedLoginModalOpened(true);
             } catch (error) {
-                console.error(
-                    "로그인 오류:",
-                    error.response ? error.response.data : error.message
-                );
+                setIsFailedLoginModalOpened(true);
             }
         }
     };
@@ -136,6 +146,7 @@ function Signin() {
                 <div className="search-name">아이디/비밀번호 찾기</div>
             </div>
 
+            {isFailedLoginModalOpened && <LoginFailedModal />}
             {/* <div className="or-line">
                 <div className="border-line" />
                 또는
@@ -151,4 +162,12 @@ function Signin() {
     );
 }
 
-export default Signin;
+const withPageContext = (WrappedComponent) => (props) => {
+    return (
+        <PageProvider>
+            <WrappedComponent {...props} />
+        </PageProvider>
+    );
+};
+
+export default withPageContext(Signin);
