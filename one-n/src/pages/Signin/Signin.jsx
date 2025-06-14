@@ -11,11 +11,7 @@ import {
     usePageAction,
 } from "./contexts/PageContext";
 
-import { ReactComponent as Back } from "../../assets/back.svg";
 import logo from "../../assets/logo/logo.png";
-import { ReactComponent as GoogleIcon } from "../../assets/social/GoogleIcon.svg";
-import { ReactComponent as KakaoIcon } from "../../assets/social/KakaoIcon.svg";
-import { ReactComponent as NaverIcon } from "../../assets/social/NaverIcon.svg";
 
 import "./Signin.css";
 
@@ -147,17 +143,6 @@ function Signin() {
             </div>
 
             {isFailedLoginModalOpened && <LoginFailedModal />}
-            {/* <div className="or-line">
-                <div className="border-line" />
-                또는
-                <div className="border-line" />
-            </div>
-
-            <div className="social-icon">
-                <GoogleIcon />
-                <KakaoIcon />
-                <NaverIcon />
-            </div> */}
         </div>
     );
 }

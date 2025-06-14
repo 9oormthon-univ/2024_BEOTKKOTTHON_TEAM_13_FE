@@ -109,7 +109,7 @@ function Signup() {
 
             if (response?.status === 200 && response?.data?.isSuccess) {
                 alert("회원가입이 완료되었습니다!");
-                navigate("/");
+                navigate(-1);
             }
         } catch (error) {
             if (error?.response?.data?.message) {
