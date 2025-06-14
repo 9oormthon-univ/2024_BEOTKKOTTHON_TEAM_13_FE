@@ -111,6 +111,7 @@ function ConditionalNavBar() {
     const location = useLocation();
     const hideNavBarRoutes = [
         /^\/login/,
+        /^\/signup/,
         /^\/chatroom\/(?!list)/,
         /^\/post\/product/,
         /^\/post\/recipe/,

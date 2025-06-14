@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Signup.css";
-import { ReactComponent as Back } from "../../assets/back.svg";
+import axios from "axios";
+
+import { ReactComponent as Back } from "../../assets/icons/back.svg";
 import { ReactComponent as RightCheck } from "../../assets/rightCheck.svg";
 import { ReactComponent as WrongCheck } from "../../assets/wrongCheck.svg";
+
+import "./Signup.css";
+import BottomBorderInput from "../../components/BottomBorderInput/BottomBorderInput";
+import Checkbox from "./sub-components/Checkbox/Checkbox";
+import Button from "../../components/Button/Button";
 
 function Signup() {
     const navigate = useNavigate();
@@ -16,10 +21,6 @@ function Signup() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // 전화번호
-    const [phoneNum, setPhoneNum] = useState("");
-    const [showConfirmPhoneNum, setShowConfirmPhoneNum] = useState(false);
-
     // 비밀번호
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -30,8 +31,6 @@ function Signup() {
 
     // 체크박스
     const [isAllChecked, setIsAllChecked] = useState(false);
-    const [isYouthChecked, setIsYouthChecked] = useState(false);
-    const [isSmallPaymentChecked, setIsSmallPaymentChecked] = useState(false);
     const [isECommerceChecked, setIsECommerceChecked] = useState(false);
     const [isMarketingChecked, setIsMarketingChecked] = useState(false);
 
@@ -39,40 +38,62 @@ function Signup() {
     const handleAllCheckChange = () => {
         const newCheckedState = !isAllChecked;
         setIsAllChecked(newCheckedState);
-        setIsYouthChecked(newCheckedState);
-        setIsSmallPaymentChecked(newCheckedState);
         setIsECommerceChecked(newCheckedState);
         setIsMarketingChecked(newCheckedState);
     };
 
     // 개별 체크박스 상태 변경 핸들러
     const handleCheckboxChange = () => {
-        setIsAllChecked(
-            isYouthChecked &&
-                isSmallPaymentChecked &&
-                isECommerceChecked &&
-                isMarketingChecked
-        );
+        setIsAllChecked(isECommerceChecked && isMarketingChecked);
     };
 
     useEffect(() => {
         handleCheckboxChange();
-    }, [
-        isYouthChecked,
-        isSmallPaymentChecked,
-        isECommerceChecked,
-        isMarketingChecked,
-    ]);
+    }, [isECommerceChecked, isMarketingChecked]);
 
     const handleBackClick = () => {
         navigate(-1);
     };
 
-    const handleSendCodeClick = () => {
-        setShowConfirmPhoneNum(true);
+    const validateInputs = () => {
+        // 닉네임 검증
+        if (typeof nickname !== "string" || nickname === "") {
+            alert("닉네임을 입력해주세요.");
+            return false;
+        }
+
+        // 이메일 검증
+        if (typeof email !== "string" || email === "") {
+            alert("이메일을 입력해주세요.");
+            return false;
+        }
+
+        // 비밀번호 검증
+        if (typeof password !== "string" || password === "") {
+            alert("비밀번호를 입력해주세요.");
+            return false;
+        }
+
+        // 비밀번호 확인 검증
+        if (typeof confirmPassword !== "string" || confirmPassword === "") {
+            alert("비밀번호 확인을 입력해주세요.");
+            return false;
+        }
+
+        // 서비스 정책 동의 검증
+        if (!isECommerceChecked) {
+            alert("전자상거래 조약 약관에 동의해주세요.");
+            return false;
+        }
+
+        return true;
     };
 
     const handleSignup = async () => {
+        if (!validateInputs()) {
+            return;
+        }
+
         const requestData = {
             email: email,
             password: password,
@@ -88,7 +109,7 @@ function Signup() {
 
             if (response?.status === 200 && response?.data?.isSuccess) {
                 alert("회원가입이 완료되었습니다!");
-                navigate("/");
+                navigate(-1);
             }
         } catch (error) {
             if (error?.response?.data?.message) {
@@ -104,211 +125,157 @@ function Signup() {
     };
 
     return (
-        <div className="signuppage-container">
+        <div className="signuppage">
             <div className="top-nav">
-                <button className="back-button" onClick={handleBackClick}>
-                    <Back />
-                </button>
+                <Back onClick={handleBackClick} />
                 <div className="signup-title">회원가입</div>
             </div>
 
-            {/* 닉네임 */}
-            <div className="info-layout">
-                <div className="info-title">닉네임</div>
-                <input
-                    className={`info-input ${nickname ? "has-text" : ""}`}
-                    placeholder="사용하실 닉네임을 입력해주세요."
-                    value={nickname}
-                    onChange={(e) => setNickname(e.target.value)}
-                />
-            </div>
-
-            {/* 이메일 */}
-            <div className="info-layout">
-                <div className="info-title">이메일</div>
-                <input
-                    className={`info-input ${email ? "has-text" : ""}`}
-                    placeholder="이메일을 입력해주세요."
-                    value={email}
-                    onChange={handleEmailChange}
-                />
-                {!isEmailValid && email && (
-                    <div className="error_message">
-                        <WrongCheck />
-                        <div style={{ margin: "0 8px" }}>
-                            유효한 이메일을 입력해주세요.
-                        </div>
-                    </div>
-                )}
-            </div>
-
-            {/* 휴대폰 인증 */}
-            {/* <div
-                className="info-layout"
-                style={{ marginBottom: showConfirmPhoneNum ? "96px" : "40px" }}
-            >
-                <div className="info-title">휴대폰 인증</div>
-                <div className="input-wrapper">
-                    <input
-                        className={`info-input ${phoneNum ? "has-text" : ""}`}
-                        placeholder="인증하실 휴대폰 번호를 입력해주세요."
-                        value={phoneNum}
-                        onChange={(e) => setPhoneNum(e.target.value)}
+            <div className="signuppage-container">
+                {/* 닉네임 */}
+                <div className="info-layout">
+                    <div className="info-title">닉네임</div>
+                    <BottomBorderInput
+                        value={nickname}
+                        onChange={(e) => setNickname(e.target.value)}
+                        placeholder="사용하실 닉네임을 입력해주세요."
                     />
-                    <button
-                        className="send-code-button"
-                        onClick={handleSendCodeClick}
-                    >
-                        인증번호 전송
-                    </button>
                 </div>
-                <div style={{ margin: 8 }} />
-                {showConfirmPhoneNum && (
-                    <input
-                        className="info-input"
-                        placeholder="인증번호를 입력해주세요."
+
+                {/* 이메일 */}
+                <div className="info-layout">
+                    <div className="info-title">이메일</div>
+                    <BottomBorderInput
+                        value={email}
+                        onChange={handleEmailChange}
+                        placeholder="이메일을 입력해주세요."
                     />
-                )}
-            </div> */}
+                    {!isEmailValid && email && (
+                        <div className="error_message">
+                            <WrongCheck />
+                            <div style={{ margin: "0 8px" }}>
+                                유효한 이메일을 입력해주세요.
+                            </div>
+                        </div>
+                    )}
+                </div>
 
-            {/* 비밀번호 */}
-            <div className="info-layout">
-                <div className="info-title">비밀번호</div>
-                <input
-                    type="password"
-                    className={`info-input ${password ? "has-text" : ""}`}
-                    placeholder="비밀번호를 입력해주세요."
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                {isPasswordValid && (
-                    <div className="match_message">
-                        <RightCheck />
-                        <div style={{ margin: "0 8px" }}>
-                            사용 가능한 비밀번호입니다
+                {/* 비밀번호 */}
+                <div className="info-layout">
+                    <div className="info-title">비밀번호</div>
+                    <BottomBorderInput
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="비밀번호를 입력해주세요."
+                    />
+                    {isPasswordValid && (
+                        <div className="match_message">
+                            <RightCheck />
+                            <div style={{ margin: "0 8px" }}>
+                                사용 가능한 비밀번호입니다
+                            </div>
                         </div>
-                    </div>
-                )}
-                {!isPasswordValid && password && (
-                    <div className="error_message">
-                        <WrongCheck />
-                        <div style={{ margin: "0 8px" }}>
-                            비밀번호로 사용하실 수 없습니다.
+                    )}
+                    {!isPasswordValid && password && (
+                        <div className="error_message">
+                            <WrongCheck />
+                            <div style={{ margin: "0 8px" }}>
+                                비밀번호로 사용하실 수 없습니다.
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
+                    )}
+                </div>
 
-            {/* 비밀번호 확인 */}
-            <div className="info-layout">
-                <div className="info-title">비밀번호 확인</div>
-                <input
-                    type="password"
-                    className={`info-input ${
-                        confirmPassword ? "has-text" : ""
-                    }`}
-                    placeholder="비밀번호를 한 번 더 입력해주세요."
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-                {passwordsMatch && (
-                    <div className="match_message">
-                        <RightCheck />
-                        <div style={{ margin: "0 8px" }}>
-                            설정한 비밀번호와 일치합니다.
+                {/* 비밀번호 확인 */}
+                <div className="info-layout">
+                    <div className="info-title">비밀번호 확인</div>
+                    <BottomBorderInput
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        placeholder="비밀번호를 한 번 더 입력해주세요."
+                    />
+                    {passwordsMatch && (
+                        <div className="match_message">
+                            <RightCheck />
+                            <div style={{ margin: "0 8px" }}>
+                                설정한 비밀번호와 일치합니다.
+                            </div>
                         </div>
-                    </div>
-                )}
-                {confirmPassword && !passwordsMatch && (
-                    <div className="error_message">
-                        <WrongCheck />
-                        <div style={{ margin: "0 8px" }}>
-                            설정한 비밀번호가 일치하지 않습니다.
+                    )}
+                    {confirmPassword && !passwordsMatch && (
+                        <div className="error_message">
+                            <WrongCheck />
+                            <div style={{ margin: "0 8px" }}>
+                                설정한 비밀번호가 일치하지 않습니다.
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
+                    )}
+                </div>
 
-            <div className="service-info">
-                <div className="info-title">서비스 정책</div>
-                <div className="service-box">
-                    {/* 전체동의 체크박스 */}
-                    <div className="service-box-content">
-                        <input
-                            id="all-checkbox"
-                            type="checkbox"
-                            checked={isAllChecked}
-                            onChange={handleAllCheckChange}
-                        />
-                        <label
-                            htmlFor="all-checkbox"
-                            style={{ fontWeight: 600 }}
+                <div className="service-info">
+                    <div className="info-title">서비스 정책</div>
+                    <div className="service-box">
+                        {/* 전체동의 체크박스 */}
+                        <div
+                            className="service-box-content"
+                            style={{
+                                alignItems: "flex-start",
+                                marginBottom: "0.5rem",
+                            }}
                         >
-                            전체동의
-                        </label>
-                    </div>
-                    <div className="service-all-comment">
-                        하단의 약관에 모두 동의합니다.
-                    </div>
+                            <Checkbox
+                                id="all-checkbox"
+                                checked={isAllChecked}
+                                onChange={handleAllCheckChange}
+                            />
+                            <label htmlFor="all-checkbox">
+                                전체동의
+                                <br />
+                                <p className="all-checkbox-desc">
+                                    하단의 약관에 모두 동의합니다.
+                                </p>
+                            </label>
+                        </div>
 
-                    {/* 개별 체크박스들 */}
-                    <div className="service-box-content">
-                        <input
-                            id="youth-checkbox"
-                            type="checkbox"
-                            checked={isYouthChecked}
-                            onChange={() => setIsYouthChecked(!isYouthChecked)}
-                        />
-                        <label htmlFor="youth-checkbox">청소년법 약관</label>
-                    </div>
+                        {/* 개별 체크박스들 */}
+                        <div className="service-box-content">
+                            <Checkbox
+                                id="ecommerce-checkbox"
+                                checked={isECommerceChecked}
+                                onChange={() =>
+                                    setIsECommerceChecked(!isECommerceChecked)
+                                }
+                            />
+                            <label htmlFor="ecommerce-checkbox">
+                                전자상거래 조약 약관
+                            </label>
+                        </div>
 
-                    <div className="service-box-content">
-                        <input
-                            id="small-payment-checkbox"
-                            type="checkbox"
-                            checked={isSmallPaymentChecked}
-                            onChange={() =>
-                                setIsSmallPaymentChecked(!isSmallPaymentChecked)
-                            }
-                        />
-                        <label htmlFor="small-payment-checkbox">
-                            소액결제 동의 약관
-                        </label>
-                    </div>
-
-                    <div className="service-box-content">
-                        <input
-                            id="ecommerce-checkbox"
-                            type="checkbox"
-                            checked={isECommerceChecked}
-                            onChange={() =>
-                                setIsECommerceChecked(!isECommerceChecked)
-                            }
-                        />
-                        <label htmlFor="ecommerce-checkbox">
-                            전자상거래 조약 약관
-                        </label>
-                    </div>
-
-                    <div className="service-box-content">
-                        <input
-                            id="marketing-checkbox"
-                            type="checkbox"
-                            checked={isMarketingChecked}
-                            onChange={() =>
-                                setIsMarketingChecked(!isMarketingChecked)
-                            }
-                        />
-                        <label htmlFor="marketing-checkbox">
-                            (선택) 마케팅 수신 및 정보 보관
-                        </label>
+                        <div className="service-box-content">
+                            <Checkbox
+                                id="marketing-checkbox"
+                                checked={isMarketingChecked}
+                                onChange={() =>
+                                    setIsMarketingChecked(!isMarketingChecked)
+                                }
+                            />
+                            <label htmlFor="marketing-checkbox">
+                                (선택) 마케팅 수신 및 정보 보관
+                            </label>
+                        </div>
                     </div>
                 </div>
+                <Button
+                    color="yellow"
+                    size="md"
+                    fullWidth
+                    onClick={handleSignup}
+                >
+                    회원가입
+                </Button>
             </div>
-
-            <button className="signup-btn" onClick={handleSignup}>
-                회원가입
-            </button>
         </div>
     );
 }

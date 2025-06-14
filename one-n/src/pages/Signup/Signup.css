@@ -1,47 +1,54 @@
-.signuppage-container {
-    margin-top: 30px;
-    padding: 16px;
-    overflow-y: auto;
+.signuppage {
+    /* overflow-y: auto; */
 }
 
 .top-nav {
+    padding: 1rem 0.75rem;
     display: flex;
-    margin-bottom: 28px;
+    gap: 0.5rem;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 999;
 }
 
 .signup-title {
     color: #191919;
-    font-size: 16px;
-    font-weight: 600;
-    margin: 14px 0 0 16px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.signuppage-container {
+    padding: 4.3125rem 1rem 2rem;
 }
 
 .info-layout {
-    width: 343px;
-    height: 78px;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
 }
 
 .info-title {
-    margin-bottom: 12px;
-    color: #1A1A1A;
-    font-size: 14px;
-    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #1a1a1a;
+    font-size: 0.875rem;
+    font-weight: 500;
 }
 
 .info-input {
     width: 100%;
     padding: 12px 0;
     border: none;
-    border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid #ccc;
 }
 
 .info-input::placeholder {
-    color: #B2B2B2;
+    color: #b2b2b2;
 }
 
 .info-input.has-text {
-    border-bottom: 1px solid #1A1A1A;
+    border-bottom: 1px solid #1a1a1a;
 }
 
 .input-wrapper {
@@ -57,64 +64,72 @@
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    background: #BCBCBC;
+    background: #bcbcbc;
     border: none;
-    color: #F2F2F2;
+    color: #f2f2f2;
     font-size: 12px;
     letter-spacing: -0.12px;
     cursor: pointer;
 }
 
-.match_message{
+.match_message {
     display: flex;
     align-items: center;
-    color:#30BE13;
+    color: #30be13;
     font-size: 12px;
     margin-top: 8px;
 }
 
-.error_message{
+.error_message {
     display: flex;
     align-items: center;
-    color:#F42828;
+    color: #f42828;
     font-size: 12px;
     margin-top: 8px;
 }
 
 .service-box {
     margin-bottom: 24px;
-    padding: 8px;
+    padding: 1rem;
     border-radius: 8px;
-    border: 1px solid #CCC;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08); 
+    border: 1px solid #ccc;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: flex-start;
+    gap: 1rem;
 }
 
 .service-box-content {
     display: flex;
+    gap: 0.5rem;
     align-items: center;
-    margin-bottom: 8px;
 }
 
-.service-box input[type='checkbox'] {
-    margin-right: 8px;
-    transform: scale(1.5); /* 사이즈 조정 */
-    -webkit-transform: scale(1.5); /* Safari 호환성 */
-    accent-color: #4D4D4D;
+.service-box input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: #4d4d4d;
 }
 
 .service-box label {
     display: flex;
     flex-direction: column;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
-    color: #4D4D4D;
+    color: #4d4d4d;
     cursor: pointer;
 }
 
-.service-all-comment{
+.all-checkbox-desc {
+    margin-top: 0.75rem;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #808080;
+    margin-bottom: 0;
+}
+
+.service-all-comment {
     margin: 0 0 12px 24px;
     color: #808080;
     font-size: 14px;
@@ -122,13 +137,13 @@
 
 .signup-btn {
     width: 100%;
-    color: #1A1A1A;
+    color: #1a1a1a;
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 8px;
     padding: 12px 16px;
     border-radius: 8px;
     border: none;
-    background-color: #FFDC25;
+    background-color: #ffdc25;
     cursor: pointer;
 }
