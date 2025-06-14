@@ -55,7 +55,45 @@ function Signup() {
         navigate(-1);
     };
 
+    const validateInputs = () => {
+        // 닉네임 검증
+        if (typeof nickname !== "string" || nickname === "") {
+            alert("닉네임을 입력해주세요.");
+            return false;
+        }
+
+        // 이메일 검증
+        if (typeof email !== "string" || email === "") {
+            alert("이메일을 입력해주세요.");
+            return false;
+        }
+
+        // 비밀번호 검증
+        if (typeof password !== "string" || password === "") {
+            alert("비밀번호를 입력해주세요.");
+            return false;
+        }
+
+        // 비밀번호 확인 검증
+        if (typeof confirmPassword !== "string" || confirmPassword === "") {
+            alert("비밀번호 확인을 입력해주세요.");
+            return false;
+        }
+
+        // 서비스 정책 동의 검증
+        if (!isECommerceChecked) {
+            alert("전자상거래 조약 약관에 동의해주세요.");
+            return false;
+        }
+
+        return true;
+    };
+
     const handleSignup = async () => {
+        if (!validateInputs()) {
+            return;
+        }
+
         const requestData = {
             email: email,
             password: password,
