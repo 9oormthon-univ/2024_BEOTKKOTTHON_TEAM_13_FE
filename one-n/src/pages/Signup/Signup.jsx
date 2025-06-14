@@ -21,10 +21,6 @@ function Signup() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // 전화번호
-    const [phoneNum, setPhoneNum] = useState("");
-    const [showConfirmPhoneNum, setShowConfirmPhoneNum] = useState(false);
-
     // 비밀번호
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -35,8 +31,6 @@ function Signup() {
 
     // 체크박스
     const [isAllChecked, setIsAllChecked] = useState(false);
-    const [isYouthChecked, setIsYouthChecked] = useState(false);
-    const [isSmallPaymentChecked, setIsSmallPaymentChecked] = useState(false);
     const [isECommerceChecked, setIsECommerceChecked] = useState(false);
     const [isMarketingChecked, setIsMarketingChecked] = useState(false);
 
@@ -44,37 +38,21 @@ function Signup() {
     const handleAllCheckChange = () => {
         const newCheckedState = !isAllChecked;
         setIsAllChecked(newCheckedState);
-        setIsYouthChecked(newCheckedState);
-        setIsSmallPaymentChecked(newCheckedState);
         setIsECommerceChecked(newCheckedState);
         setIsMarketingChecked(newCheckedState);
     };
 
     // 개별 체크박스 상태 변경 핸들러
     const handleCheckboxChange = () => {
-        setIsAllChecked(
-            isYouthChecked &&
-                isSmallPaymentChecked &&
-                isECommerceChecked &&
-                isMarketingChecked
-        );
+        setIsAllChecked(isECommerceChecked && isMarketingChecked);
     };
 
     useEffect(() => {
         handleCheckboxChange();
-    }, [
-        isYouthChecked,
-        isSmallPaymentChecked,
-        isECommerceChecked,
-        isMarketingChecked,
-    ]);
+    }, [isECommerceChecked, isMarketingChecked]);
 
     const handleBackClick = () => {
         navigate(-1);
-    };
-
-    const handleSendCodeClick = () => {
-        setShowConfirmPhoneNum(true);
     };
 
     const handleSignup = async () => {
