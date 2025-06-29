@@ -1,0 +1,18 @@
+.UserProducts {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
+
+    & > a:not(:first-child) {
+        border-top: 1px solid #eaeaea;
+    }
+
+    .empty {
+        margin: 0;
+        margin-top: 3rem;
+        font-weight: 500;
+        font-size: 0.875rem;
+        color: #bcbcbc;
+        text-align: center;
+    }
+}

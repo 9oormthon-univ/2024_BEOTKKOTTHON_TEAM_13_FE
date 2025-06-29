@@ -52,7 +52,7 @@ function MainHeader({
                             <HeaderSearchIcon />
                         </Link>
                     )}
-                    <Link to="/scrap">
+                    <Link to="/my/products">
                         <PersonIcon />
                     </Link>
                 </div>

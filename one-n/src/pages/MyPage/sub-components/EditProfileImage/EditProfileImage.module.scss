@@ -1,0 +1,15 @@
+.EditProfileImage {
+    display: flex;
+    justify-content: center;
+
+    .image {
+        width: 7rem;
+        height: 7rem;
+        background-color: #d9d9d9;
+        border-radius: 8px;
+    }
+
+    .imageInput {
+        display: none;
+    }
+}

@@ -1,0 +1,20 @@
+.PostTypeSelector {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1rem;
+
+    .selector {
+        font-size: 0.875rem;
+        padding: 0.25rem 0.75rem;
+        border: 1px solid #d9d9d9;
+        border-radius: 100px;
+        color: #bdbdbd;
+        font-weight: 500;
+    }
+
+    .selector.selected {
+        background-color: #1a1a1a;
+        color: #fffbfb;
+        border-color: #1a1a1a;
+    }
+}
