@@ -45,7 +45,7 @@ function LoginProvider({ children }) {
         const loginRequiredPaths = [
             /^\/recipeRegister/,
             /^\/product-post/,
-            /^\/scrap/,
+            /^\/my/,
             /^\/chatroom/,
         ];
 

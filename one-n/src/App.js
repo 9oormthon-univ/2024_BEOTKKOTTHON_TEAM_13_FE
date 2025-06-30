@@ -27,6 +27,7 @@ import RecipeSearchPage from "./pages/ReceipSearchPage/RecipeSearchPage";
 import ProductListPage from "./pages/ProductListPage/ProductListPage";
 import PostProduct from "./pages/PostProduct/PostProduct";
 import PostRecipe from "./pages/PostRecipe/PostRecipe";
+import MyPage from "./pages/MyPage/MyPage";
 
 import { MyContextProvider } from "./components/MyContextProvider/MyContextProvider";
 import { LoginProvider } from "./contexts/LoginProvider";
@@ -98,6 +99,7 @@ function App() {
                                 path="/post/recipe"
                                 element={<PostRecipe />}
                             />
+                            <Route path="/my/*" element={<MyPage />} />
                         </Routes>
                         <ConditionalNavBar />
                     </div>
@@ -115,6 +117,7 @@ function ConditionalNavBar() {
         /^\/chatroom\/(?!list)/,
         /^\/post\/product/,
         /^\/post\/recipe/,
+        /^\/my\//,
     ]; // Navbar를 표시하지 않을 경로
 
     const isNavBarHide = hideNavBarRoutes.some(

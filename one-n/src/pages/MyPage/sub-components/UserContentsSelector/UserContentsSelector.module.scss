@@ -1,0 +1,23 @@
+.UserContentsSelector {
+    margin: 2.5rem 1rem 0;
+    display: flex;
+    padding: 0.25rem;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+
+    .selector {
+        flex: 1 1 0;
+        height: 2.75rem;
+        background-color: transparent;
+        border: none;
+        font-weight: 500;
+        font-size: 1rem;
+        color: #bcbcbc;
+
+        &.active {
+            background-color: #ffdc25;
+            border-radius: 12px;
+            color: #191919;
+        }
+    }
+}

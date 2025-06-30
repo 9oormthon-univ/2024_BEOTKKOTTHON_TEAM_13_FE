@@ -1,0 +1,64 @@
+.UserProfile {
+    display: flex;
+    gap: 1.4375rem;
+    padding: 0.8125rem 1rem;
+
+    .profileImage {
+        width: 5rem;
+        height: 5rem;
+        background-color: #d9d9d9;
+        border-radius: 8px;
+        display: block;
+        object-fit: cover;
+    }
+
+    .userInfoContainer {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.375rem;
+
+        .userNickname {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .label {
+                margin: 0;
+                padding: 0;
+                font-weight: 500;
+                font-size: 1.25rem;
+                color: #191919;
+            }
+        }
+
+        .userRating {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            .label {
+                margin: 0;
+                padding: 0;
+                font-weight: 600;
+                font-size: 0.875rem;
+                color: #191919;
+            }
+        }
+    }
+}
+
+.UserRatingBar {
+    flex-grow: 1;
+    height: 0.75rem;
+    background-color: #eaeaea;
+    border-radius: 1010px;
+
+    .innerBar {
+        width: 50%;
+        height: 100%;
+        background-color: #ffdc25;
+        border-radius: 1010px;
+        transition: width 0.3s ease-in-out;
+    }
+}

@@ -42,10 +42,7 @@ function ProductListElement({
     return (
         <Link to={`/product/${id}`} className={styles.ProductListElement}>
             <div className={styles.info}>
-                <img
-                    className={styles.image}
-                    src={`https://n1.junyeong.dev/${imagePath}`}
-                />
+                <img className={styles.image} src={imagePath} />
                 <div className={styles.detailInfo}>
                     <p className={styles.title}>{title}</p>
                     <p className={styles.price}>{formatPrice(price)}원</p>
