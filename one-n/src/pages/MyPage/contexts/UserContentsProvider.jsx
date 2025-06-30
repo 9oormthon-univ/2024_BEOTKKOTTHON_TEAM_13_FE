@@ -13,6 +13,7 @@ import fetchMyRecipes from "../apis/fetchMyRecipes";
 import fetchMyLikePosts from "../apis/fetchMyLikePosts";
 
 import { usePageValue } from "./PageContext";
+import { useLoginValue } from "../../../contexts/LoginProvider";
 
 import { MY_LIKES_INGREDIENT, MY_LIKES_RECIPE_INGD } from "../consts/const";
 
@@ -35,6 +36,7 @@ const useUserContentsAction = () => {
  */
 function UserContentsProvider({ children }) {
     const location = useLocation();
+    const { isLogin } = useLoginValue();
 
     // NOTE: 내 찜 목록의 게시글 구분
     const { selectedPostType } = usePageValue();
@@ -87,15 +89,16 @@ function UserContentsProvider({ children }) {
         [myLikedIngdProducts, myLikesRecipeProducts]
     );
 
+    // NOTE: 각 메뉴에 해당하는 게시글 목록을 가져옴
     useEffect(() => {
-        if (location.pathname.includes("/my/products")) {
+        if (isLogin && location.pathname.includes("/my/products")) {
             loadMyProducts();
-        } else if (location.pathname.includes("/my/recipes")) {
+        } else if (isLogin && location.pathname.includes("/my/recipes")) {
             loadMyRecipes();
-        } else if (location.pathname.includes("/my/likes")) {
+        } else if (isLogin && location.pathname.includes("/my/likes")) {
             loadMyLikedProducts(selectedPostType);
         }
-    }, [location.pathname, selectedPostType]);
+    }, [isLogin, location.pathname, selectedPostType]);
 
     /**
      * NOTE: UserContentsContext는 여러 상태들을 갖는 객체들을 관리하기 때문에 값이 변경될 때마다

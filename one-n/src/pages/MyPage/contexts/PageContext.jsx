@@ -9,6 +9,8 @@ import React, {
 
 import fetchMyInfo from "../apis/fetchMyInfo";
 
+import { useLoginValue } from "../../../contexts/LoginProvider";
+
 import { MY_LIKES_INGREDIENT, EMPTY_MY_INFO } from "../consts/const";
 
 const PageValueContext = createContext();
@@ -29,6 +31,8 @@ const usePageAction = () => {
  * @returns Page Provider
  */
 function PageProvider({ children }) {
+    const { isLogin } = useLoginValue();
+
     const [myInfo, setMyInfo] = useState(EMPTY_MY_INFO);
     const [selectedPostType, setSelectedPostType] =
         useState(MY_LIKES_INGREDIENT);
@@ -47,10 +51,10 @@ function PageProvider({ children }) {
 
     // NOTE: 내 정보가 비어있는 경우에만 내 정보 가져오기
     useEffect(() => {
-        if (myInfo.id === EMPTY_MY_INFO.id) {
+        if (isLogin && myInfo.id === EMPTY_MY_INFO.id) {
             loadMyInfo();
         }
-    }, [myInfo]);
+    }, [isLogin, myInfo]);
 
     /**
      * NOTE: PageContext는 여러 상태들을 갖는 객체들을 관리하기 때문에 값이 변경될 때마다
